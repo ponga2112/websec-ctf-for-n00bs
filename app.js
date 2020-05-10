@@ -183,14 +183,11 @@ const init = async () => {
             //await router();
         }
     }
-    // Listen on hash change and page load:
-    //window.addEventListener('hashchange', router);
-    // Listen on page load:
+    document.getElementById('modal').innerHTML = await Utils.Modal.init_1()
     if(DEVMODE) {
         //DeveloperInfo.render(STATE);
         let r_html = await DevModules.Routes.render(routes)
         let c_html = await DevModules.Cookie.render(STATE)
-        document.getElementById('modal').innerHTML = await Utils.Modal.init_1()
         document.getElementById('developer').innerHTML  = await DevModules.Details.render(STATE);
         await DevModules.Details.after_render("routes",r_html)
         await DevModules.Details.after_render("cookie",c_html)
@@ -261,6 +258,8 @@ const update = async (item,obj) => {
         let c_html = await DevModules.Cookie.render(STATE)
         await DevModules.Details.after_render("routes",r_html)
         await DevModules.Details.after_render("cookie",c_html)
+    } else {
+        document.getElementById('current_user').innerHTML = STATE.API.handle;
     }
     // TODO: Need something here to clear and re-register modals!
     // TODO: or.. a better way to orgnize and keep track of modals in general
@@ -269,7 +268,9 @@ const update = async (item,obj) => {
 
 // Some app features should be global, so lets attach those
 const globals = {
-    register: register
+    register: register,
+    modal: Utils.Modal,
+    validatePlayername: Utils.validatePlayername,
 }
 window.ctf = globals;
 
@@ -278,7 +279,7 @@ document.addEventListener("DOMContentLoaded",function(){
     // TODO: once everything is implemented... remove this setTimeout (its only here to give the appearence that the App is "doing" something)
     setTimeout(function() {
         init().then(() => {
-            console.log('%c DEVMODE: App Ready!', 'background: #222; color: #bada55');
+            console.log('%c App Ready!', 'background: #222; color: #bada55');
         });
     }, 3 * 1000);
 });

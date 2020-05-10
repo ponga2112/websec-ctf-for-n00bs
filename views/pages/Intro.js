@@ -28,7 +28,7 @@ let Intro = {
         let reg = function() {
             document.getElementById('submit-handle').addEventListener('click', function(){
                 let h = document.getElementById('register-handle').value
-                if(Utils.validatePlayername(h)) {
+                if(ctf.validatePlayername(h)) {
                     // setup handle name
                     ctf.register(h);
                 } else {
@@ -51,7 +51,7 @@ let Intro = {
             <button id="submit-handle" class="ctf-button-red">Submit</button></h5>
         `
         document.getElementById('intro-advance-button').addEventListener('click', function(){
-            Utils.Modal.set("Getting Started",body,footer).then(function(){
+            ctf.modal.set("Getting Started",body,footer).then(function(){
                 reg();
             })
         })
