@@ -75,7 +75,7 @@ class state {
     }
 };
 let STATE = new state();
-let DeveloperInfo = new Promise(new Function);
+//let DeveloperInfo = new Promise(new Function);
 
 // Our View/Page Imports
 import Blank from '/views/pages/Blank.js'
