@@ -1,0 +1,16 @@
+# Don't be a jerk a commit unnessesary files to the project
+.git
+Thumbs.db
+ehthumbs.db
+.DS_Store
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.workspace
+*.vsw
+*.vsp
+*.lnk
+node_modules
+dist
+.cache
+package-lock.json

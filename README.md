@@ -9,7 +9,7 @@ This project is a Web Application that presents to Non-Engineers (n00bs) a Captu
 * The app can function if served as a static asset (like from a CDN), or when connected to an API (for features such as participant tracking / leaderboard stats)
 * Web vulnerabilities are all "simulated" -- So nothing is actually being exploited. To determine if a flag has been captured, the web app looks for (regexp) string matches for the test in question, or the participant answers with the correct multiple choice response. If an actual vulnerability is found (DOM-based or otherwise); that person wins the Internet =)
 
-## Installion
+## Installation
 * As this is a static, client-based web app, all that's required are the files and a web server for which to access them.
 * $ git clone ${this_project_url}; cd websec-ctf-for-n00bs
 * Then serve the directory - Easiest is with Python:
@@ -21,7 +21,6 @@ This project is a Web Application that presents to Non-Engineers (n00bs) a Captu
 * This application is written heavily with ES6. That means lots of const/let, arrow functions, async/await promises, modules and the like. I suggest you read up on it: <https://webapplog.com/es6/>
 * app.js is a Main Application. It should not be edited really except for line 5 to toggle DEVMODE on or off
 * If you are just developing the CTF, your main (and perhaps, only) focus will be the .js files in /view/pages/ctf/
-* ...
 
 ## License
-* Licensed under MIT; see license.txt for details.
+* MIT License; see license.txt for details.
