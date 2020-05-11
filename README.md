@@ -1,5 +1,5 @@
 # websec-ctf-for-n00bs
-This project is a Web Application that presents to Non-Engineers (n00bs) a Capture the Flag (CTF) game to facilitate the learning of basic Web Application Seurity concepts. Users will be guided through a series of Chanllenges (with significant hand-holding) where by activities will be presented on topics such as Cross-Site Scripting (XSS), SQL Injection, and other realted topics. Users will read descriptions of common web vulnerabilities and be given the chance to practice in exploiting them. If the user succesfully triggers the exploit, that particular "Flag" will be captured. Users can feel good about capturing flags and learning something -- Developers can feel good about spreading awareness about Web Security.
+This project is a Web Application that presents to Non-Engineers (n00bs) a Capture the Flag (CTF) game to facilitate the learning of basic Web Application Security concepts. Users will be guided through a series of Challenges (with significant hand-holding) where by activities will be presented on topics such as Cross-Site Scripting (XSS), SQL Injection, and other related topics. Users will read descriptions of common web vulnerabilities and be given the chance to practice in exploiting them. If the user successfully triggers the exploit, that particular "Flag" will be captured. Users can feel good about capturing flags and learning something -- Developers can feel good about spreading awareness about Web Security.
 
 ## Overview
 * This app is a fork of https://github.com/rishavs/vanillajs-spa
@@ -17,7 +17,7 @@ This project is a Web Application that presents to Non-Engineers (n00bs) a Captu
 * Then access with a web browser at http://localhost:8001/
 
 ## Development
-* Use whatever text editor / IDE / Build tool chain you want. Just keep your build tool / IDE artifact files outta my project before commiting ( Update .gitignore )
+* Use whatever text editor / IDE / Build tool chain you want. Just keep your build tool / IDE artifact files outta my project before committing ( Update .gitignore )
 * This application is written heavily with ES6. That means lots of const/let, arrow functions, async/await promises, modules and the like. I suggest you read up on it: <https://webapplog.com/es6/>
 * app.js is a Main Application. It should not be edited really except for line 5 to toggle DEVMODE on or off
 * If you are just developing the CTF, your main (and perhaps, only) focus will be the .js files in /view/pages/ctf/

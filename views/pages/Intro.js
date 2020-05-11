@@ -40,6 +40,8 @@ let Intro = {
                 }
             });
         }
+        // TODO: add eventlistener ENTER for registering
+        // TODO: UI issue on mobile, modal does not recenter in viewport
         let body = /*html*/`
         <div class="register-box">
             <section class="text-field-container">Whats your name?</section>
