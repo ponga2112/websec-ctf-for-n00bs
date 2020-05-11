@@ -43,7 +43,7 @@ let Intro = {
         let body = /*html*/`
         <div class="register-box">
             <section class="text-field-container">Whats your name?</section>
-            <section class="text-field-container"><input class="text-field-modal" type="text" name="handle" value="" min="3" maxlength="20"/ id="register-handle"></section>
+            <section class="text-field-container"><input class="text-field-modal" type="text" name="handle" value="" min="3" maxlength="20" id="register-handle" /></section>
             <div class="line-break"></div>
             <div id="register-tooltip" class="register-tooltip hidden"><h5>Minumum 3 characters please</h5></div></div>
         `

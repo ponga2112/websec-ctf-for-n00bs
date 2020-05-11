@@ -38,40 +38,40 @@ class state {
     // APPSTATE = {progress: "NEW",
     // APPSTATE = {progress: "STARTING",
     // APPSTATE = {progress: "PLAYING",
-    #API = null;
-    #COOKIE = null;
-    #APPSTATE = null;
-    #CTF = null;
+    // _API = null;
+    // _COOKIE = null;
+    // _APPSTATE = null;
+    // _CTF = null;
     constructor() {
-        this.#API = {isConnected:false, handle:"", guid:""}
-        this.#COOKIE = {isValid:false, object:null}
-        this.#APPSTATE = {progress:"", page:"", state:""}
-        this.#CTF = {current:0, flags:0, points:0, max_flags:-1, max_points:-1}
+        this._API = {isConnected:false, handle:"", guid:""}
+        this._COOKIE = {isValid:false, object:null}
+        this._APPSTATE = {progress:"", page:"", state:""}
+        this._CTF = {current:0, flags:0, points:0, max_flags:-1, max_points:-1}
     }
     // getters and setters
     get API(){
-        return this.#API;
+        return this._API;
     }
     set API(v) {
-        this.#API = v;
+        this._API = v;
     }
     get COOKIE(){
-        return this.#COOKIE;
+        return this._COOKIE;
     }
     set COOKIE(v) {
-        this.#COOKIE = v;
+        this._COOKIE = v;
     }
     get APPSTATE(){
-        return this.#APPSTATE;
+        return this._APPSTATE;
     }
     set APPSTATE(v) {
-        this.#APPSTATE = v;
+        this._APPSTATE = v;
     }
     get CTF(){
-        return this.#CTF;
+        return this._CTF;
     }
     set CTF(v) {
-        this.#CTF = v;
+        this._CTF = v;
     }
 };
 let STATE = new state();
