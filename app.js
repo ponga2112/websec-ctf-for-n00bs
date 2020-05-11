@@ -236,19 +236,28 @@ const router = async () => {
     STATE.APPSTATE.page = pf[t.length-1]
     main.innerHTML = await page.render();
     await page.after_render(update);
-    MicroModal.init();
+    await MicroModal.init();
 }
 
 // Our Main function that gets called with App State Change, Nav, Flag Capped... or any change really.
 // This keeps the up state in up-to-date and in sync
 const update = async (item,obj) => {
     if(item.action == "nav") {
+        // TODO: we need a switch case here instead
         if(item.to == "start") {
             STATE.APPSTATE.page = "start"
             STATE.APPSTATE.progress = "STARTING"
             STATE.COOKIE.object.progress = "STARTING";
             Utils.Cookie.set(STATE.COOKIE.object)
             Utils.Redirect("start");
+        }
+        if(item.to == "ctf/1") {
+            STATE.APPSTATE.page = "ctf/1"
+            STATE.APPSTATE.progress = "PLAYING"
+            STATE.CTF.current = 1;
+            STATE.COOKIE.object.progress = "PLAYING";
+            Utils.Cookie.set(STATE.COOKIE.object)
+            Utils.Redirect("ctf/1");
         }
     }
 
@@ -271,6 +280,7 @@ const globals = {
     register: register,
     modal: Utils.Modal,
     validatePlayername: Utils.validatePlayername,
+    state: STATE,
 }
 window.ctf = globals;
 
@@ -309,7 +319,7 @@ if(DEVMODE) {
 if(DEVMODE) {
     console.log('%c DEVMODE: Attaching objects to DOM: ', 'background: #222; color: #bada55');
     console.log(STATE);
-    window.STATE = STATE;
+//    window.STATE = STATE;
     window.Utils = Utils;
     window.MicroModal = MicroModal;
     window.routes = routes;
