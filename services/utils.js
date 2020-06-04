@@ -91,7 +91,7 @@ export const Cookie = {
                 console.log("API not yet fully implemented")
                 return false;
             }
-            /// guid: "87b48764-79ce-4059-ada0-2959bc74a5cc"
+            // guid: "87b48764-79ce-4059-ada0-2959bc74a5cc"
             let re_guid = new RegExp('[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}')
             let re_handle = new RegExp('[a-zA-Z0-9]{3,20}#[0-9]{4}')
             let states = ["NEW","STARTING","PLAYING"]
@@ -118,6 +118,7 @@ export const Cookie = {
             "progress": "NEW",
             "current_flag": 0,
             "flags_capped": 0,
+            "flags": [],
             "points": 0,
             "api": state.API.isConnected,
         }

@@ -33,7 +33,7 @@ export let Details = {
             <span>Current Challenge:</span> <span id="d_cur_cookie">`+String(State_obj.CTF.current)+`</span>
             </div>
             <div>
-            <span>Flags Captured:</span> <span id="d_flags">`+String(State_obj.CTF.flags)+`</span>
+            <span>Flags Captured:</span> <span id="d_flags">`+String(State_obj.CTF.flag_count)+`</span>
             </div>
             <div>
             <span>Points Earned:</span> <span id="d_points">`+String(State_obj.CTF.points)+`</span>

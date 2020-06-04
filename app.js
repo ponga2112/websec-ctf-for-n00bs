@@ -46,7 +46,7 @@ class state {
         this._API = {isConnected:false, handle:"", guid:""}
         this._COOKIE = {isValid:false, object:null}
         this._APPSTATE = {progress:"", page:"", state:""}
-        this._CTF = {current:0, flags:0, points:0, max_flags:-1, max_points:-1}
+        this._CTF = {current:0, flags:[], flag_count: 0, points:0, max_flags:-1, max_points:-1}
     }
     // getters and setters
     get API(){
@@ -126,7 +126,7 @@ for (const [k, v] of Object.entries(routes)) {
 }
 STATE.CTF.max_flags = t;
 STATE.CTF.max_points = t*100;
-
+STATE.CTF.flags = [];
 //
 // This is our main code block that runs when the page is ready and all modules have been loaded
 //
@@ -168,7 +168,8 @@ const init = async () => {
             STATE.COOKIE.object = c;
             STATE.APPSTATE.progress = c.progress;
             STATE.CTF.current = c.current_flag;
-            STATE.CTF.flags = c.flags_capped;
+            STATE.CTF.flag_count = c.flags_capped;
+            STATE.CTF.flags = c.flags;
             STATE.CTF.points = c.points;
             if(c.progress == "NEW") {
                 STATE.APPSTATE.page = "intro";
@@ -181,6 +182,17 @@ const init = async () => {
             }
             // there SHOULD be no need to call router()
             //await router();
+        }
+        // Devmode override - allow for direct navigation to the page, reguardless of cookie state
+        if(DEVMODE) {
+            let r = Utils.Parse.parseRequestURL()
+            if(r.resource.length > 1) {
+                if(r.resource == "ctf") {
+                    STATE.APPSTATE.page = r.resource+'/'+r.subresource
+                } else {
+                    STATE.APPSTATE.page = r.resource
+                }
+            }
         }
     }
     document.getElementById('modal').innerHTML = await Utils.Modal.init_1()
@@ -240,24 +252,41 @@ const router = async () => {
 }
 
 // Our Main function that gets called with App State Change, Nav, Flag Capped... or any change really.
-// This keeps the up state in up-to-date and in sync
+// This keeps the state up-to-date and in sync
 const update = async (item,obj) => {
     if(item.action == "nav") {
-        // TODO: we need a switch case here instead
         if(item.to == "start") {
-            STATE.APPSTATE.page = "start"
-            STATE.APPSTATE.progress = "STARTING"
+            STATE.APPSTATE.page = "start";
+            STATE.APPSTATE.progress = "STARTING";
             STATE.COOKIE.object.progress = "STARTING";
-            Utils.Cookie.set(STATE.COOKIE.object)
+            Utils.Cookie.set(STATE.COOKIE.object);
             Utils.Redirect("start");
         }
         if(item.to == "ctf/1") {
-            STATE.APPSTATE.page = "ctf/1"
-            STATE.APPSTATE.progress = "PLAYING"
+            STATE.APPSTATE.page = "ctf/1";
+            STATE.APPSTATE.progress = "PLAYING";
             STATE.CTF.current = 1;
+            STATE.COOKIE.object.current_flag = 1;
             STATE.COOKIE.object.progress = "PLAYING";
-            Utils.Cookie.set(STATE.COOKIE.object)
+            Utils.Cookie.set(STATE.COOKIE.object);
             Utils.Redirect("ctf/1");
+        }
+        // TODO: Add way to toggle direct URI navigation prevention
+        // 
+        let res = item.to.match('ctf/[0-9]{1,2}');
+        let fv = false;
+        let fi = 0;
+        if(res) {
+            if((res[0].split('/')[1] > 1) && (res[0].split('/')[1] < STATE.CTF.max_flags+1)) {
+                fi = res[0].split('/')[1];
+                fv = true;
+            }
+        }
+        if(fv) {
+            STATE.APPSTATE.page = item.to;
+            STATE.COOKIE.object.current_flag = fi;
+            Utils.Cookie.set(STATE.COOKIE.object);
+            Utils.Redirect(item.to);
         }
     }
 
@@ -272,7 +301,22 @@ const update = async (item,obj) => {
     }
     // TODO: Need something here to clear and re-register modals!
     // TODO: or.. a better way to orgnize and keep track of modals in general
+}
 
+const capture = async (flag) => {
+    //STATE.APPSTATE.page = "ctf/"+String(flag.next);
+    if(STATE.CTF.flags.includes(flag.cur)) {
+        return false;
+    }
+    STATE.CTF.current = flag.next;
+    STATE.CTF.flags.push(flag.cur)
+    STATE.CTF.flag_count =  STATE.CTF.flag_count + 1;
+    STATE.CTF.points = STATE.CTF.points + flag.points;
+    STATE.COOKIE.object.current_flag = flag.next;
+    STATE.COOKIE.object.flags_capped = STATE.CTF.flag_count;
+    STATE.COOKIE.object.points = STATE.CTF.points;
+    Utils.Cookie.set(STATE.COOKIE.object);
+    return true;
 }
 
 // Some app features should be global, so lets attach those
@@ -281,6 +325,7 @@ const globals = {
     modal: Utils.Modal,
     validatePlayername: Utils.validatePlayername,
     state: STATE,
+    capture: capture,
 }
 window.ctf = globals;
 
@@ -298,6 +343,7 @@ const status = null || document.getElementById('status');
 let DevModules = null;
 if(DEVMODE) {
     console.log('%c DEVMODE: Loading modules...', 'background: #222; color: #bada55');
+    // Dynamic module loading -- this is some tricky sh1t
     DevModules = { Container: null, Details: null, Routes: null, Cookie: null, Update : null};
     (async () => {
         const { Container: Container, Details: Details, Routes: Routes, Cookie: Cookie, Update: Update } = await import('/services/develop.js')
