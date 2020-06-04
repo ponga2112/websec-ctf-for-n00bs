@@ -1,22 +1,32 @@
-// Development Helper Page
-// To be REMOVED once upon Deployment
 let Intro = {
     render: async () => {
         //console.log("render() called in Into");
         let view =  /*html*/`
-            <section class="section">
-            <h2>Capture the Flag</h2></section>
+            <section class="section-lite">
+            <h2>Capture the Flag</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+            </section>
             <div><section>
-            { Text Describing what this is all about.. }
+            <i>So, what is this?</i> A Capture the Flag or <b>CTF</b> is a game where you earn points by <i>finding</i> flags. 
+            In this particular CTF, you will be finding common <b>web application vulnerabilities</b>.
             </section><section>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida mauris velit, ut scelerisque purus rutrum eget. Ut ultrices congue magna, eget volutpat felis malesuada rhoncus. Nunc faucibus est massa, id fermentum dui tristique quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed leo rutrum, eleifend sapien a, fermentum quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate massa magna, non malesuada augue egestas a. Praesent risus ligula, luctus ac laoreet hendrerit, malesuada eu sapien. In vel enim vulputate, laoreet nisl eget, viverra massa.
+            <i>So, what is a web application vulnerability?</i> In general, a "<b>vulnerability</b>" in software is a design flaw that if exploited, can cause the software to perform 
+            in such a way that the <i>security</i> of the application is compromised. 
             </section><section>
-            Nam leo dui, sodales vitae mauris a, pellentesque pretium enim. Cras dolor massa, sagittis ac vestibulum ut, tincidunt eget lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit quis velit vel posuere. Vivamus aliquet, massa et maximus volutpat, sapien diam efficitur odio, ut tempus augue nibh in justo. Cras a metus quis sapien finibus aliquet. Ut magna nisi, auctor eu tempus et, facilisis vel justo. Nunc justo lorem, tristique sed nisl sed, vehicula vulputate ipsum. Aenean elit sem, luctus id odio ut, porttitor egestas mauris. Nunc at urna nec eros gravida dapibus.
+            <i>How about an example?</i> Let's say that you are a bank and that you have a way for your customers to login to check their account balances and make transactions. 
+            This would be an example of an online banking web application. We say it's an <i>application</i> because that's the term used for a piece of software that when run, performs some function.
+            We say <i>web</i>, because that's how the application is accessed - Online with a web browser, in this exmaple. Now what if this online banking web application had a 
+            vulnerability, <i>(a design flaw in the software)</i> that allowed a malicious person, a <i>hacker</i>; to access any of your customers accounts? 
+            That would be bad, right? 
             </section><section>
-            Integer vel erat accumsan, efficitur elit vitae, bibendum tortor. Sed sagittis neque eget diam posuere ullamcorper. Mauris eget diam id neque tempor tincidunt. Fusce a rutrum quam, vitae pulvinar est. Vivamus faucibus mauris a suscipit elementum. Cras odio justo, volutpat et maximus eu, condimentum vel ex. Nulla cursus velit id velit auctor aliquet. Etiam hendrerit ante id luctus rhoncus. Donec felis nisi, commodo ut tortor id, congue dictum est. Nullam maximus hendrerit tempus.
+            <i>So, how do you know if such a vulnerability exists in the software or not?</i> There are many ways to check for this. One way is, to check for it just like an attacker would - 
+            that is to say, just like a <i>hacker</i> would. This is called <b>Dynamic Application Security Testing</b>.
             </section><section>
-            Mauris ullamcorper et lorem in egestas. Fusce ut nisl at sapien dictum mollis at ac mi. In eget purus et risus hendrerit consequat at at nulla. Nam vitae augue enim. Fusce quis ante sit amet massa mollis varius. Aliquam mollis libero dignissim tristique congue. Etiam cursus, arcu porta tincidunt egestas, neque massa pulvinar ex, vel mattis leo leo a sem. Vivamus in dapibus leo. Nulla gravida, erat a blandit suscipit, velit neque iaculis nunc, vitae fermentum sem urna vitae lacus.
-            </h3></section></div><div>
+            And so in this <b>CTF</b>, you will learn about a few of the most common web application vulnerabilities.
+            </section><section>
+            </section><section>
+            
+            </section><section>
+            </div><div>
             <hr width="70%" class="ctf-hr" />
             <section>
             <button class="ctf-button-dark" id="intro-advance-button" data-micromodal-trigger="modal"><b>Let's get started!</b></button>
@@ -25,19 +35,27 @@ let Intro = {
         return view
     },
     after_render: async (cb) => {
+        let this_register = function() {
+            let h = document.getElementById('register-handle').value
+            if(ctf.validatePlayername(h)) {
+                // setup handle name
+                ctf.register(h);
+            } else {
+                document.getElementById('register-tooltip').classList.remove('hidden');
+                document.getElementById('register-handle').classList.add('text-field-alert');
+                document.getElementById('register-handle').addEventListener('focus', function(){
+                    document.getElementById('register-handle').classList.remove('text-field-alert');
+                });
+            }
+        }
         let reg = function() {
-            document.getElementById('submit-handle').addEventListener('click', function(){
-                let h = document.getElementById('register-handle').value
-                if(ctf.validatePlayername(h)) {
-                    // setup handle name
-                    ctf.register(h);
-                } else {
-                    document.getElementById('register-tooltip').classList.remove('hidden');
-                    document.getElementById('register-handle').classList.add('text-field-alert');
-                    document.getElementById('register-handle').addEventListener('focus', function(){
-                        document.getElementById('register-handle').classList.remove('text-field-alert');
-                    });
+            document.getElementById('register-handle').addEventListener('keypress', function(e){ 
+                if (e.key === 'Enter') {
+                    this_register(); 
                 }
+            });
+            document.getElementById('submit-handle').addEventListener('click', function(){
+                this_register();
             });
         }
         // TODO: add eventlistener ENTER for registering
