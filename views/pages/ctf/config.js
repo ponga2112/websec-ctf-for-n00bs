@@ -1,5 +1,5 @@
 // TODO: Code this up!
-let CTF_ = {
+let CTF_6 = {
     render : async () => {
         let view =  /*html*/`
             <section class="section">
@@ -14,4 +14,4 @@ let CTF_ = {
         
 }
 
-export default CTF_;
+export default CTF_6;
