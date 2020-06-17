@@ -75,6 +75,15 @@ class state {
     }
 };
 let STATE = new state();
+
+class flag {
+    constructor(points, cur, next) {
+        this.points = points
+        this.cur = cur
+        this.next = next
+    }
+}
+
 //let DeveloperInfo = new Promise(new Function);
 
 // Our View/Page Imports
@@ -326,6 +335,7 @@ const globals = {
     validatePlayername: Utils.validatePlayername,
     state: STATE,
     capture: capture,
+    flag: flag,
 }
 window.ctf = globals;
 

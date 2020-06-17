@@ -73,14 +73,10 @@ let CTF_2 = {
                 It's fine to have something like the above, but you should really rely on a "<i>server-side</i>" control as well. So for our example, we would submit 
                 our request to tranfer money to an external account and then the server should <b>validate</b> that we have the authorization to do so. 
                 </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_2.points)+`</section>`
-                // TODO: figure out how to Nav outta here..
+                // nav outta here
                 b = `<button class="ctf-button-red" id="nav-ctf2-next"><b>Next Challenge</b></button>`
-                // TODO: record points earned
-                let f = {
-                    points: CTF_2.points,
-                    cur: 2,
-                    next: 3,
-                }
+                // this is a flag
+                let f = new ctf.flag(CTF_2.points,2,3)
                 ctf.capture(f);
                 break;
             default:
@@ -90,6 +86,7 @@ let CTF_2 = {
         ctf.modal.set("Results",h,b);
     },
     render : async () => {
+        // TODO: Need to fix the UI mobile view. Text in mobile view is paginated weirdly
         let view =  /*html*/`
         <section class="section-lite">
         <h2>Authorization Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
