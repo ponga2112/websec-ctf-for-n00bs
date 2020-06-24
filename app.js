@@ -336,6 +336,7 @@ const globals = {
     state: STATE,
     capture: capture,
     flag: flag,
+    htmlEncode: Utils.htmlEncode,
 }
 window.ctf = globals;
 

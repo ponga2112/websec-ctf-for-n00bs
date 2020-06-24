@@ -48,13 +48,15 @@ let CTF_1 = {
   comNum: 3,
 
 
-  comment : async (handle,text) => {
-    return `<div class="ctf-code-left">
-              <img src="/assets/images/xss/icon_user_64x64.png" width="32"> <b>+handle+</b>:
-              <p>+text+</p>
-          </div>
-          <br>`
-    },
+  addComment : async (handle,text) => {
+    let d = document.createElement('div');
+    d.className = "ctf-code-left";
+      let html = `<img src="/assets/images/xss/icon_user_64x64.png" width="32"> <b>`+handle+`</b>:
+              <p>`+text+`</p>`
+      d.innerHTML = html;
+      document.getElementById('user-comments').appendChild(d);
+      document.getElementById('user-comments').appendChild(document.createElement('br'));
+      },
 
   render: async () => {
     let view =  /*html*/`
@@ -128,23 +130,12 @@ let CTF_1 = {
           <!-- END STATIC COMMENTS -->
 
 
-          <!-- START DYNAMIC COMMENTS -->
-          <div class="hidden" id="hidden_comment4">
-                `+CTF_1.icon_32+` <b>`+CTF_1.username[4]+`</b>:
-                <p>`+CTF_1.comment[4]+`</p>
+          <!-- START USER COMMENTS -->
+          <div id="user-comments">
+               
           </div>
           <br>
-          <div class="hidden" id="hidden_comment5">
-                `+CTF_1.icon_32+` <b>`+CTF_1.username[4]+`</b>:
-                <p>`+CTF_1.comment[5]+`</p>
-          </div>
-          <br>
-          <div class="hidden" id="hidden_comment6">
-                `+CTF_1.icon_32+` <b>`+CTF_1.username[4]+`</b>:
-                <p>`+CTF_1.comment[6]+`</p>
-          </div>
-          <br>
-          <!-- END DYNAMIC COMMENTS -->
+          <!-- END USERCOMMENTS -->
         </div>
         <br><br>
       </section>
@@ -193,9 +184,9 @@ let CTF_1 = {
   },
   after_render: async () => {
 
-    for (const i of document.getElementsByName('icon_heart')) {
-      console.log(i);
-    }
+    // for (const i of document.getElementsByName('icon_heart')) {
+    //   console.log(i);
+    // }
 
     //USER COMMENT - CHALLENGE SWITCHBOARD*/
     document.getElementById('comment_submit').addEventListener('click', function () {
@@ -205,9 +196,11 @@ let CTF_1 = {
         setTimeout(function(){ /*Without a brief timeout the textarea does not clear until after alert pop-up box closed.The alerts are being replaced, but it bugged me.*/
           CTF_1.comNum++;
           //document.getElementById(CTF_1.username[4]).value = ctf.state.API.handle;
-          document.getElementById(`comNumDisplay`).innerHTML = CTF_1.comNum;
-          document.getElementById(`hidden_comment`+CTF_1.comNum).className = "ctf-code-left";
 
+          document.getElementById(`comNumDisplay`).innerHTML = CTF_1.comNum;
+         // document.getElementById(`hidden_comment`+CTF_1.comNum).className = "ctf-code-left";
+         // TODO: jason edited
+        
           
           //alert(`Wordlist item 1 condition triggered: `+CTF_1.comNum);
         }, 50);
@@ -237,8 +230,11 @@ let CTF_1 = {
         }, 50);
       }
       else {
-        alert(document.getElementById('user_comment').value);
-        document.getElementById('user_comment').value = "";
+        //alert(document.getElementById('user_comment').value);
+        // document.getElementById('user_comment').value = "";
+        
+        CTF_1.addComment(ctf.state.API.handle,ctf.htmlEncode(document.getElementById('user_comment').value))
+        
       }
     })
     

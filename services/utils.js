@@ -125,6 +125,12 @@ export const Cookie = {
         return cookie_obj;
     }
 }
+export function htmlEncode(str) {
+    let t = str.replace(/[\u0000-\u9999<>\&"'`]/gim, function(i) {
+        return '&#' + i.charCodeAt(0) + ';';
+    });
+    return t;
+}
 
 export function createHandle(name) {
     let h = sanitizePlayername(name)
