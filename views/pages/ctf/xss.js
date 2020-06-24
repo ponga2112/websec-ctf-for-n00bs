@@ -47,10 +47,17 @@ let CTF_1 = {
 
   comNum: 3,
 
+
+  comment : async (handle,text) => {
+    return `<div class="ctf-code-left">
+              <img src="/assets/images/xss/icon_user_64x64.png" width="32"> <b>+handle+</b>:
+              <p>+text+</p>
+          </div>
+          <br>`
+    },
+
   render: async () => {
     let view =  /*html*/`
-      <style>textarea {resize: none;}</style>
-
       <section class="section">
         <div id="xss_header">
           <h1>Cross-Site Scripting</h1>
@@ -94,7 +101,7 @@ let CTF_1 = {
               <img id="becky_post" align="top" src="/assets/images/xss/becky_post_550x309.jpg" width="500" style="border:5px solid black" />
             </div>
             <div class="ctf-html-outter">
-              <span name="icon_heart" id="1_heart">` + CTF_1.heart + `</span>  [<b>1,381</b>] ................. Comments [<b><span id="comNumDisplay">`+CTF_1.comNum+`</span></b>]
+              <span name="icon_heart" id="1_heart">`+CTF_1.heart+`</span>  [<b>1,381</b>] ................. Comments [<b><span id="comNumDisplay">`+CTF_1.comNum+`</span></b>]
             </div>
           </div>
           <!-- END BECKY POST -->
@@ -128,12 +135,12 @@ let CTF_1 = {
           </div>
           <br>
           <div class="hidden" id="hidden_comment5">
-                `+CTF_1.icon_32+` <b>`+CTF_1.username[5]+`</b>:
+                `+CTF_1.icon_32+` <b>`+CTF_1.username[4]+`</b>:
                 <p>`+CTF_1.comment[5]+`</p>
           </div>
           <br>
           <div class="hidden" id="hidden_comment6">
-                `+CTF_1.icon_32+` <b>`+CTF_1.username[6]+`</b>:
+                `+CTF_1.icon_32+` <b>`+CTF_1.username[4]+`</b>:
                 <p>`+CTF_1.comment[6]+`</p>
           </div>
           <br>
@@ -148,7 +155,7 @@ let CTF_1 = {
         <span class="ctf-block">
         <h2>Comment</h2>
           <form>
-            <textarea id="user_comment" rows="5" cols="32" id="bodyText"></textarea>
+            <textarea id="user_comment" rows="5" cols="32" id="bodyText" class="xss-textarea"></textarea>
             <br>
             <div class="ctf-html-outter">
               <button type="button" id="comment_submit">Submit</button>
@@ -164,19 +171,19 @@ let CTF_1 = {
       <div class="ctf-code-left">
         <h2>Word Bank</h2>
         <br>
-        <input type="text" value="`+ CTF_1.wordbank_enc[0] + `" id="wb1" readonly="true">
+        <input type="text" value="`+CTF_1.wordbank_enc[0]+`" id="wb1" readonly="true">
         <button id="wb1_button">Copy text</button><br><br>
 
-        <input type="text" value="`+ CTF_1.wordbank_enc[1] + `" id="wordbank_2" readonly="true">
+        <input type="text" value="`+CTF_1.wordbank_enc[1]+`" id="wordbank_2" readonly="true">
         <button id="wb2_button">Copy text</button><br><br>
 
-        <input type="text" value="`+ CTF_1.wordbank_enc[2] + `" id="wordbank_3" readonly="true">
+        <input type="text" value="`+CTF_1.wordbank_enc[2]+`" id="wordbank_3" readonly="true">
         <button id="wb3_button">Copy text</button><br><br>
 
-        <input type="text" value="`+ CTF_1.wordbank_enc[3] + `" id="wordbank_4" readonly="true">
+        <input type="text" value="`+CTF_1.wordbank_enc[3]+`" id="wordbank_4" readonly="true">
         <button id="wb4_button">Copy text</button><br><br>
 
-        <input type="text" value="`+ CTF_1.wordbank_enc[4] + `" id="wordbank_5" readonly="true">
+        <input type="text" value="`+CTF_1.wordbank_enc[4]+`" id="wordbank_5" readonly="true">
         <button id="wb5_button">Copy text</button>
       </div>
       <!-- END WORD BANK -->
@@ -197,6 +204,7 @@ let CTF_1 = {
         document.getElementById('user_comment').value = ""; /*Clear out the textarea on submission*/
         setTimeout(function(){ /*Without a brief timeout the textarea does not clear until after alert pop-up box closed.The alerts are being replaced, but it bugged me.*/
           CTF_1.comNum++;
+          //document.getElementById(CTF_1.username[4]).value = ctf.state.API.handle;
           document.getElementById(`comNumDisplay`).innerHTML = CTF_1.comNum;
           document.getElementById(`hidden_comment`+CTF_1.comNum).className = "ctf-code-left";
 

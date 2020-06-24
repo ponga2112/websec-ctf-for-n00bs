@@ -328,3 +328,7 @@ a:hover {
 :focus {
     outline: none !important;
 }
+
+.xss-textarea{
+    resize: none;
+}
