@@ -107,6 +107,22 @@
     display: inline-block;
 }
 
+.ctf-socialmedia-post {
+    font-family: sans-serif;
+    font-size: small;
+    background-color: #fff;
+    margin: 0.5rem;
+    padding: 10px;
+    border-width: 2px;
+    border-radius: 4px;
+    border-color: #333;
+    color: #333;
+    justify-content: left;
+    text-align: justify;
+    display: inline-block;
+}
+
+
 .ctf-html-inner-left {
     background-color: #333;
     margin: 0.5rem;
@@ -194,10 +210,12 @@
     border-top-right-radius: 5px;
 }
 
+/*
 .loading {
     opacity: 0;
     -webkit-animation: dot 1.3s infinite;
 }
+*/
 
 .loading.one {
     -webkit-animation-delay: 0.0s;
