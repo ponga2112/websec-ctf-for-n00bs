@@ -98,7 +98,7 @@ let CTF_7 = {
         return view
         
     },
-    after_render: async (btnEvents) => {
+    after_render: async (cb) => {
         document.getElementById('ctf7-flag').onsubmit = function(e){e.preventDefault(); return false;}
         document.getElementById('ctf7-flag').addEventListener('submit', function(){
             CTF_7.answer()
