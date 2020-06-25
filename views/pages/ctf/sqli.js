@@ -1,11 +1,64 @@
 // TODO: Code this up!
-var headingText = '<h3>In this section, we will explore SQL Injection vulnerabilities.</h3><br><br><br>'
-var intro1Text = 'Merriam-Webster defines a database as: "a usually large collection of data organized especially for rapid search and retrieval (as by a computer)".  Databases are used by websites to store and organize data that may be input by users of the website or come from other sources such as other databases or file systems.  This data can then be retrieved at any time and presented to users of the website<br><br>SQL or Structured Query Language is a programming language that is used for managing data within a relational database.  It serves many functions such as adding, updating or deleting data, searching for data or controling who has access to data within a database.<br><br> SQL Injection vulnerabilities occur when information supplied by a user of the website is not properly checked and sanitized.  Because there are many characters that have special meaning within SQL language, allowing unsanitized input could have negative effects such as learning database stucture, stealing passwords or even deleting important data from the system.<br><br>'
-var intro2Text = 'There are several different companies with their own proprietary databases such as MicroSoft SQL Server, Oracle Database and MySQL Server.  Each database has its own set of special chacters that are used within SQL queries.  In this challenge we will be using MicroSoft SQL syntax.<br><br>Here is a list of special characters used within MS SQL Server and their purpose:<br><br><table style="margin-left:auto;margin-right:auto;"><tr><td>Character</td><td width=20px></td><td>Purpose</td></tr><tr><td>%</td><td></td><td>Wildcard - Zero or more characters</td></tr><tr><td>_</td><td></td><td>Wildcard - Single character</td></tr><tr><td>[ ]</td><td></td><td>Wildcard - Any single character within the brackets</td></tr><tr><td>^</td><td></td><td>Wildcard - Any character not in the brackets</td></tr><tr><td>-</td><td></td><td>Wildcard - A range of characters</td></tr><tr><td>\'</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>"</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>--</td><td></td><td>Used for comments</td></tr><tr><td>`</td><td></td><td>Identifies table and column identifiers</td></tr><tr><td>\\</td><td></td><td>Escape Character</td></tr></table><br><br>'
-var intro3Text = 'Websites often have forms on them so users can log in.  There is usually a userame and password field located on the website.  After a user submits his credentials, they are checked against the correct credentials stored within the database.<br><br>A poorly coded example may look like this:<br><br>userName = getRequestString("user");<br>userPassword = getRequestString("password");<br><br>sql = \'SELECT * FROM Users WHERE Name =\' + userName + \' " AND Pass=" \' + userPassword + \' " \';<br><br>If the user entered jsmith and 1l0veT@cos then the full sql statement would be:<br><br>SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos"<br><br>The problem with this is the developers are relying on the users to input valid information.  If malformed data is sent to the server, it could react in inappropriate ways.  In this example, if a user was to enter " or "a"="a into the password field, it would change the sql statement to the following:<br><br>SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos" or "a"="a"<br><br>The first double quote before the "or" will close the quotation marks around "1l0veT@cos" and move it to the very end of the statement after the second "a". Since "a"="a" will always evaluate to true, the user would be able to log in without needing to know the correct password.<br><br>'
-var challenge1Text = 'If you saw the following log in screen, what might you do to try and log in and/or steal account numbers?<br><br><img src="/assets/images/login.png"></img><br><br>Please select a SQL injection from the list below:<br><br><br><br>'
 let CTF_7 = {
-    
+    points: 100,
+    answered: false,
+    answer : async () => {
+        let a = null
+        try {
+            a = document.getElementById('ctf7-flag').querySelectorAll('input[type="radio"]:checked')[0].value
+        } catch {
+            a = "fail"
+        }
+        let flag_good = /*html*/ `
+            <svg class="ctf-icon-success ctf-modal-middle" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M3.762 2.558C4.735 1.909 5.348 1.5 6.5 1.5c.653 0 1.139.325 1.495.562l.032.022c.391.26.646.416.973.416.168 0 .356-.042.587-.126a8.89 8.89 0 0 0 .593-.25c.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.719 2.719 0 0 1 9 9.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916A.5.5 0 0 1 3.5 9V3a.5.5 0 0 1 .223-.416l.04-.026z"/>
+            </svg>
+        `
+        let flag_bad = /*html*/ `
+            <svg class="ctf-icon-error ctf-modal-middle" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M3.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M3.762 2.558C4.735 1.909 5.348 1.5 6.5 1.5c.653 0 1.139.325 1.495.562l.032.022c.391.26.646.416.973.416.168 0 .356-.042.587-.126a8.89 8.89 0 0 0 .593-.25c.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.719 2.719 0 0 1 9 9.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916A.5.5 0 0 1 3.5 9V3a.5.5 0 0 1 .223-.416l.04-.026z"/>
+            </svg>
+        `
+        let h = /*html*/ `
+        <div class="ctf-block ctf-modal-middle">
+        `
+        let b = ``
+        switch(a){
+            case "alldblchar":
+                h = h+flag_bad+`Incorrect! <section>Account number are numerical not alpha.  The data types need to match: integer for numbers, varchar for alpha characters.</section>`
+                CTF_7.points = CTF_7.points-10;
+                break;
+            case "alldblnum":
+                h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need double quotes surrounding them for the integer data type</section>`
+                CTF_7.points = CTF_7.points-25;
+                break;
+            case "noquote":
+                CTF_7.answered = true;
+                if(CTF_7.points < 1) {
+                    CTF_7.points = 0;
+                }
+                h = h+flag_good+`
+                Correct!<section>Since the website is asking for an account number, it would be stored in the database as an integer.  
+                This input string would be a good start for a SQL Injection attack because integers do not require single or double quotes to be placed around them.</section>
+                <section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_7.points)+`</section>`
+                // nav outta here
+                b = `<button class="ctf-button-red" id="nav-ctf7-next"><b>Next Challenge</b></button>`
+                // this is a flag
+                let f = new ctf.flag(CTF_7.points,7,8)
+                ctf.capture(f);
+                break;
+            case "allsinglenum":
+                h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need single quotes surrounding them for the integer data type</section>`
+                CTF_7.points = CTF_7.points-25;
+                break;
+            default:
+                h = h+flag_bad+`Incorrect`
+        }
+        h=h+`</div>`
+        ctf.modal.set("Results",h,b);
+    },
     render : async () => {
         
         let view =  /*html*/`
@@ -15,54 +68,48 @@ let CTF_7 = {
             <h3>SQL Injection Challenge</h3>
             </section>
             <section>
-                <label id="lblHeadingText"></label>
-                <label id="lblMainText"></label>
+                <h3>In this section, we will explore SQL Injection vulnerabilities.</h3><br>
+                SQL or Structured Query Language is a programming language that is used for managing data within a relational database.  
+                SQL Injection vulnerabilities occur when information supplied by a user of the website is not properly checked and sanitized.  
+                Allowing unsanitized input could have negative effects such as learning database stucture, stealing passwords or even deleting important data from the system.  
+                In this challenge we will be using MicroSoft SQL syntax.  Here are a few special characters and their purpose:<br><br>
+                <div class="ctf-code-left"><table style="margin-left:auto;margin-right:auto;"><tr><td>Character</td><td width=20px></td><td>Purpose</td></tr><tr><td>\'</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>"</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>--</td><td></td><td>Used for comments</td></tr></table></div><br><br>
+                A poorly coded SQL example may look like this:<br><br><div class="ctf-code-left">userName = getRequestString("user");<br>userPassword = getRequestString("password");<br><br>sql = \'SELECT * FROM Users WHERE Name =\' + userName + \' " AND Pass=" \' + userPassword + \' " \';</div><br><br>
+                If the user entered jsmith and 1l0veT@cos then the full sql statement would be:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos"</div><br><br>
+                If malformed data is sent to the server, it could react in inappropriate ways.  In this example, if a user was to enter " or "a"="a into the password field, it would change the sql statement to the following:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos" or "a"="a"</div><br><br>
+                The first double quote before the "or" will close the quotation marks around "1l0veT@cos" and move it to the very end of the statement after the second "a". Since "a"="a" will always evaluate to true, the user would be able to log in without needing to know the correct password.<br><br><br>
+                <b>If you saw the following log in screen, what might your first attempt be to try to log in and/or steal account numbers?</b><br><br><img src="/assets/images/login.png"></img><br><br>
             </section>
-            <section>
-                <button class="ctf-button-dark" id="btnIntro1"><b>Intro Page 1</b></button>
-                <button class="ctf-button-dark" id="btnIntro2"><b>Intro Page 2</b></button>
-                <button class="ctf-button-dark" id="btnIntro3"><b>Intro Page 3</b></button>
-                <button class="ctf-button-dark" id="btnChallenge1"><b>Challenge 1</b></button>
-            </section>
+            <div class="ctf-html-outter">
+            <div class="ctf-html-inner-left">
+        
+            <form id="ctf7-flag">
+            <div class="ctf-code-left">
+            <span class="ctf-block"><input type="radio" name="answer" value="alldblchar"><label for="submit">&nbsp;&#x22;&nbsp;or&nbsp;&#x22;a&#x22;=&#x22;a&#x22;</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="alldblnum"><label for="submit">&nbsp;&#x22;&nbsp;or&nbsp;&#x22;1&#x22;=&#x22;1&#x22;</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="noquote"><label for="submit">&nbsp;&#39;&nbsp;or&nbsp;1=1;</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="allsinglenum"><label for="submit">&nbsp;&#39;&nbsp;or&nbsp;&#39;1&#39;=&#39;1&#39;</label></span>
+        
+            <section>&nbsp;</section>
+            <div class="ctf-html-inner-text-center"><span class="ctf-block"><input type="submit" id="ctf7_flag_submit" name="ctf7_flag_submit" data-micromodal-trigger="modal" class="ctf-button-red" value="Try it!"></span></div>
+            </form>
+            </div></div>
         `   
         return view
         
     },
     after_render: async (btnEvents) => {
-        document.getElementById('lblHeadingText').innerHTML = headingText;
-        document.getElementById('lblMainText').innerHTML = intro1Text;
-        document.getElementById('btnIntro1').disabled = true;
-        document.getElementById('btnIntro2').disabled = false;
-        document.getElementById('btnIntro3').disabled = false;
-        document.getElementById('btnChallenge1').disabled = false;
-
-        document.getElementById('btnIntro1').addEventListener('focus', function(){
-            document.getElementById('lblMainText').innerHTML = intro1Text;
-            document.getElementById('btnIntro1').disabled = true;
-            document.getElementById('btnIntro2').disabled = false;
-            document.getElementById('btnIntro3').disabled = false;
-            document.getElementById('btnChallenge1').disabled = false;
-        });
-        document.getElementById('btnIntro2').addEventListener('focus', function(){
-            document.getElementById('lblMainText').innerHTML = intro2Text;
-            document.getElementById('btnIntro1').disabled = false;
-            document.getElementById('btnIntro2').disabled = true;
-            document.getElementById('btnIntro3').disabled = false;
-            document.getElementById('btnChallenge1').disabled = false;
-        });
-        document.getElementById('btnIntro3').addEventListener('focus', function(){
-            document.getElementById('lblMainText').innerHTML = intro3Text;
-            document.getElementById('btnIntro1').disabled = false;
-            document.getElementById('btnIntro2').disabled = false;
-            document.getElementById('btnIntro3').disabled = true;
-            document.getElementById('btnChallenge1').disabled = false;
-        });
-        document.getElementById('btnChallenge1').addEventListener('focus', function(){
-            document.getElementById('lblMainText').innerHTML = challenge1Text;
-            document.getElementById('btnIntro1').disabled = false;
-            document.getElementById('btnIntro2').disabled = false;
-            document.getElementById('btnIntro3').disabled = false;
-            document.getElementById('btnChallenge1').disabled = true;
+        document.getElementById('ctf7-flag').onsubmit = function(e){e.preventDefault(); return false;}
+        document.getElementById('ctf7-flag').addEventListener('submit', function(){
+            CTF_7.answer()
+            .then(function(){
+                if(CTF_7.answered) {
+                    document.getElementById('nav-ctf7-next').addEventListener('click', function(){
+                        ctf.modal.hideAll();
+                        cb({action:"nav",to:"ctf/8"},null);
+                    })
+                }
+            })
         });
     }
         
