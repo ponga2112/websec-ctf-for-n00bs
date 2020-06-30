@@ -337,6 +337,7 @@ const globals = {
     capture: capture,
     flag: flag,
     htmlEncode: Utils.htmlEncode,
+    toCodeBlock: Utils.toCodeBlock,
 }
 window.ctf = globals;
 
