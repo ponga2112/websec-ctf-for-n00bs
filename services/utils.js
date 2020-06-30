@@ -126,10 +126,26 @@ export const Cookie = {
     }
 }
 export function htmlEncode(str) {
-    let t = str.replace(/[\u0000-\u9999<>\&"'`]/gim, function(i) {
+    let t = str.replace(/[\u0000-\u001f<>"'`\\\u007f-\uffff]/gim, function(i) {
         return '&#' + i.charCodeAt(0) + ';';
     });
     return t;
+}
+
+export function toCodeBlock(str) {
+    let i = 0; let line = 1;
+    let d = '<div class="ctf-code-left">\n';
+    let a = str.split('\n')
+    for(let j=0; j<a.length; j++) {
+        let space = ''
+        if(j+1<10){
+            space = '&nbsp;'
+        }
+        d = d + '<span class="ctf-code-block-'+String(i%2)+'">'+space+String(line)+'&nbsp;&nbsp;'+htmlEncode(a[j])+'</span>';
+        i = i + 1; line = line + 1;
+    }
+    d = d + '\n</div>';
+    return d;
 }
 
 export function createHandle(name) {
