@@ -30,6 +30,10 @@
     z-index: 500;
 }
 
+input[type=checkbox],input[type=radio] {
+    vertical-align: middle;
+}
+
 .text-field-modal {
     border-radius: 5px;
     padding-left: 1em;
@@ -93,7 +97,7 @@
 }
 
 .ctf-code-left {
-    font-family: sans-serif;
+    font-family: monospace;
     font-size: small;
     background-color: #333;
     margin: 0.5rem;
@@ -154,6 +158,15 @@
 }
 .ctf-ul {
     list-style: circle;
+}
+
+.ctf-code-block-0 {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.ctf-code-block-1 {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .ctf-button-dark {
