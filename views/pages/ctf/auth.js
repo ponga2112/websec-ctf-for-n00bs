@@ -87,6 +87,23 @@ let CTF_2 = {
     },
     render : async () => {
         // TODO: Need to fix the UI mobile view. Text in mobile view is paginated weirdly
+        // TODO: make HTML code by line numbers! Then, make selection what line is vuln at!
+        let code_raw = `<!-- HTML FORM -->
+<form>
+From: 
+<select name="From">
+<option value="Checking">Checking Account</option>
+</select>
+To: 
+<select name="To">
+<option value="Savings">Savings Account</option>
+<option value="External">External Account</option>
+</select>
+Amount: $<input type="text" name="amount">
+<input type="hidden" id="isAuthorized" value="false">
+<input type="submit">
+</form>`
+        let code_formated = ctf.toCodeBlock(code_raw)
         let view =  /*html*/`
         <section class="section-lite">
         <h2>Authorization Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
@@ -125,35 +142,18 @@ let CTF_2 = {
         <section>&nbsp;</section>
         <div class="ctf-html-inner-text-center"><span class="ctf-block"><input type="submit" id="auth_submit" name="ctf2_submit" data-micromodal-trigger="modal" class="ctf-button-red"></span></div>
         </form>
+        </div>`+code_formated+`
         </div>
-        <div class="ctf-code-left">
-        <span class="ctf-block">&#x3C;!-- HTML FORM --&#x3E;</span>
-        <span class="ctf-block">&#x3C;form&#x3E;</span>
-        <span class="ctf-block">&nbsp;From: </span>
-        <span class="ctf-block">&nbsp;&#x3C;select name=&#x22;From&#x22;&#x3E;</span>
-        <span class="ctf-block">&nbsp;&nbsp;&#x3C;option value=&#x22;Checking&#x22;&#x3E;Checking Account&#x3C;/option&#x3E;</span>
-        <span class="ctf-block">&nbsp;&#x3C;/select&#x3E;</span>
-        <span class="ctf-block">&nbsp;To: </span>
-        <span class="ctf-block">&nbsp;&#x3C;select name=&#x22;To&#x22;&#x3E;</span>
-        <span class="ctf-block">&nbsp;&nbsp;&#x3C;option value=&#x22;Savings&#x22;&#x3E;Savings Account&#x3C;/option&#x3E;</span>
-        <span class="ctf-block">&nbsp;&nbsp;&#x3C;option value=&#x22;External&#x22;&#x3E;External Account&#x3C;/option&#x3E;</span>
-        <span class="ctf-block">&nbsp;&#x3C;/select&#x3E;</span>
-        <span class="ctf-block">&nbsp;Amount: $&#x3C;input type=&#x22;text&#x22; name=&#x22;amount&#x22;&#x3E;</span>
-        <span class="ctf-block">&nbsp;&#x3C;input type=&#x22;hidden&#x22; id=&#x22;isAuthorized&#x22; value=&#x22;false&#x22;&#x3E;</span>
-        <span class="ctf-block">&nbsp;&#x3C;input type=&#x22;submit&#x22; &#x3E;</span>
-        <span class="ctf-block">&#x3C;/form&#x3E;</span>
-        </div>
-        </div>
-        <section>The above form and cooresponding HTML has an authorization bypass vulnerabilty; Where is it?</section>
+        <section><h3>The above form and cooresponding HTML has an authorization bypass vulnerabilty; <u>Where is it?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         
         <form id="ctf2-flag">
         <div class="ctf-code-left">
-        <span class="ctf-block"><input type="radio" name="answer" value="submit"><label for="submit">&nbsp;&#x3C;input type=&#x22;submit&#x22; &#x3E;</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="from"><label for="submit">&nbsp;&#x3C;option value=&#x22;Checking&#x22;&#x3E;Checking Account&#x3C;/option&#x3E;</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="auth"><label for="submit">&nbsp;&#x3C;input type=&#x22;hidden&#x22; id=&#x22;isAuthorized&#x22; value=&#x22;false&#x22;&#x3E;</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="to"><label for="submit">&nbsp;&#x3C;option value=&#x22;External&#x22;&#x3E;External Account&#x3C;/option&#x3E;</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="submit"><label for="submit">&nbsp;Line 14</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="from"><label for="submit">&nbsp;Line 5</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="auth"><label for="submit">&nbsp;Line 13</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="to"><label for="submit">&nbsp;Line 10</label></span>
         
         <section>&nbsp;</section>
         <div class="ctf-html-inner-text-center"><span class="ctf-block"><input type="submit" id="ctf2_flag_submit" name="ctf2_flag_submit" data-micromodal-trigger="modal" class="ctf-button-red" value="Try it!"></span></div>
