@@ -6,8 +6,8 @@ let CTF_1 = {
       <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
     </svg>`,
 
-  wordbank: [`"><script>alert()</script>`, `Test<strong>Test!</strong>Test`, `Test&#x3C;strong&#x3E;Test!&#x3C;/strong&#x3E;Test`,`; OR 1==1;`,`%00&#x22;&#x3e;&#x3c;sCrIpT&#x3e;aLeRt&#x28;&#x29;&#x3c;&#x2f;sCrIpT&#x3e;`],
-  wordbank_enc: [`&#x22;&#x3E;&#x3C;script&#x3E;alert()&#x3C;/script&#x3E`, `Test&#x3C;strong&#x3E;Test!&#x3C;/strong&#x3E;Test`, `Test&amp;#x3C;strong&amp;#x3E;Test!&amp;#x3C;/strong&amp;#x3E;Test`,`&semi; OR 1==1&semi;`,`&#x25;00&amp;#x22;&amp;#x3e;&amp;#x3c;sCrIpT&amp;#x3e;aLeRt&amp;#x28;&amp;#x29;&amp;#x3c;&amp;#x2f;sCrIpT&amp;#x3e;`],
+  wordbank: [`"><script>alert()</script>`, `Test<strong>Test!</strong>Test`, `Test&#x3C;strong&#x3E;Test!&#x3C;/strong&#x3E;Test`,`' or '1'='1';`,`%00&#x22;&#x3e;&#x3c;sCrIpT&#x3e;aLeRt&#x28;&#x29;&#x3c;&#x2f;sCrIpT&#x3e;`],
+  wordbank_enc: [`&#x22;&#x3E;&#x3C;script&#x3E;alert()&#x3C;/script&#x3E`, `Test&#x3C;strong&#x3E;Test!&#x3C;/strong&#x3E;Test`, `Test&amp;#x3C;strong&amp;#x3E;Test!&amp;#x3C;/strong&amp;#x3E;Test`,`&apos; or &apos;1&apos;=&apos;1&apos;&semi;`,`&#x25;00&amp;#x22;&amp;#x3e;&amp;#x3c;sCrIpT&amp;#x3e;aLeRt&amp;#x28;&amp;#x29;&amp;#x3c;&amp;#x2f;sCrIpT&amp;#x3e;`],
 
   copyToClipboard(str) {
     /* ——— Derived from: https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
@@ -221,7 +221,7 @@ let CTF_1 = {
           document.getElementById(`comNumDisplay`).innerHTML = CTF_1.comNum;
         }
         else if(document.getElementById('user_comment').value == CTF_1.wordbank[3]){
-          ctf.modal.set("Success","Wordbank Item 3",``);
+          ctf.modal.set("Nope!","This is actually a potential SQL Injection string. While there are some comparisons to XSS, this type of attack will be covered later.<br><br>Please try again!",``);
           CTF_1.addComment(ctf.state.API.handle,ctf.htmlEncode(document.getElementById('user_comment').value));
 
           document.getElementById('user_comment').value = "";
