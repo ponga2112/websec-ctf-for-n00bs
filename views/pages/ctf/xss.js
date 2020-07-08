@@ -190,7 +190,7 @@ let CTF_1 = {
     //USER COMMENT - CHALLENGE SWITCHBOARD
     document.getElementById('comment_submit').addEventListener('click', function () {
       if(CTF_1.comNum > "12"){
-        alert("Too many comment attempts! Refresh the page and try again.");
+        ctf.modal.set("Error","Too many comments! Refresh the page and try again.","");
       }
       else{      
         if(document.getElementById('user_comment').value == CTF_1.wordbank[0]){
@@ -234,7 +234,7 @@ let CTF_1 = {
           let f = new ctf.flag(100,1,2)
           ctf.capture(f);
 
-          ctf.modal.set("Success","Challenge complete!",`<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`);
+          ctf.modal.set("Challenge complete!","You have been awarded 100 points.<br>Please click the button below to continue.",`<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`);
           CTF_1.addComment(ctf.state.API.handle,ctf.htmlEncode(document.getElementById('user_comment').value));
 
           document.getElementById('user_comment').value = "";
