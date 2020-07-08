@@ -87,7 +87,7 @@ let Start = {
                     </section>
                     <section>&nbsp;</section>
                     <section>
-                    You can read more here: <a target="_blank" href="https://owasp.org/www-community/attacks/xss/">XSS on OWASP</a>
+                    You can read more here: <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A6-Security_Misconfiguration">Misconfiguration on OWASP</a>
                     </section>
                 `
             }
