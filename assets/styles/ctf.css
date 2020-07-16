@@ -30,6 +30,34 @@
     z-index: 500;
 }
 
+.ctf-urlbar {
+    border: 1px;
+    margin: 1px;
+    padding: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    border-color: #fff;
+    text-align: center;
+}
+
+.ctf-urlwindow {
+    border: 1px;
+    margin: 1px;
+    padding: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    background-color: #fff;
+    border-color: #000;
+    text-align: center;
+    color: #000;
+    font-family: monospace;
+    font-size: small;
+    padding: 10px;
+    justify-content: left;
+    text-align: justify;
+    display: inline-block;
+}
+
 input[type=checkbox],input[type=radio] {
     vertical-align: middle;
 }

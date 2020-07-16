@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded",function(){
         init().then(() => {
             console.log('%c App Ready!', 'background: #222; color: #bada55');
         });
-    }, 3 * 1000);
+    }, 1 * 1000);
 });
 
 const status = null || document.getElementById('status');
