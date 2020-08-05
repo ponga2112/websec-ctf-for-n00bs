@@ -32,7 +32,7 @@ let CTF_7 = {
                 break;
             case "alldblnum":
                 h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need double quotes surrounding them for the integer data type</section>`
-                CTF_7.points = CTF_7.points-25;
+                CTF_7.points = CTF_7.points-10;
                 break;
             case "noquote":
                 CTF_7.answered = true;
@@ -51,7 +51,7 @@ let CTF_7 = {
                 break;
             case "allsinglenum":
                 h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need single quotes surrounding them for the integer data type</section>`
-                CTF_7.points = CTF_7.points-25;
+                CTF_7.points = CTF_7.points-10;
                 break;
             default:
                 h = h+flag_bad+`Incorrect`
