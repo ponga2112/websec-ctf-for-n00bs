@@ -38,6 +38,10 @@
     display: none;
 }
 
+.ctf3-url-link {
+    background-color: #000;
+}
+
 .ctf-urlbar {
     border: 1px;
     margin: 1px;
@@ -64,6 +68,7 @@
     justify-content: left;
     text-align: justify;
     display: inline-block;
+    width: 100%;
 }
 
 input[type=checkbox],input[type=radio] {

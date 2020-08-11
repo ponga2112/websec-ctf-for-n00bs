@@ -196,6 +196,9 @@ let CTF_1 = {
         `
     return view
   },
+  // TODO: map enter button to submit
+  // TODO: make fields bigger
+  
   after_render: async (cb) => {
 
     //USER COMMENT - CHALLENGE SWITCHBOARD

@@ -145,6 +145,8 @@ let Start = {
                 `
             }
         );
+        // TODO: Missing Data Exposure !!
+        // 
         a.push(
             {
                 id: `info-rce`,
@@ -158,6 +160,22 @@ let Start = {
                     <section>&nbsp;</section>
                     <section>
                     You can read more here: <a target="_blank" href="https://owasp.org/www-community/attacks/Code_Injection">RCE on OWASP</a>
+                    </section>
+                `
+            }
+        );
+        a.push(
+            {
+                id: `info-data`,
+                title: `Data Exposure`,
+                body: /*html*/`
+                    <section>
+                    Sensitive Data Exposure is a broad class of vulnerability whereby a web application mistakenly reveals information that a regular user should ordinarily not have access to. Some examples 
+                    might include a list of all users in the system, or precise software versions which may aid a hacker in targeting the application.
+                    </section>
+                    <section>&nbsp;</section>
+                    <section>
+                    You can read more here: <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A3-Sensitive_Data_Exposure">Data Exposure on OWASP</a>
                     </section>
                 `
             }
