@@ -1,5 +1,5 @@
 let lock_icon = `
-    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="green" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="green" xmlns="http://www.w3.org/2000/svg" id="lock-icon">
     <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
     <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
   </svg>
@@ -79,6 +79,7 @@ let CTF_4 = {
                 </dd>
                 </dl>
                 `
+                document.getElementById('lock-icon').classList.remove('hidden')
                 break;
             case "login":
                 ctf4_url = 'login';
@@ -92,6 +93,7 @@ let CTF_4 = {
                 <dt><input type="submit" id="ctf4_nav_login" name="ctf4_nav_login" value="Login"/></dt>
                 </dl>
                 `
+                document.getElementById('lock-icon').classList.add('hidden')
                 break;
             case "account":
                 ctf4_url = 'account';
@@ -109,6 +111,7 @@ let CTF_4 = {
                 <dd>View your medical assets <input type="submit" id="ctf4_asset_nav" name="ctf4_asset_nav" value="here"/>!
                 </dd></dl>
                 `
+                document.getElementById('lock-icon').classList.remove('hidden')
                 break;
             default:
                 ctf4_url = 'welcome';
@@ -130,6 +133,7 @@ let CTF_4 = {
                 <dt><input type="submit" id="ctf4_cookie_accept" name="ctf4_cookie_accept" value="Accept and Continue"/></dt>
                 </d1>
                 ` 
+                document.getElementById('lock-icon').classList.remove('hidden')
         }
         CTF_4.ctf4_url = ctf4_url;
         document.getElementById('ctf-urlwindow').innerHTML = html;
