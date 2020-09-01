@@ -159,10 +159,10 @@ let CTF_4 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="login">http://acme-health-services.com/login</option>
-  <option value="welcome">https://acme-health-services.com/welcome-cookies</option>
-  <option value="account">https://acme-health-services.com/my-account</option>
-  <option value="assets">ftps://acme-health-services.com/assets</option>
+  <option value="login">http://acme-health.com/login</option>
+  <option value="welcome">https://acme-health.com/welcome-cookies</option>
+  <option value="account">https://acme-health.com/my-account</option>
+  <option value="assets">ftps://acme-health.com/assets</option>
 
 </select>
 
@@ -189,7 +189,7 @@ let CTF_4 = {
                     })
                 })
                 break;
-            case "account":
+            case "assets":
                 return null
             default:
                 document.getElementById('ctf4_cookie_accept').addEventListener('click', function(){
@@ -217,10 +217,10 @@ let CTF_4 = {
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left">
+        <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_4.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
         <section><h3>The above web application has a Sensitive Data Exposure vulnerabilty due to Unencrypted Communications - <u>Which page is vulnerable?</u></h3></section>

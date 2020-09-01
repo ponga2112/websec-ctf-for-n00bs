@@ -246,10 +246,10 @@ let CTF_6 = {
         the various pages and then determine which one is problematic.  
         
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left">
+        <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_6.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
         <section><b>Which</b> of the above pages is the result of a server misconfiguration?</section>

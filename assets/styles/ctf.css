@@ -221,6 +221,10 @@ input[type=checkbox],input[type=radio] {
   color: #fff;
 }
 
+.ctf-url-scroll {
+    overflow: auto;
+}
+
 .hidden {
     display: none;
     /* aria-hidden: true; */

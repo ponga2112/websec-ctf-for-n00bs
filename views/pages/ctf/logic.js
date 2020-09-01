@@ -349,10 +349,10 @@ let CTF_3 = {
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left">
+        <div class="ctf-html-inner-left ctf-url-scroll ">
         <section><div class="ctf-urlbar">`+CTF_3.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
         <section><h3>The above web application has a Logic Bypass vulnerabilty - <u>How is it exploited?</u></h3></section>
