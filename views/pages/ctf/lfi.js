@@ -62,28 +62,133 @@ let CTF_9 = {
             case "1":
                 ctf9_url = '1';
                 html = `
-                Test 1
+                <h1>Welcome to ACME ASCII Art!</h1>
+                </br>Click below to view our avialable artwork:</br></br>
+                <input type="submit" id="ctf9_nav_url2" name="ctf9_nav_url2" value="View"/>&nbsp;sw33t_g04t</br></br>
+                <input type="submit" id="ctf9_nav_url3" name="ctf9_nav_url3" value="View"/>&nbsp;aardv4rk</br></br>
+                <input type="submit" id="ctf9_nav_url4" name="ctf9_nav_url4" value="View"/>&nbsp;el3ph4nt</br></br>
+                <input type="submit" id="ctf9_nav_url5" name="ctf9_nav_url5" value="View"/>&nbsp;d0lph1n</br></br>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
             case "2":
                 ctf9_url = '2';
                 html = `
-                Test 2
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;\\\\<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((&nbsp;&nbsp;&nbsp;''<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\__,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/6&nbsp;(%)\\,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(__/:";,;\\--____----_<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;;&nbsp;:';,:';\`;,';,;';\`,\`_<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;:,;;';';,;':,';';,-Y\\<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;,;,;';';,;':;';';&nbsp;Z/<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;;,';';,;';,;';;'<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/&nbsp;|';/~~~~~\\';;'<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;K&nbsp;&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;|<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\_\\&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;|<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\Z&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;|<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L_|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL_|<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LW/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LLW/<br>
+                    <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
             case "3":
                 ctf9_url = '3';
                 html = `
-                Test 3
+                &nbsp;&nbsp;&nbsp;&nbsp;,__&nbsp;&nbsp;&nbsp;&nbsp;_,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.\`\\&nbsp;/\`|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_.-"\`\`\`&nbsp;&nbsp;&nbsp;\`'.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;|&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`}&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_\\|\\/_.-'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;&nbsp;_.-"a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                .-\`&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;/._&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}\\<br>
+                '--"\`&nbsp;&nbsp;\`""\`&nbsp;&nbsp;&nbsp;\`\\&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;\\<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;}&nbsp;__&nbsp;_\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}\\&nbsp;&nbsp;\\<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;/;\`&nbsp;&nbsp;&nbsp;/&nbsp;:.&nbsp;&nbsp;&nbsp;}\`&nbsp;&nbsp;\\&nbsp;&nbsp;\\<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;.-'&nbsp;/&nbsp;&nbsp;/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.&nbsp;'._<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.'__/-'&nbsp;\`\`\`\`.-'.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-._'-._<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`\`\`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`\`\`\`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`"""\`<br>
+                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                `
+                document.getElementById('lock-icon').classList.remove('hidden')
+                break;
+            case "4":
+                ctf9_url = '4';
+                html = `
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.---'-&nbsp;&nbsp;&nbsp;&nbsp;\\</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.-----------/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;__</br>
+                &&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;/&nbsp;&nbsp;/&nbsp;.'</br>
+                '._/(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-'&nbsp;&nbsp;(.&nbsp;&nbsp;&nbsp;(_.'&nbsp;/</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|/&nbsp;'._.'</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;@).____\\|&nbsp;&nbsp;@&nbsp;|</br>
+                &nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;|</br>
+                &nbsp;&nbsp;\\|,&nbsp;'_:::\\&nbsp;&nbsp;.&nbsp;..&nbsp;&nbsp;'_:::\\&nbsp;..\\).</br></br>
+                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                `
+                document.getElementById('lock-icon').classList.remove('hidden')
+                break;
+            case "5":
+                ctf9_url = '5';
+                html = `
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,-.</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;(&nbsp;&nbsp;'</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;_.--'!&nbsp;&nbsp;&nbsp;'--._</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;''.</br>
+                '&nbsp;&nbsp;&nbsp;&nbsp;|!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\</br>
+                &nbsp;&nbsp;&nbsp;_.'&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;\\</br>
+                &nbsp;&nbsp;(_.-^,&nbsp;__..-'&nbsp;&nbsp;''''--.&nbsp;&nbsp;&nbsp;)</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/,'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;&nbsp;_.'&nbsp;/</br>
+                &nbsp;&nbsp;&nbsp;'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;.-''&nbsp;&nbsp;&nbsp;&nbsp;|</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..--^.&nbsp;&nbsp;'&nbsp;</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</br>
+                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
             default:
-                ctf9_url = '4';
+                ctf9_url = '6';
                 html = `
-                Test 4
+                    root:x:0:0:root:/root:/bin/bash</br>
+                    bin:x:1:1:bin:/bin:/sbin/nologin</br>
+                    daemon:x:2:2:daemon:/sbin:/sbin/nologin</br>
+                    adm:x:3:4:adm:/var/adm:/sbin/nologin</br>
+                    lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</br>
+                    sync:x:5:0:sync:/sbin:/bin/sync</br>
+                    shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown</br>
+                    halt:x:7:0:halt:/sbin:/sbin/halt</br>
+                    mail:x:8:12:mail:/var/spool/mail:/sbin/nologin</br>
+                    news:x:9:13:news:/etc/news:</br>
+                    uucp:x:10:14:uucp:/var/spool/uucp:/sbin/nologin</br>
+                    operator:x:11:0:operator:/root:/sbin/nologin</br>
+                    games:x:12:100:games:/usr/games:/sbin/nologin</br>
+                    gopher:x:13:30:gopher:/var/gopher:/sbin/nologin</br>
+                    ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin</br>
+                    nobody:x:99:99:Nobody:/:/sbin/nologin</br>
+                    nscd:x:28:28:NSCD Daemon:/:/sbin/nologin</br>
+                    vcsa:x:69:69:virtual console memory owner:/dev:/sbin/nologin</br>
+                    ntp:x:38:38::/etc/ntp:/sbin/nologin</br>
+                    pcap:x:77:77::/var/arpwatch:/sbin/nologin</br>
+                    dbus:x:81:81:System message bus:/:/sbin/nologin</br>
+                    avahi:x:70:70:Avahi daemon:/:/sbin/nologin</br>
+                    rpc:x:32:32:Portmapper RPC user:/:/sbin/nologin</br>
+                    mailnull:x:47:47::/var/spool/mqueue:/sbin/nologin</br>
+                    smmsp:x:51:51::/var/spool/mqueue:/sbin/nologin</br>
+                    apache:x:48:48:Apache:/var/www:/sbin/nologin</br>
+                    sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin</br>
+                    dovecot:x:97:97:dovecot:/usr/libexec/dovecot:/sbin/nologin</br>
+                    oprofile:x:16:16:Special user account to be used by OProfile:/home/oprofile:/sbin/nologin</br>
+                    rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin</br>
+                    nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin</br>
+                    xfs:x:43:43:X Font Server:/etc/X11/fs:/sbin/nologin</br>
+                    haldaemon:x:68:68:HAL daemon:/:/sbin/nologin</br>
+                    avahi-autoipd:x:100:156:avahi-autoipd:/var/lib/avahi-autoipd:/sbin/nologin</br>
+                    gdm:x:42:42::/var/gdm:/sbin/nologin</br>
+                    sabayon:x:86:86:Sabayon user:/home/sabayon:/sbin/nologin</br>
                 ` 
                 document.getElementById('lock-icon').classList.remove('hidden')
         }
@@ -110,11 +215,12 @@ let CTF_9 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="1">https://lfi-example-website.com/1</option>
-  <option value="2">https://lfi-example-website.com/2</option>
-  <option value="3">https://lfi-example-website.com/3</option>
-  <option value="4">https://lfi-example-website.com/4</option>
-
+  <option value="1">https://acme-ascii-art.com/resources?name=dashboard</option>
+  <option value="2">https://acme-ascii-art.com/resources?name=sw33t_g04t</option>
+  <option value="3">https://acme-ascii-art.com/resources?name=aardv4rk</option>
+  <option value="4">https://acme-ascii-art.com/resources?name=el3ph4nt</option>
+  <option value="5">https://acme-ascii-art.com/resources?name=d0lph1n</option>
+  <option value="6">https://acme-ascii-art.com/resources?name=../../etc/passwd%00</option>
 </select>
 
     `,
@@ -122,8 +228,29 @@ let CTF_9 = {
     update_ctf_events : async () => {
         switch(CTF_9.ctf9_url) {
             case "1":
-                document.getElementById('ctf9_asset_nav').addEventListener('click', function(){
+                document.getElementById('ctf9_nav_url2').addEventListener('click', function(){
                     document.getElementById('url').selectedIndex = 1;
+                    CTF_9.urlWindow()
+                    .then(function() {
+                        CTF_9.update_ctf_events();
+                    })
+                })
+                document.getElementById('ctf9_nav_url3').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 2;
+                    CTF_9.urlWindow()
+                    .then(function() {
+                        CTF_9.update_ctf_events();
+                    })
+                })
+                document.getElementById('ctf9_nav_url4').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 3;
+                    CTF_9.urlWindow()
+                    .then(function() {
+                        CTF_9.update_ctf_events();
+                    })
+                })
+                document.getElementById('ctf9_nav_url5').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 4;
                     CTF_9.urlWindow()
                     .then(function() {
                         CTF_9.update_ctf_events();
@@ -131,9 +258,8 @@ let CTF_9 = {
                 })
                 break;
             case "2":
-                //console.log("DEBUG: why are we getting here?? :: "+CTF_9.ctf9_url)
-                document.getElementById('ctf9_nav_login').addEventListener('click', function(){
-                    document.getElementById('url').selectedIndex = 2;
+                document.getElementById('ctf9_nav_url1').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 0;
                     CTF_9.urlWindow()
                     .then(function() {
                         CTF_9.update_ctf_events();
@@ -141,22 +267,38 @@ let CTF_9 = {
                 })
                 break;
             case "3":
-                return null
-            default:
-                document.getElementById('ctf9_cookie_accept').addEventListener('click', function(){
-                    document.getElementById('url').selectedIndex = 3;
+                document.getElementById('ctf9_nav_url1').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 0;
                     CTF_9.urlWindow()
                     .then(function() {
                         CTF_9.update_ctf_events();
                     })
                 })
+                break;
+            case "4":
+                document.getElementById('ctf9_nav_url1').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 0;
+                    CTF_9.urlWindow()
+                    .then(function() {
+                        CTF_9.update_ctf_events();
+                    })
+                })
+                break;
+            case "5":
+                document.getElementById('ctf9_nav_url1').addEventListener('click', function(){
+                    document.getElementById('url').selectedIndex = 0;
+                    CTF_9.urlWindow()
+                    .then(function() {
+                        CTF_9.update_ctf_events();
+                    })
+                })
+                break;
+            default:
+                
         }
     },
     render : async () => {
-        // TODO: Need to fix the UI mobile view. Text in mobile view is paginated weirdly
-        // TODO: make HTML code by line numbers! Then, make selection what line is vuln at!
-        //let code_formated = ctf.toCodeBlock(code_raw)
-        let view =  /*html*/`
+         let view =  /*html*/`
         <section class="section-lite">
         <h2>Local File Inclusion</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
@@ -175,16 +317,23 @@ let CTF_9 = {
         <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
-        <section><h3>The above web application has a Local File Inclusion vulnerabilty - <u>Which page is vulnerable?</u></h3></section>
+        <section><h3>The above web application has a Local File Inclusion vulnerabilty due to the following code:</h3></br>
+        &#x3c;&#x3f;&#x70;&#x68;&#x70;&#x20;&#x69;&#x6e;&#x63;&#x6c;&#x75;&#x64;&#x65;&#x28;&#x24;&#x5f;&#x47;&#x45;&#x54;&#x5b;&#x27;&#x6e;&#x61;&#x6d;&#x65;&#x27;&#x5d;&#x2e;&#x22;&#x2e;&#x70;&#x68;&#x70;&#x22;&#x29;&#x3b;&#x20;&#x3f;&#x3e;
+        </br></br>
+        <h3><u>What is required to exploit this vulnerable code?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         
         <form id="ctf9-flag">
         <div class="ctf-code-left">
-        <span class="ctf-block"><input type="radio" name="answer" value="1"><label for="submit">&nbsp;Answer 1</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="2"><label for="submit">&nbsp;Answer 2</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="3"><label for="submit">&nbsp;Answer 3</label></span>
-        <span class="ctf-block"><input type="radio" name="answer" value="4"><label for="submit">&nbsp;Answer 4</label></span>
+        A) Replace the 'name=' URL parameter value to desired file name located on webapp host<br>
+        B) Make sure and add appropriate file path to desired file name, including backing out of web root directory<br>
+        C) Append a Null Byte to bypass the ".php" file extension<br>
+        D) Ensure web browser is set to "private browsing"<br><br>
+        <span class="ctf-block"><input type="radio" name="answer" value="1"><label for="submit">&nbsp;Both A and C only</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="2"><label for="submit">&nbsp;Both A and D only</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="3"><label for="submit">&nbsp;A, B, and C only</label></span>
+        <span class="ctf-block"><input type="radio" name="answer" value="4"><label for="submit">&nbsp;All steps must be performed</label></span>
         
         <section>&nbsp;</section>
         <div class="ctf-html-inner-text-center">
