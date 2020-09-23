@@ -183,7 +183,7 @@ let CTF_5 = {
         
             <form id="ctf5-flag">
             <div class="ctf-code-left">
-            <span class="ctf-block"><input type="radio" name="answer" value="linux"><label falor="submit">&nbsp;/var/html/www/admin/get.inc is a Windows IIS file</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="linux"><label falor="submit">&nbsp;/var/html/www/admin/get.inc is a Windows IIS file.</label></span>
             <span class="ctf-block"><input type="radio" name="answer" value="encode"><label for="submit">&nbsp;The requested URL is correct, it is just using URL encoding.</label></span>
             <span class="ctf-block"><input type="radio" name="answer" value="shadow"><label for="submit">&nbsp;The shadow file is available to remote users on both Windows and Linux.</label></span>
             <span class="ctf-block"><input type="radio" name="answer" value="noresource"><label for="submit">&nbsp;You must always first remove the resource from the URL in order to permform direcotry traversal attacks.</label></span>
@@ -198,14 +198,9 @@ let CTF_5 = {
     },
     after_render: async (cb) => {
         CTF_5.ctf5_url = "default"
-        CTF_5.urlWindow().then(function() {
-            CTF_5.update_ctf_events();
-        })
+        CTF_5.urlWindow()
         document.getElementById('url').addEventListener('change', function(){
             CTF_5.urlWindow()
-            .then(function() {
-                CTF_5.update_ctf_events();
-            })
         });
         document.getElementById('ctf5-flag').onsubmit = function(e){e.preventDefault(); return false;}
         document.getElementById('ctf5-flag').addEventListener('submit', function(){

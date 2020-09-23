@@ -1,4 +1,18 @@
 // TODO: Code this up!
+let lock_icon = `
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="green" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+    <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+    </svg>
+    `
+let acctList = `<select name="acctnum" id="acctnum">
+    <option value="default">12345678</option>
+    <option value="alldblchar">&#x22;&nbsp;or&nbsp;&#x22;a&#x22;=&#x22;a&#x22;</option>
+    <option value="alldblnum">&#x22;&nbsp;or&nbsp;&#x22;1&#x22;=&#x22;1&#x22;</option>
+    <option value="noquote">&#39;&nbsp;or&nbsp;1=1;</option>
+    <option value="allsinglenum">&#39;&nbsp;or&nbsp;&#39;1&#39;=&#39;1&#39;</option>
+    </select>`
+
 let CTF_7 = {
     points: 100,
     answered: false,
@@ -59,6 +73,91 @@ let CTF_7 = {
         h=h+`</div>`
         ctf.modal.set("Results",h,b);
     },
+
+    acctWindow : async () => {
+        let v = document.getElementById('acctnum').value
+        let ctf7_acct = 'default'
+        
+        let html = ``
+        switch(v) {
+            case "alldblchar":
+                ctf7_acct = 'alldblchar';
+                document.getElementById('lblURL').innerHTML = `http://vulnserver.org/error.php`;
+                html = `Page Error<br><br>We're sorry, the website has experienced an error.<br><br>`
+                break;
+            case "alldblnum":
+                ctf7_acct = 'alldblnum';
+                document.getElementById('lblURL').innerHTML = `http://vulnserver.org/error.php`;
+                html = `Page Error<br><br>We're sorry, the website has experienced an error.<br><br>`
+                break;
+            case "noquote":
+                ctf7_acct = 'noquote';
+                document.getElementById('lblURL').innerHTML = `http://vulnserver.org/account.php`;
+                html = `<b>Account Details</b><br><br>
+                    ID,lname,fname,acctnum,bal<br>
+                    1,smith,bob,111111,$10.00<br>
+                    2,jones,amy,222222,$500.00<br>
+                    3,hanson,tim,333333,$10,000.00<br>
+                    4,baker,van,123456,$5.00<br>
+                    5,allgood,pip,444444,$700,000.00<br>
+                    6,winters,dick,555555,$777.00<br><br>
+                `
+                break;
+            case "allsinglenum":
+                ctf7_acct = 'allsinglenum';
+                document.getElementById('lblURL').innerHTML = `http://vulnserver.org/error.php`;
+                html = `Page Error<br><br>We're sorry, We're sorry, the website has experienced an error.<br><br>`
+                break;
+            default:
+                ctf7_acct = 'default';
+                document.getElementById('lblURL').innerHTML = `http://vulnserver.org/signin.php`;
+                html = `Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
+                    In order to access your account information, please enter your account number and press the Submit button.
+                    Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
+                    <button id=btnSubmit type=button>Submit</button>
+                `
+        }
+        CTF_7.ctf7_acct = ctf7_acct;
+        document.getElementById('ctf-acctwindow').innerHTML = html;
+    },
+
+    acctReset : async () => {
+        let ctf7_acct = 'default';
+        let html = ``
+        document.getElementById('lblURL').innerHTML = `http://vulnserver.org/signin.php`;
+        html = `Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
+            In order to access your account information, please enter your account number and press the Submit button.
+            Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
+            <button id=btnSubmit type=button>Submit</button>
+        `
+        CTF_7.ctf7_acct = ctf7_acct;
+        //document.getElementById('acctnum').value = ctf7_acct;
+        document.getElementById('ctf-acctwindow').innerHTML = html;
+    },
+
+    navBar: /*html*/`
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+        <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M8.146 4.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.793 8 8.146 5.354a.5.5 0 0 1 0-.708z"/>
+        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5H11a.5.5 0 0 1 0 1H4.5A.5.5 0 0 1 4 8z"/>
+        </svg>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+        <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+        </svg>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+        <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+        </svg>
+        <label>&nbsp;&nbsp;</label>
+        `+lock_icon+`
+        <label id=lblURL>http://vulnserver.org/login.php</label>  
+        <label>&nbsp;&nbsp;</label>      
+    `,
+
     render : async () => {
         
         let view =  /*html*/`
@@ -78,17 +177,32 @@ let CTF_7 = {
                 If the user entered jsmith and 1l0veT@cos then the full sql statement would be:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos"</div><br><br>
                 If malformed data is sent to the server, it could react in inappropriate ways.  In this example, if a user was to enter " or "a"="a into the password field, it would change the sql statement to the following:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos" or "a"="a"</div><br><br>
                 The first double quote before the "or" will close the quotation marks around "1l0veT@cos" and move it to the very end of the statement after the second "a". Since "a"="a" will always evaluate to true, the user would be able to log in without needing to know the correct password.<br><br><br>
-                <b>If you saw the following log in screen, what might your first attempt be to try to log in and/or steal account numbers?</b><br><br><img src="/assets/images/login.png"></img><br><br>
+                <b>The following website has a SQL Injection vulnerabliity.  Can you find it?</b><br><br>
             </section>
+            <section>
+                <section>&nbsp;</section>
+                <div class="ctf-html-outter">
+                <div class="ctf-html-inner-left ctf-url-scroll ">
+                <section><div class="ctf-urlbar">`+CTF_7.navBar+`</div></section>
+                <section>
+                <div class="ctf-urlwindow ctf-url-scroll" id="ctf-acctwindow">Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
+                In order to access your account information, please enter your account number and press the Submit button.
+                Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
+                <button type="submit" id="btnSubmit" name="btnSubmit">Submit</button></div></div></div>
+                <button type="submit" id="btnReset" name="btnReset">Reset</button>
+            </section>
+            <br><br>
+            Why did the correct injection string work when the others wouldn't?
+
             <div class="ctf-html-outter">
             <div class="ctf-html-inner-left">
         
             <form id="ctf7-flag">
             <div class="ctf-code-left">
-            <span class="ctf-block"><input type="radio" name="answer" value="alldblchar"><label for="submit">&nbsp;&#x22;&nbsp;or&nbsp;&#x22;a&#x22;=&#x22;a&#x22;</label></span>
-            <span class="ctf-block"><input type="radio" name="answer" value="alldblnum"><label for="submit">&nbsp;&#x22;&nbsp;or&nbsp;&#x22;1&#x22;=&#x22;1&#x22;</label></span>
-            <span class="ctf-block"><input type="radio" name="answer" value="noquote"><label for="submit">&nbsp;&#39;&nbsp;or&nbsp;1=1;</label></span>
-            <span class="ctf-block"><input type="radio" name="answer" value="allsinglenum"><label for="submit">&nbsp;&#39;&nbsp;or&nbsp;&#39;1&#39;=&#39;1&#39;</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="alldblchar"><label for="submit">&nbsp;The injection used alpha characters.</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="alldblnum"><label for="submit">&nbsp;The injection used double quotes around the numerals.</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="noquote"><label for="submit">&nbsp;The injection used numerals, but did not place any quotes around them.</label></span>
+            <span class="ctf-block"><input type="radio" name="answer" value="allsinglenum"><label for="submit">&nbsp;The injection used single quotes around the numerals.</label></span>
         
             <section>&nbsp;</section>
             <div class="ctf-html-inner-text-center"><span class="ctf-block"><input type="submit" id="ctf7_flag_submit" name="ctf7_flag_submit" data-micromodal-trigger="modal" class="ctf-button-red" value="Try it!"></span></div>
@@ -99,6 +213,14 @@ let CTF_7 = {
         
     },
     after_render: async (cb) => {
+        CTF_7.ctf7_acct = "default"
+        CTF_7.acctWindow()
+        document.getElementById('btnSubmit').addEventListener('click', function(){
+            CTF_7.acctWindow()
+        });
+        document.getElementById('btnReset').addEventListener('click', function(){
+            CTF_7.acctReset()
+        });
         document.getElementById('ctf7-flag').onsubmit = function(e){e.preventDefault(); return false;}
         document.getElementById('ctf7-flag').addEventListener('submit', function(){
             CTF_7.answer()
