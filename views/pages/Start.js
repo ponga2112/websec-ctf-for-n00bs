@@ -206,7 +206,7 @@ let Start = {
             <hr width="70%" class="ctf-hr" />
             <section>
             <button class="ctf-button-dark" id="start-advance-button"><b>Start Playing!</b></button>
-            </section></div>
+            </section><section>&nbsp;</section><section>&nbsp;</section></div>
         `
         return view
     },

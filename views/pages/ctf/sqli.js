@@ -219,7 +219,11 @@ let CTF_7 = {
             CTF_7.acctWindow()
         });
         document.getElementById('btnReset').addEventListener('click', function(){
-            CTF_7.acctReset()
+            CTF_7.acctReset().then(function() {
+                document.getElementById('btnSubmit').addEventListener('click', function(){
+                    CTF_7.acctWindow()
+                });
+            })
         });
         document.getElementById('ctf7-flag').onsubmit = function(e){e.preventDefault(); return false;}
         document.getElementById('ctf7-flag').addEventListener('submit', function(){

@@ -3,7 +3,7 @@ let foo = {
         let view =  /*html*/`
         <div class="content has-text-centered">
             <p>
-                Some test. Wow.
+                This application comes with absolutely no warranty. 
             </p>
         </div>
         `

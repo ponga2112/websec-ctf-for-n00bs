@@ -1,7 +1,7 @@
 "use strict";
 
 // GLOBALS
-let DEVMODE = true;
+let DEVMODE = false;
 
 // "Loading..." page while we get things setup
 const Loading = {
@@ -38,6 +38,7 @@ class state {
     // APPSTATE = {progress: "NEW",
     // APPSTATE = {progress: "STARTING",
     // APPSTATE = {progress: "PLAYING",
+    // APPSTATE = {progress: "COMPLETED",
     // _API = null;
     // _COOKIE = null;
     // _APPSTATE = null;
@@ -167,8 +168,8 @@ const init = async () => {
             STATE.API.handle = c.handle;
             STATE.API.guid = c.guid;
             // APPSTATE = {progress:"NEW", page:"loading", state:"init"}
-            STATE.APPSTATE.progress = "NEW"
-            STATE.APPSTATE.page = "intro"
+            STATE.APPSTATE.progress = "NEW";
+            STATE.APPSTATE.page = "intro";
         } else {
             // If this is a returning offline user..
             STATE.API.handle = c.handle;
@@ -188,6 +189,9 @@ const init = async () => {
             }
             if(c.progress == "PLAYING") {
                 STATE.APPSTATE.page = "ctf/"+String(STATE.CTF.current);
+            }
+            if(c.progress == "COMPLETED") {
+                STATE.APPSTATE.page = "leaderboard";
             }
             // there SHOULD be no need to call router()
             //await router();
@@ -209,9 +213,11 @@ const init = async () => {
         //DeveloperInfo.render(STATE);
         let r_html = await DevModules.Routes.render(routes)
         let c_html = await DevModules.Cookie.render(STATE)
+        let a_html = await DevModules.Answers.render(null)
         document.getElementById('developer').innerHTML  = await DevModules.Details.render(STATE);
         await DevModules.Details.after_render("routes",r_html)
         await DevModules.Details.after_render("cookie",c_html)
+        await DevModules.Details.after_render("answers",a_html)
         .then(console.log('%c DEVMODE: modules loaded.', 'background: #222; color: #bada55'))
     } else {
         if(STATE.API.isConnected) {
@@ -220,6 +226,7 @@ const init = async () => {
             document.getElementById('api_status').innerHTML = "(offline)";
         }
         document.getElementById('current_user').innerHTML = STATE.API.handle;
+        await Bottombar.after_render();
     }
     // that *should* be all there is to it
     
@@ -250,14 +257,45 @@ const router = async () => {
     let request = Utils.Parse.parseRequestURL()
     let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.subresource ? '/' + request.subresource : '')
     let page = routes[parsedURL] ? routes[parsedURL] : Error404
+    //let pf = parsedURL.split("/#")[1];
+    // UPDATE: all kinds of changes here to force navigation based on Player State
+    let isValid = true;
     if(DEVMODE) {
         console.log('%c DEVMODE: router() called for page /#'+parsedURL, 'background: #222; color: #bada55');
+        STATE.APPSTATE.page = parsedURL;
+        isValid = true;
+    } else {
+        isValid = true;
+        // PLAYING, NEW, STARTING
+        if((STATE.APPSTATE.progress == "NEW") && (parsedURL != "/intro")) {
+            isValid = false;
+            Utils.Redirect("intro");
+        }
+        if((STATE.APPSTATE.progress == "STARTING") && (parsedURL != "/start")) {
+            isValid = false;
+            Utils.Redirect("start");
+        }
+        if(STATE.APPSTATE.progress == "PLAYING") {
+            // if playing, checking this is a bit more complicated
+            let t_pf = -1
+            try {
+                let tt = parsedURL.split('/')
+                t_pf = parseInt(tt[tt.length-1])
+            } catch {
+                t_pf = 1
+            }
+            if(t_pf != STATE.CTF.current) {
+                isValid = false;
+                let r = "ctf/"+String(STATE.CTF.current);
+                Utils.Redirect(r);
+            }
+        }
     }
-    let pf = parsedURL.split("/#");
-    STATE.APPSTATE.page = pf[t.length-1]
-    main.innerHTML = await page.render();
-    await page.after_render(update);
-    await MicroModal.init();
+    if (isValid) {
+        main.innerHTML = await page.render();
+        await page.after_render(update);
+        await MicroModal.init();
+    }
 }
 
 // Our Main function that gets called with App State Change, Nav, Flag Capped... or any change really.
@@ -270,6 +308,14 @@ const update = async (item,obj) => {
             STATE.COOKIE.object.progress = "STARTING";
             Utils.Cookie.set(STATE.COOKIE.object);
             Utils.Redirect("start");
+        }
+        if(item.to == "leaderboard") {
+            STATE.APPSTATE.page = "leaderboard";
+            STATE.APPSTATE.progress = "COMPLETED";
+            STATE.COOKIE.object.progress = "COMPLETED";
+            STATE.COOKIE.object.current_flag = 0;
+            Utils.Cookie.set(STATE.COOKIE.object);
+            Utils.Redirect("leaderboard");
         }
         if(item.to == "ctf/1") {
             STATE.APPSTATE.page = "ctf/1";
@@ -303,13 +349,14 @@ const update = async (item,obj) => {
         document.getElementById('developer').innerHTML  = await DevModules.Details.render(STATE);
         let r_html = await DevModules.Routes.render(routes)
         let c_html = await DevModules.Cookie.render(STATE)
+        let a_html = await DevModules.Answers.render(null)
         await DevModules.Details.after_render("routes",r_html)
         await DevModules.Details.after_render("cookie",c_html)
+        await DevModules.Details.after_render("answers",a_html)
     } else {
         document.getElementById('current_user').innerHTML = STATE.API.handle;
+        document.getElementById('status_points').innerHTML = String(STATE.CTF.points);
     }
-    // TODO: Need something here to clear and re-register modals!
-    // TODO: or.. a better way to orgnize and keep track of modals in general
 }
 
 const capture = async (flag) => {
@@ -356,20 +403,20 @@ let DevModules = null;
 if(DEVMODE) {
     console.log('%c DEVMODE: Loading modules...', 'background: #222; color: #bada55');
     // Dynamic module loading -- this is some tricky sh1t
-    DevModules = { Container: null, Details: null, Routes: null, Cookie: null, Update : null};
+    DevModules = { Container: null, Details: null, Routes: null, Cookie: null, Update : null, Answers: null};
     (async () => {
-        const { Container: Container, Details: Details, Routes: Routes, Cookie: Cookie, Update: Update } = await import('/services/develop.js')
+        const { Container: Container, Details: Details, Routes: Routes, Cookie: Cookie, Update: Update, Answers: Answers } = await import('/services/develop.js')
         status.innerHTML = await Container.render();
         await Container.after_render()
         DevModules.Details = Details;
         DevModules.Routes = Routes;
         DevModules.Cookie = Cookie;
         DevModules.Update = Update;
+        DevModules.Answers = Answers;
     })()
 } else {
     (async () => {
         status.innerHTML = await Bottombar.render();
-        await Bottombar.after_render();
     })();
 }
 

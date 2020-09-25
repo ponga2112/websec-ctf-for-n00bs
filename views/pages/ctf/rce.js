@@ -38,13 +38,15 @@ let CTF_10 = {
                 if(CTF_10.points < 1) {
                     CTF_10.points = 0;
                 }
-                h = h+flag_good+`Correct! <section>Answer Summary</section><section>
+                h = h+flag_good+`Correct! <section>Passing parameters from a web request <i>directly</i> to an operating system 
+                without first validating and sanitizing the input is very dangerous. RCE vulnerabilities like this one can allow for complete 
+                system takeover by the attacker.</section><section>
                 &nbsp;
                 </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_10.points)+`</section>`
                 // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf10-next"><b>Next Challenge</b></button>`
+                b = `<button class="ctf-button-red" id="nav-ctf10-next"><b>View Results</b></button>`
                 // this is a flag
-                let f = new ctf.flag(CTF_10.points,10,11)
+                let f = new ctf.flag(CTF_10.points,10,0)
                 ctf.capture(f);
                 break;
             default:
@@ -142,7 +144,6 @@ let CTF_10 = {
                 Approximate&nbsp;round&nbsp;trip&nbsp;times&nbsp;in&nbsp;milli-seconds:<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;Minimum&nbsp;=&nbsp;28ms,&nbsp;Maximum&nbsp;=&nbsp;29ms,&nbsp;Average&nbsp;=&nbsp;29ms<br>
                 <br>
-                echo whoami<br>
                 <br>
                 SERVER-OD845R45\\SYSTEM
                 `
@@ -164,20 +165,11 @@ let CTF_10 = {
                 <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
                 </form><br><br>
 
-                ping&nbsp;192.0.2.199<br>
+                Usage: ping [-aAbBdDfhLnOqrRUvV] [-c count] [-i interval] [-I interface]<br>
+                    [-m mark] [-M pmtudisc_option] [-l preload] [-p pattern] [-Q tos]<br>
+                    [-s packetsize] [-S sndbuf] [-t ttl] [-T timestamp_option]<br>
+                    [-w deadline] [-W timeout] [hop1 ...] destination<br>
                 <br>
-                Pinging&nbsp;192.0.2.199&nbsp;with&nbsp;32&nbsp;bytes&nbsp;of&nbsp;data:<br>
-                Reply&nbsp;from&nbsp;192.0.2.199:&nbsp;bytes=32&nbsp;time=28ms&nbsp;TTL=117<br>
-                Reply&nbsp;from&nbsp;192.0.2.199:&nbsp;bytes=32&nbsp;time=29ms&nbsp;TTL=117<br>
-                Reply&nbsp;from&nbsp;192.0.2.199:&nbsp;bytes=32&nbsp;time=29ms&nbsp;TTL=117<br>
-                Reply&nbsp;from&nbsp;192.0.2.199:&nbsp;bytes=32&nbsp;time=28ms&nbsp;TTL=117<br>
-                <br>
-                Ping&nbsp;statistics&nbsp;for&nbsp;192.0.2.199:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Packets:&nbsp;Sent&nbsp;=&nbsp;4,&nbsp;Received&nbsp;=&nbsp;4,&nbsp;Lost&nbsp;=&nbsp;0&nbsp;(0%&nbsp;loss),<br>
-                Approximate&nbsp;round&nbsp;trip&nbsp;times&nbsp;in&nbsp;milli-seconds:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;Minimum&nbsp;=&nbsp;28ms,&nbsp;Maximum&nbsp;=&nbsp;29ms,&nbsp;Average&nbsp;=&nbsp;29ms<br>
-                <br>
-                cat etc/passwd<br>
                 <br>
                 root:x:0:0:root:/root:/bin/bash</br>
                 bin:x:1:1:bin:/bin:/sbin/nologin</br>
@@ -241,11 +233,11 @@ let CTF_10 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="1">https://download-free-ping.com/pingme</option>
-  <option value="2">https://download-free-ping.com/pingme?ip=203.0.113.100</option>
-  <option value="3">https://download-free-ping.com/pingme?ip=198.51.100.63</option>
-  <option value="4">https://download-free-ping.com/pingme?ip=192.0.2.199%3becho%20whoami</option>
-  <option value="5">https://download-free-ping.com/pingme?ip=192.0.2.199%3bcat%20%2fetc%2fpasswd</option>
+  <option value="1">https://ping.me/</option>
+  <option value="2">https://ping.me/?ip=203.0.113.100</option>
+  <option value="3">https://ping.me/?ip=198.51.100.63</option>
+  <option value="4">https://ping.me/?ip=38.1.77.2%3bwhoami</option>
+  <option value="5">https://ping.me/?ip=%3bcat%20%2fetc...</option>
 </select>
 
     `,
@@ -321,10 +313,10 @@ let CTF_10 = {
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left">
+        <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_10.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
         <section><h3>The above web application has a Remote Code Execution vulnerabilty - <u>What about the functionality available here makes the site particularly vulnerable?</u></h3></section>
@@ -369,7 +361,7 @@ let CTF_10 = {
                 if(CTF_10.answered) {
                     document.getElementById('nav-ctf10-next').addEventListener('click', function(){
                         ctf.modal.hideAll();
-                        cb({action:"nav",to:"ctf/11"},null);
+                        cb({action:"nav",to:"leaderboard"},null);
                     })
                 }
             })

@@ -22,15 +22,13 @@ let Intro = {
             that is to say, just like a <i>hacker</i> would. This is called <b>Dynamic Application Security Testing</b>.
             </section><section>
             And so in this <b>CTF</b>, you will learn about a few of the most common web application vulnerabilities.
-            </section><section>
-            </section><section>
-            
-            </section><section>
+            </section><section>&nbsp;</section>
             </div><div>
             <hr width="70%" class="ctf-hr" />
             <section>
             <button class="ctf-button-dark" id="intro-advance-button" data-micromodal-trigger="modal"><b>Let's get started!</b></button>
-            </section></div>
+            </section><section>&nbsp;</section><section>&nbsp;</section>
+            </div>
         `
         return view
     },
@@ -65,7 +63,11 @@ let Intro = {
             <section class="text-field-container">Whats your name?</section>
             <section class="text-field-container"><input class="text-field-modal" type="text" name="handle" value="" min="3" maxlength="20" id="register-handle" /></section>
             <div class="line-break"></div>
-            <div id="register-tooltip" class="register-tooltip hidden"><h5>Minumum 3 characters please</h5></div></div>
+            <div id="register-tooltip" class="register-tooltip hidden"><h5>
+            <div>&nbsp;</div>
+            <div>Minumum 3 characters</div>
+            <div>No disallowed words</h5></div>
+            </div></div>
         `
         let footer = /*html*/`
             <button id="submit-handle" class="ctf-button-red">Submit</button></h5>

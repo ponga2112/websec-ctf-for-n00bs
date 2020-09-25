@@ -38,7 +38,8 @@ let CTF_9 = {
                 if(CTF_9.points < 1) {
                     CTF_9.points = 0;
                 }
-                h = h+flag_good+`Correct! <section>Answer Summary</section><section>
+                h = h+flag_good+`Correct! <section>Web applications are often <b>mistakenly</b> developed this way, allowing unstrusted user data, the <i>resource 
+                name</i> in this case, to dictate what local file the web server returns to the user.</section><section>
                 &nbsp;
                 </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_9.points)+`</section>`
                 // nav outta here
@@ -215,12 +216,12 @@ let CTF_9 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="1">https://acme-ascii-art.com/resources?name=dashboard</option>
-  <option value="2">https://acme-ascii-art.com/resources?name=sw33t_g04t</option>
-  <option value="3">https://acme-ascii-art.com/resources?name=aardv4rk</option>
-  <option value="4">https://acme-ascii-art.com/resources?name=el3ph4nt</option>
-  <option value="5">https://acme-ascii-art.com/resources?name=d0lph1n</option>
-  <option value="6">https://acme-ascii-art.com/resources?name=../../etc/passwd%00</option>
+  <option value="1">https://asc.ii/file?name=dashboard</option>
+  <option value="2">https://asc.ii/file?name=sw33t_g04t</option>
+  <option value="3">https://asc.ii/file?name=aardv4rk</option>
+  <option value="4">https://asc.ii/file?name=el3ph4nt</option>
+  <option value="5">https://asc.ii/file?name=d0lph1n</option>
+  <option value="6">https://asc.ii/file?name=/etc/passwd</option>
 </select>
 
     `,
@@ -311,10 +312,10 @@ let CTF_9 = {
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left">
+        <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_9.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
         <section><h3>The above web application has a Local File Inclusion vulnerabilty due to the following code:</h3></br>
