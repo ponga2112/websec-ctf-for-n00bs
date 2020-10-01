@@ -264,7 +264,7 @@ let CTF_6 = {
         <div class="ctf-html-inner-text-center"><span class="ctf-block"><input type="submit" id="ctf6_flag_submit" name="ctf6_flag_submit" data-micromodal-trigger="modal" class="ctf-button-red" value="Try it!"></span></div>
         </form>
         </div></div>
-
+        <section>&nbsp;</section><section>&nbsp;</section>
         `
         return view
     },

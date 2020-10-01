@@ -73,7 +73,7 @@ export const Cookie = {
         let date = new Date();
         date.setTime(date.getTime() + (300 * 24 * 60 * 60 * 1000));
         let expires = "; expires=" + date.toUTCString();
-        document.cookie = "CTF" + "=" + btoa(JSON.stringify(cookie_obj)) + expires + "; path=/";
+        document.cookie = "CTF" + "=" + btoa(JSON.stringify(cookie_obj)) + expires + "; path=/; SameSite=Strict";
     },
     isValid : (cookie_str,state) => {
         // console.log(cookie_str);
@@ -180,6 +180,8 @@ export function sanitizePlayername(name) {
 
 export let Redirect = async(page) => {
     window.location.hash = "/"+page;
+    // Bug fix to reposition Scroll to top of window for Mobile UI's
+    document.getElementById('main').scroll(0,0);
 }
 
 export function toggleMenu(el_menu,el_arrow) {

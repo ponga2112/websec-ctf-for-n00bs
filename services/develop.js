@@ -58,7 +58,7 @@ export let Details = {
             document.getElementById('d_cookie_link').addEventListener('click', function(){
                 Utils.Modal.set("Cookie",body,'<button id="dev-reset-session" class="ctf-button-red">Reset Session</button></h5>').then(function(){
                     document.getElementById('dev-reset-session').addEventListener('click', function(){
-                        document.cookie="CTF="; window.location.href = "/";
+                        document.cookie="CTF=; path=/; SameSite=Strict"; window.location.href = "/";
                     });
                 })
             });

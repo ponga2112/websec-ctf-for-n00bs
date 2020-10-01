@@ -32,6 +32,21 @@
     border-radius: 4px;
     overflow-y: auto;
     box-sizing: border-box;
+    
+  }
+
+  
+
+  /* Fix for Mobile UI displaying modals too low in the viewport */
+  /* Hack for Mobile Safari bug: https://bugs.webkit.org/show_bug.cgi?id=153852 */
+  @media only screen and (max-width: 600px) {
+    .modal__container {
+      margin-bottom: auto;
+       /* -webkit-overflow-scrolling: touch; */
+    }
+    .modal__footer {
+      margin-bottom: 70px;
+    }
   }
   
   .modal__header {

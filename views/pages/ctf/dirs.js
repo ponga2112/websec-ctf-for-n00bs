@@ -138,11 +138,10 @@ let CTF_5 = {
 
     render : async () => {
         let view =  /*html*/`
-            <section class="section">
-            <h2>Capture the Flag</h2>
-            <hr width="50%" />
-            <h3>Directory Traversal Challenge</h3>
-            </section>
+        <section class="section-lite">
+        <h2>Directory Traversal</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        </section>
+            <section>&nbsp;</section>
             <section>
                 <h3>In this section, we will explore Directory Traversal vulnerabilities.</h3><br>
                 Directory traversal vulnerabilities go by many names such as: 

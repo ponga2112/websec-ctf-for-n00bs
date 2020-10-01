@@ -43,10 +43,15 @@ let Leaders = {
         return view
     },
     after_render: async (cb) => {
-        // TODO: Need a "Play Again? button to reset the Session!!"
         document.getElementById('again-button').addEventListener('click', function(){
-            document.cookie="CTF="; window.location.href = "/";
+            document.cookie="CTF=; path=/; SameSite=Strict"; window.location.href = "/";
         });
+        if(location.hash.search("leaderboard") > -1) {
+            document.getElementById('status_leaders').removeAttribute('data-micromodal-trigger');
+            let d = document.getElementById('status_leaders');
+            let r = d.cloneNode(true);
+            d.parentNode.replaceChild(r,d);
+        }
         if(cb){
             if(cb == "scrub") {
                 for (const [k, v] of Object.entries(document.getElementsByClassName('leaders-optional'))) { v.classList.remove("section-lite"); v.classList.add("hidden"); }

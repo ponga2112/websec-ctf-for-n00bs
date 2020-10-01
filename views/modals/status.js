@@ -18,7 +18,6 @@ let Bottombar = {
         document.getElementById('status_links').innerHTML = d;
         document.getElementById('status-loading-item').classList.add('hidden');
         let h = await Help.render();
-        let l = await Leaders.render();
         document.getElementById('status_about').addEventListener('click', function(){
             ctf.modal.set("Help",h,"").then(function(){
                 // override modal layout
@@ -26,12 +25,17 @@ let Bottombar = {
                 Help.after_render();
             })
         });
-        document.getElementById('status_leaders').addEventListener('click', function(){
-            ctf.modal.set("Leaderboard",l,"").then(function(){
-                // override modal layout
-                document.getElementById('modal-content').classList.add('ctf-block');
-                Leaders.after_render("scrub");
-            })
+        document.getElementById('status_leaders').addEventListener('click', async () => {
+            let l = await Leaders.render();
+            if(location.hash.search("leaderboard") < 0) {
+                ctf.modal.set("Leaderboard",l,"").then(function(){
+                    // override modal layout
+                    document.getElementById('modal-content').classList.add('ctf-block');
+                    Leaders.after_render("scrub");
+                })
+            } else {
+                Leaders.after_render();
+            }
         });
         document.getElementById('status_text_points').innerHTML = '<span id="status_points">'+String(ctf.state.CTF.points)+'</span> Points';
     }
