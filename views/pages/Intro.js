@@ -20,7 +20,7 @@ let Intro = {
             Let's say that you are a <b>bank</b>. You want to provide your customers a way to login to their account through a computer or mobile device in order to check balances and make transactions. 
             This functionality would be an example of an <b>online banking web application</b>. We say it's an <i>application</i> because that's the term used for a piece of software that performs tasks when run.
             We say <i>web</i>, because that's how the application is accessed - online with a web browser. Now, what if this online banking web application had a 
-            vulnerability that could potentially allow a malicious attacker, a <i>"black hat" hacker</i>, to access any of your customers accounts? 
+            vulnerability that could potentially allow a malicious attacker, a <i>"black hat" hacker</i>, to access any of your customer's accounts? 
             That would be bad, right? 
             </section><br><section>
             <b><i>So, how do you know if such a vulnerability exists in your software?</i></b>
