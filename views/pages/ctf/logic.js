@@ -337,15 +337,15 @@ let CTF_3 = {
         <h2>Logic Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        A logic bypass is a class of vulnerbility that is introduced into an application by its design or implementation. When designers or developers create an application, 
-        they intend it to work a certain way, or have a certain flow. This "flow" is sometimes called    
+        A logic bypass is a class of vulnerbility that is introduced into an application by improper design or implementation. When designers or developers create an application, 
+        they intend it to work a certain way--to have a certain <i>flow</i>. This "flow" is sometimes called    
         <a target="_blank" href="https://owasp.org/www-community/vulnerabilities/Business_logic_vulnerability">Business Logic</a>. 
         </section>&nbsp;<section>
-        For example, let's say that we have a web store front. We are worried about fruad and so as a countermeasure, we have implemented some logic into the application that will 
+        Example: We have a web store front. We are worried about fruad and so as a countermeasure, we have implemented some logic into the application that will 
         help prevent it.  
         </section><section>
-        Our logic says, that if a customer has recently updated their shipping address, then they are not permitted to checkout of our store and ship items to the new address 
-        unless an automated verification email has been answered correctly.
+        Our logic says that if a customer has recently updated their shipping address, then they are not permitted to check out of our store and ship items to the new address 
+        until an automated verification email has been answered correctly.
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">

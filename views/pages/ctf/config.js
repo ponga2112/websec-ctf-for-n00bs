@@ -232,19 +232,18 @@ let CTF_6 = {
         <h2>Application / Security Misconfiguration</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        An Application Misconfiguration is not nessesarily a vulnerability in and of itself. A web application may have no vulnerabilites in its 
+        An Application Misconfiguration is not nessesarily a vulnerability in and of itself. A web application may have no vulnerabilities in its 
         software, but if it's <i>configured</i> improperly, it could cause the web application to behave in unexpected ways and lead to other vulnerabilities. A common 
         example of this is leaving http (port 80) access open. Most web sites these days enforce http<b>s</b>, which means it's secure and encrypted. If the non-encrypted 
         version of the web app is left available, attackers could leverage several techniques that would expose any visiters to the site to information theft and manipulation.
-        </section><section>
-        Another common mistake when it comes to misconfiguration is when a new web application is developed, and the web server that it's hosted on has <b>default settings</b>. 
+        </section>&nbsp;<section>
+        Another common mistake when it comes to misconfiguration is when a new web application is developed and hosted on a web server that has <b>default settings</b>. 
         Default settings are generally bad because certain features may be enabled that the application developers did not intend on. Also, default settings and pages are 
-        sure to draw the attention of hackers since they are well known. 
-        </section><section>
-        <section>&nbsp;</section>
-        Below is an <i>over-simplified</i> example of where an application misconfiguration resulting from default settings might cause trouble - Use the drop-down to examine</div>
-        the various pages and then determine which one is problematic.  
-        
+        sure to draw the attention of hackers since they are well documented. 
+        </section>&nbsp;<section>
+        Below is an <i>over-simplified</i> example of where an application misconfiguration resulting from default settings might cause trouble - Use the drop-down address bar to examine
+        the various pages and then determine which one is problematic.</div>
+        </section>&nbsp;<section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_6.urlbar+`</div></section>

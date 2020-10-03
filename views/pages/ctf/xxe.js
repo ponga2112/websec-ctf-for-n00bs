@@ -80,25 +80,27 @@ let CTF_8 = {
         <h2>XML External Entity Injection (XXE)</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        An <b>XML External Entity Injection</b> or "XXE" for short, is a type of injection attack that targets <i>XML Parsers</i> in the web application. Read about   
+        An <b>XML External Entity Injection</b>, or "XXE" for short, is a type of injection attack that targets <i>XML Parsers</i> in the web application. Read about   
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A4-XML_External_Entities_(XXE)">XXE on OWASP</a>. 
-        XML is short for eXtensible Markup Language and what that means is, it's a way to give <i>structure</i> to some data, typically text. Easily the most popular application 
-        of XML is what you looking at right now - HTML (HyperText Markup Language), which is just an application of XML. In the case of the web (HTML), this sctructure 
+        XML is short for eXtensible Markup Language, which is used by developers as way to give <i>structure</i> to data, typically text. Easily the most popular application 
+        of XML is what you looking at right now - HTML (HyperText Markup Language), which is just an application of XML. In the case of the web (HTML), this structure 
         tells your web browsers what certain elements of the page are and how to diplay them.  
-        </section><section>
+        </section>&nbsp;<section>
         Web applications that live on the server also typically "read" XML sent by the client. This XML can sometimes be modified in a particular way that would "fool" 
         the web application into doing something that the developers did not intend. An example XXE might look like:
         </section><section>
         `+code_formated2+`
-        </section><section>
+        </section>&nbsp;<section>
         If vulnerable, the above XML would trick the application into including an "external" resource, in this case, the file: <b>/etc/passwd</b>, 
         a senstive "password" file used on UNIX and Linux systems that would be read and included in the repsonse back to the attacker. 
-        </section><section>&nbsp;</section></div>
-        Below is a <i>over-simplified</i> example of an XXE attack:
+        </section>
+        <section>&nbsp;</section>
+        </div>
+        Below is an <i>over-simplified</i> example of an XXE attack:
         <div class="ctf-html-outter">
         </div>`+code_formated+`
         </div>
-        <section><h3><u>If successful, what would this XXE attack actually do?</u></h3></section>
+        <section>&nbsp;</section><section><h3><u>If successful, what would this XXE attack actually do?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         

@@ -221,7 +221,7 @@ let CTF_9 = {
   <option value="3">https://asc.ii/file?name=aardv4rk</option>
   <option value="4">https://asc.ii/file?name=el3ph4nt</option>
   <option value="5">https://asc.ii/file?name=d0lph1n</option>
-  <option value="6">https://asc.ii/file?name=/etc/passwd</option>
+  <option value="6">https://asc.ii/file?name=/etc/passwd%00</option>
 </select>
 
     `,
@@ -304,7 +304,7 @@ let CTF_9 = {
         <h2>Local File Inclusion</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        Local File Inclusion (LFI) is an attack type where an attacker may be able to include arbitrary files located on the file system by tampering with a web request. Examples of local files may be sensitive data files like password files, registry data, etc. By design, the web application should only serve files which the developers choose. An LFI vulnerability makes it such that any files on the local file system may be accessed by the attacker.
+        Local File Inclusion (LFI) is an attack type where vulnerable sites allow arbitrary files located on the web host's file system to be accessed through tampered web requests. Examples of local files may be sensitive data files like password files, registry data, etc. By design, the web application should only serve files designated by the developers. An LFI vulnerability makes it such that any files on the local file system may be accessed by the attacker.
         </section>&nbsp;
         <section>
         More Info:

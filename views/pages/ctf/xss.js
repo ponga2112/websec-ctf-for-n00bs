@@ -51,7 +51,7 @@ let CTF_1 = {
 
   icon_32: `<img src="/assets/images/xss/icon_user_64x64.png" width="32" />`,
   username: [`Becky`,`Chad`,`Esther`,`Chance`],
-  comment: [``,`Did you go surfing <a>@Becky?</a> We should totally go surfing.`,`Oh, I love my favourite grand-daughter! Remember to use sunscreen! `,`This is not a risque photo at all, Excellent! :P`],
+  comment: [``,`Did you go surfing <a>@Becky?</a> We should totally go surfing.`,`Oh, I love my favourite grand-daughter! Remember to use sunscreen! `,`This isn't a risqué photo at all, excellent! :P`],
 
   comNum: 3,
   likNum: 42,
@@ -81,9 +81,9 @@ let CTF_1 = {
       <section>
         <h2><b>About</b></h2>
         <div id="about" class="ctf-html-inner-text-center">
-          <p>A <b>Cross-Site Scripting (XSS)</b> vulnerability can come in several flavors -- <b>Reflected</b>, <b>Stored</b>, and <b>DOM-based</b>. All three are a type of injection where malicious code is executed on a victim's browser through means of a website.</p>
+          <p>A <b>Cross-Site Scripting (XSS)</b> vulnerability can come in several flavors -- <b>Reflected</b>, <b>Stored</b>, and <b>DOM-based</b>. All three are a type of injection where javascript is executed on a victim's browser through means of a website.</p>
           <br>
-          <p>The impact of this type of attack can range from superficial to outright carnage! Site defacement might take place if the attacker's intent is less malicious, but an unlucky victim might find their session information stolen -- quickly leading to account theft! Some victims might never be aware they've been had, such as in the case of a malicious cryptocurrency miner added to the webpage.. running silently in the background but using up resources. In an exteme case and when combined with other dangerous exploits (such as a web browser sandbox escape), XSS could even lead to a takeover of the victim's computer!</p><br>
+          <p>The impact of this type of attack can range from superficial to outright carnage! Site defacement might take place if the attacker's intent is less malicious, but an unlucky victim might find their session information stolen -- quickly leading to account theft or unauthorizes actions. Some victims might never be aware they've been had, such as in the case of cryptocurrency miner malware added to the webpage.. running silently in the background while using up resources.</p><br>
           <p>More info about XSS here:</p>
           <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">OWASP TOP 10</a><br>
           <a href="https://portswigger.net/web-security/cross-site-scripting">PortSwigger</a><br>
@@ -102,12 +102,10 @@ let CTF_1 = {
           <p>You are able to add your own comments to Becky's photo, so feel free to say something nice -- or copy the code samples from the Word Bank below and see what happens.
           </p>
         </div>
-          
-        <br><br>
+        <br>
 
-        
         <div class="ctf-socialmedia-post" border-style="solid" id="full_post">
-          <!-- START BECKY POST tf-socialmedia-post-->
+          <!-- START BECKY POST ctf-socialmedia-post-->
           <div id="becky_post">
           <h1 class="cft-inline-block">`+CTF_1.person+`</h1> <strong>Becky</strong> added a new photo
             <br><br>
@@ -354,7 +352,7 @@ let CTF_1 = {
             }
             h = h+flag_good+`Correct! <section>This XSS payload is prepended by a null byte character <i>%00</i>. Null bytes are useful for breaking parsers, or things that would otherwise 
             santitize our string. In addition, the XSS payload itself is <b>HTML encoded</b> and relies on character case evasion. Writing the payload in this manner is useful in this case since this particular web application 
-            is (<i>inexplicably</i>) decoding the string before inserting it into the document and is not filtering "bad" strings very well. This type if coding mistake, generally not handling user supplied strings safely, is <b>very</b> common.
+            is (<i>inexplicably</i>) decoding the string before inserting it into the document and is not filtering "bad" strings very well. Unsafe handling of user-supplied strings, is a <b>very</b> common type of coding mistake.
             </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_1.points)+`</section>`
             // nav outta here
             b = `<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`

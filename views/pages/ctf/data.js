@@ -159,10 +159,10 @@ let CTF_4 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="login">http://acme-health.com/login</option>
-  <option value="welcome">https://acme-health.com/welcome-cookies</option>
-  <option value="account">https://acme-health.com/my-account</option>
-  <option value="assets">ftps://acme-health.com/assets</option>
+  <option value="login">http://acme-health-services.com/login</option>
+  <option value="welcome">https://acme-health-services.com/welcome-cookies</option>
+  <option value="account">https://acme-health-services.com/my-account</option>
+  <option value="assets">ftps://acme-health-services.com/assets</option>
 
 </select>
 
@@ -189,7 +189,7 @@ let CTF_4 = {
                     })
                 })
                 break;
-            case "assets":
+            case "account":
                 return null
             default:
                 document.getElementById('ctf4_cookie_accept').addEventListener('click', function(){
@@ -210,20 +210,22 @@ let CTF_4 = {
         <h2>Sensitive Data Exposure</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        Sensitive Data Exposure is exactly what it sounds like -- data such as passwords, credit card numbers, health records, personal information and business secrets all require extra protection.. but don't always receive it. Falling into the top third slot of the OWASP Top 10 indicates that this vulnerability is among the most prevelant issues discovered in web applications around the world.</section>&nbsp;<section>While saying that a site has failed to appropriately protect sensitive information sounds simple enough, the vast array of controls and mechanisms involved in protecting data while stored in a database or while in transit to users are anything but simple. Examples of failed controls, and proactive methods to mitigate such failures, can be found here: 
+        Sensitive Data Exposure is a term covering broad cases of important information--such as passwords, credit card numbers, health records, personal information and business secrets--not being adequately protected. Falling into the top third slot of the OWASP Top 10 indicates that this is among the most prevelant issues discovered in web applications around the world.
+        </section>&nbsp;<section>
+        While saying that a site has failed to appropriately protect sensitive information sounds simple enough, the vast array of controls and mechanisms involved in protecting data while <b>stored</b> (<i>such as sitting in a database</i>) or data <b>in-transit</b> are anything but simple. Examples of failed controls, and proactive methods to mitigate such failures, can be found here: 
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A3-Sensitive_Data_Exposure">OWASP -- Sensitive Data Exposure</a>. 
         </section>&nbsp;<section>
-        One such example is to imagine approaching a bank teller, only to have them unambiguously shout out all your recent transactions and account balances. We would all have immediate concerns about protecting that information from eavesdroppers. Web applications must likewise take precautions when sending data to your desktop or mobile device, as there is a functional equivalent in the machine world to shouting out private data for the whole world to see: Unencrypted Communications.
+        An example of Sensitive Data Exposure while <i>in-transit</i> is Unencrypted Communication. Imagine walking into a bank and approaching the teller. When asking for account information, the teller loudly shouts out all your balances and recent transactions. Personal account information is considered sensitive, and in this case is not being protected from eavesdroppers. Web applications must likewise take precautions when sending and receiving data to your desktop or mobile device. Unencrypted Communication is the functional equivalent in the machine world to shouting out data for anyone listening to hear.
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left ctf-url-scroll">
+        <div class="ctf-html-inner-left">
         <section><div class="ctf-urlbar">`+CTF_4.urlbar+`</div></section>
         <section>
-        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
+        <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
-        <section><h3>The above web application has a Sensitive Data Exposure vulnerabilty due to Unencrypted Communications - <u>Which page is vulnerable?</u></h3></section>
+        <section><h3>The above web application has a Sensitive Data Exposure vulnerabilty due to Unencrypted Communication - <u>Which page is vulnerable?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         

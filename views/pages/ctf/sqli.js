@@ -170,13 +170,13 @@ let CTF_7 = {
                 <h3>In this section, we will explore SQL Injection vulnerabilities.</h3><br>
                 SQL or Structured Query Language is a programming language that is used for managing data within a relational database.  
                 SQL Injection vulnerabilities occur when information supplied by a user of the website is not properly checked and sanitized.  
-                Allowing unsanitized input could have negative effects such as learning database stucture, stealing passwords or even deleting important data from the system.  
+                Allowing unsanitized input could have negative effects such as leaked database stucture, stolen passwords, or even important data being deleted from the system.  
                 In this challenge we will be using MicroSoft SQL syntax.  Here are a few special characters and their purpose:<br><br>
                 <div class="ctf-code-left"><table style="margin-left:auto;margin-right:auto;"><tr><td>Character</td><td width=20px></td><td>Purpose</td></tr><tr><td>\'</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>"</td><td></td><td>Identifies the start and end of a string</td></tr><tr><td>--</td><td></td><td>Used for comments</td></tr></table></div><br><br>
                 A poorly coded SQL example may look like this:<br><br><div class="ctf-code-left">userName = getRequestString("user");<br>userPassword = getRequestString("password");<br><br>sql = \'SELECT * FROM Users WHERE Name =\' + userName + \' " AND Pass=" \' + userPassword + \' " \';</div><br><br>
-                If the user entered jsmith and 1l0veT@cos then the full sql statement would be:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos"</div><br><br>
-                If malformed data is sent to the server, it could react in inappropriate ways.  In this example, if a user was to enter " or "a"="a into the password field, it would change the sql statement to the following:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos" or "a"="a"</div><br><br>
-                The first double quote before the "or" will close the quotation marks around "1l0veT@cos" and move it to the very end of the statement after the second "a". Since "a"="a" will always evaluate to true, the user would be able to log in without needing to know the correct password.<br><br><br>
+                If the user entered <i>jsmith</i> and <i>1l0veT@cos</i> then the full sql statement would be:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos"</div><br><br>
+                If malformed data is sent to the server, it could react in inappropriate ways.  In this example, if a user was to enter <i>" or "a"="a</i> into the password field, it would change the sql statement to the following:<br><br><div class="ctf-code-left">SELECT * FROM Users WHERE Name ="jsmith" AND Pass="1l0veT@cos" or "a"="a"</div><br><br>
+                The first double quote before the "<i>or</i>" will close the quotation marks around "<i>1l0veT@cos</i>" and move it to the very end of the statement after the second "<i>a</i>". Since <i>"a"="a"</i> will always evaluate to <b><i>true</i></b>, the user would be able to log in without needing to know the correct password.<br><br><br>
                 <b>The following website has a SQL Injection vulnerabliity.  Can you find it?</b><br><br>
             </section>
             <section>

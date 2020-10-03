@@ -112,18 +112,18 @@ Amount: $<input type="text" name="amount">
         An Authorization, or "AuthZ" Bypass is a vulnerability usually due to   
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control">Broken Access Controls</a>. 
         What we mean by "Authorization" is that a user is permitted (<i>authorized</i>) to do something. 
-        An example might be, for an online banking application, 
-        a customer might be <i>authorized</i> to view their account balance, or to transfer money from one account to another. But perhaps the customer is 
-        not authorized to transfer money to an external account - this, an example of a customer <b>not</b> being authorized to perform some function. 
-        </section><section>
-        If a customer is not authorized to transfer money to an external account, what is enforcing this? 
-        It's the online banking web application that is enforcing this. But Let's say that there is a vulnerability in the online banking web application, 
-        such that a attacker could effectively "Bypass" the authorization check, and tranfer money to an external account. That would be bad, right?
+        Example: On an online banking application, 
+        a customer might be <i>authorized</i> to view their account balance and transfer money from one account to another. However, the customer is 
+        not permitted to transfer money to an external account - this is an example of a customer <b>not</b> being authorized to perform some function. 
+        </section>&nbsp;<section>
+        If a customer is not authorized to transfer money to an external account, what is preventing the transfer from happening? 
+        It's the online banking web application that enforces access to functionality. Let's say that there is a vulnerability in the online banking web application, 
+        such that a attacker could effectively "Bypass" the authorization check and tranfer money to an external account. That would be bad, right?
         This is an example of improper <i>Access Controls</i> being implemented that would otherwise prevent an Authorization Bypass vulnerability.
         </section><section>
         <section>&nbsp;</section>
-        Below is a <i>over-simplified</i> example of where an authorization bypass might exist. 
-        Here we have a simple HTML form used to transfer funds between accounts and it's cooresponding HTML code. 
+        Below is an <i>over-simplified</i> example where an authorization bypass might exist. 
+        A simple HTML form is used to transfer funds between accounts and it's cooresponding HTML code. 
         See if you can spot <i><b>where</b></i> the control preventing an unauthorized transfer might be bypassed and answer the question below:
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">

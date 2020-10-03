@@ -145,14 +145,14 @@ let CTF_5 = {
             <section>
                 <h3>In this section, we will explore Directory Traversal vulnerabilities.</h3><br>
                 Directory traversal vulnerabilities go by many names such as: 
-                path traversal, dot dot slash, directory traversal, directory climbing and backtracking.
+                path traversal, dot dot slash, directory climbing, and backtracking.
                 In a directory traversal attack, a malicious user takes advantage of improper controls to run commands or access files and directories that are located outside of the web server root directory.
                 By using sequences of characters known by the operating system to change directories, attackers can trick the web server into accessing content outside of the root web server directory.<br><br>
                 For example, if a web server has a request parameter that is pointing to a file resource, such as:<br><br>
                 <div class="ctf-code-left">http://somewhere.com/home.php?file=userContent</div><br><br>
-                And secure coding practices are not being used, leading to the following block of code:<br><br>
+                Insecure coding practices could lead to the following block of code:<br><br>
                 <div class="ctf-code-left">include($_GET['file']);</div><br><br>
-                An attacker could exploit that by using dots and slashes to move up the directory tree then decend the tree into another folder path.  
+                An attacker could exploit this code by using dots and slashes to move up the directory tree then decend the tree into another folder path.  
                 In the case of a Linux web server, an attacker could attempt to access the "/etc/password" file using the following syntax:<br><br>
                 <div class="ctf-code-left">http://somewhere.com/home.php?file=../../../../../../etc/password</div><br><br>
                 Every "../" would move up a directory.  Not knowing how far down a directory tree the root web directory lies, extra "../" are added to make sure the attack is taken up to the root operating system directory before decending again.
@@ -160,7 +160,7 @@ let CTF_5 = {
                 In the same way that resources in GET and POST request parameters are vulnerable, cookie values can also be attacked. If a cookie is trying to dynamically generate pages, that parameter value could also be exploited.
                 In this example, a cookie is dynamically generating a template based on a value, "hostile", saved in the cookie:<br><br>
                 <div class="ctf-code-left">Cookie: UID=1234567;caresgiven=0;template=hostile</div><br><br>
-                If the application was coded poorly such as the following code block:<br><br>
+                A poorly coded application might contain the following vulnerable code block:<br><br>
                 <div class="ctf-code-left">$template = 'hostile.php';<br>if ( is_set( $_COOKIE['TEMPLATE'] ) )<br>&nbsp;&nbsp;$template = $_COOKIE['TEMPLATE'];<br>include ( "/home/users/app/templates/" . $template );<br></div><br><br>
                 An attacker can use the same traversal attack on the cookie parameter to attempt to access the "/etc/password" file:<br><br>
                 <div class="ctf-code-left">Cookie: UID=1234567;caresgiven=0;template=../../../../../../etc/password</div><br><br><br>
