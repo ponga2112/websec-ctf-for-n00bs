@@ -1,7 +1,7 @@
 "use strict";
 
 // GLOBALS
-let DEVMODE = false;
+let DEVMODE = true;
 
 // "Loading..." page while we get things setup
 const Loading = {
