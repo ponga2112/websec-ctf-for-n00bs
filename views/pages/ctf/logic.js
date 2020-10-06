@@ -166,7 +166,7 @@ let CTF_3 = {
                 <dt>&nbsp;</dt>
                 <dt><span><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-              </svg>&nbsp;&nbsp;<input type="submit" id="ctf3_nav_cart" name="ctf3_nav_cart"value="Checkout"/>&nbsp;&nbsp;[</span><span id="cart-items-count">`+String(CTF_3.cart.items)+`</span><span>
+              </svg>&nbsp;&nbsp;<input type="submit" id="ctf3_nav_cart" class="faux-browser-button" name="ctf3_nav_cart"value="Checkout"/>&nbsp;&nbsp;[</span><span id="cart-items-count">`+String(CTF_3.cart.items)+`</span><span>
               items in cart]</span></dt>
                 </dl>
                 `
@@ -185,7 +185,7 @@ let CTF_3 = {
                 <path fill-rule="evenodd" d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
               </svg>&nbsp;
                 You have not added any items to your Shopping Cart.</span></dt>
-                <dt><input type="submit" id="ctf3_nav_cart_back" name="cctf3_nav_cart_back" value="Go Back"/></dt>
+                <dt><input type="submit" id="ctf3_nav_cart_back" class="faux-browser-button" name="cctf3_nav_cart_back" value="Go Back"/></dt>
                 </dl>
                 `
                 } else {
@@ -199,7 +199,7 @@ let CTF_3 = {
               </svg>&nbsp;
                 We noticed that you updated your shipping address recently.</span></dt><dt>&nbsp;</dt>
                 <dt>A verification email has been sent to you -</dt><dt> Please follow the instructions in this email to complete your order.</dt>
-                <dt><input type="submit" id="ctf3_nav_cart_back" name="cctf3_nav_cart_back" value="Go Back" hidden="hidden" /></dt>
+                <dt><input type="submit" id="ctf3_nav_cart_back" class="faux-browser-button" name="cctf3_nav_cart_back" value="Go Back" hidden="hidden" /></dt>
                 </dl>
                 `
                 }
@@ -239,7 +239,7 @@ let CTF_3 = {
                 <dl><dt>
                 </dt>
                 <dt>You have successfully updated your shipping address.</dt>
-                <dt><input type="submit" id="ctf3_nav_store" name="ctf3_nav_store" value="Continue Shopping"/></dt>
+                <dt><input type="submit" id="ctf3_nav_store" class="faux-browser-button" name="ctf3_nav_store" value="Continue Shopping"/></dt>
                 </dl>
                 ` 
         }
@@ -291,17 +291,17 @@ let CTF_3 = {
             case "store":
                 document.getElementById('item0_add').addEventListener('click', function(){
                     CTF_3.cart.item0_q = CTF_3.cart.item0_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item0_q
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item1_add').addEventListener('click', function(){
-                    CTF_3.cart.item1_q = CTF_3.cart.item1_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.item1_q = CTF_3.cart.item1_q + parseInt(document.getElementById('item1_q').value)
+                    CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item1_q
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item2_add').addEventListener('click', function(){
-                    CTF_3.cart.item2_q = CTF_3.cart.item2_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.item2_q = CTF_3.cart.item2_q + parseInt(document.getElementById('item2_q').value)
+                    CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item2_q
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('ctf3_nav_cart').addEventListener('click', function(){
