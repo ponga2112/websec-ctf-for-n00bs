@@ -278,8 +278,8 @@ let CTF_3 = {
         item0_q: 0,
         item1_q: 0,
         item2_q: 0,
-        item0_price: 27,
-        item1_price: 23,
+        item0_price: 23,
+        item1_price: 27,
         item2_price: 14,
         items: 0,
         total: 0,
@@ -291,17 +291,17 @@ let CTF_3 = {
             case "store":
                 document.getElementById('item0_add').addEventListener('click', function(){
                     CTF_3.cart.item0_q = CTF_3.cart.item0_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item0_q').value)
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item1_add').addEventListener('click', function(){
-                    CTF_3.cart.item1_q = CTF_3.cart.item1_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.item1_q = CTF_3.cart.item1_q + parseInt(document.getElementById('item1_q').value)
+                    CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item1_q').value)
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item2_add').addEventListener('click', function(){
-                    CTF_3.cart.item2_q = CTF_3.cart.item2_q + parseInt(document.getElementById('item0_q').value)
-                    CTF_3.cart.items = CTF_3.cart.items + 1
+                    CTF_3.cart.item2_q = CTF_3.cart.item2_q + parseInt(document.getElementById('item2_q').value)
+                    CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item2_q').value)
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('ctf3_nav_cart').addEventListener('click', function(){
