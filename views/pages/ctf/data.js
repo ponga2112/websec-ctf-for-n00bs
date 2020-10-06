@@ -32,25 +32,32 @@ let CTF_4 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "3":
-                CTF_4.answered = true;
-                if(CTF_4.points < 1) {
-                    CTF_4.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>The '<b>Login page</b>' can be accessed over <i>http</i> instead of <i>https</i>, which means that web traffic (your user id and password in this case!) is not encrypted. Unencrypted communications can be read by other devices on the victim's network or anywhere else along the internet's infrastructure that the communications travel, such as the hardware used by the victim's Internet Service Provider (ISP) or where the application itself is being hosted. 
-                </section><section>This type of Data Exposure is less common today than it was three years ago with the advent of new icons and visual alerts to inform a user of insecure sites, but it remains critical to ensure the site you're accessing is using <i>https</i> to send and receive sensitive information.</section><section>
-                &nbsp;
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_4.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf4-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_4.points,4,5)
-                ctf.capture(f);
-                break;
-            default:
-                CTF_4.points = CTF_4.points-20;
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.four == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf4-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "3":
+                    CTF_4.answered = true;
+                    if(CTF_4.points < 1) {
+                        CTF_4.points = 0;
+                    }
+                    ctf.answerstatus.four = 'true'
+                    h = h+flag_good+`Correct! <section>The '<b>Login page</b>' can be accessed over <i>http</i> instead of <i>https</i>, which means that web traffic (your user id and password in this case!) is not encrypted. Unencrypted communications can be read by other devices on the victim's network or anywhere else along the internet's infrastructure that the communications travel, such as the hardware used by the victim's Internet Service Provider (ISP) or where the application itself is being hosted. 
+                    </section><section>This type of Data Exposure is less common today than it was three years ago with the advent of new icons and visual alerts to inform a user of insecure sites, but it remains critical to ensure the site you're accessing is using <i>https</i> to send and receive sensitive information.</section><section>
+                    &nbsp;
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_4.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf4-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_4.points,4,5)
+                    ctf.capture(f);
+                    break;
+                default:
+                    CTF_4.points = CTF_4.points-20;
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

@@ -5,11 +5,13 @@ let lock_icon = `
     <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
     </svg>
     `
+
 let CTF_5 = {
     points: 100,
     answered: false,
 
     answer : async () => {
+        
         let a = null
         try {
             a = document.getElementById('ctf5-flag').querySelectorAll('input[type="radio"]:checked')[0].value
@@ -32,35 +34,42 @@ let CTF_5 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "linux":
-                h = h+flag_bad+`Incorrect! <section>"/var/html/www/admin/get.inc" is a Linux web server file.  We are looking for a Windows file.</section>`
-                CTF_5.points = CTF_5.points-10;
-                break;
-            case "encode":
-                CTF_5.answered = true;
-                if(CTF_5.points < 1) {
-                    CTF_5.points = 0;
-                }
-                h = h+flag_good+`
-                Correct!<section>"%2e%2e%2f" is URL encoding of the characrters "../".  Windows will accept either the "..\\" or "../" character sequences.  The URL encoding is done to try get around validation that may be taking place by the web application or firewall.</section>
-                <section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_5.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf5-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_5.points,5,6)
-                ctf.capture(f);
-                break;
-            case "shadow":
-                h = h+flag_bad+`Incorrect! <section>While "..\\" is a valid character sequence accepted by Windows, the shadow file is a linux specific file.</section>`
-                CTF_5.points = CTF_5.points-10;
-                break;
-            case "noresource":
-                h = h+flag_bad+`Incorrect! <section>In this example, the request for the vulnerable resource was removed from the URL and only the traversal attack was appended.</section>`
-                CTF_5.points = CTF_5.points-10;
-                break;
-            default:
-                h = h+flag_bad+`Incorrect`
+
+        if(ctf.answerstatus.five == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf5-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "linux":
+                    h = h+flag_bad+`Incorrect! <section>"/var/html/www/admin/get.inc" is a Linux web server file.  We are looking for a Windows file.</section>`
+                    CTF_5.points = CTF_5.points-10;
+                    break;
+                case "encode":
+                    CTF_5.answered = true;
+                    if(CTF_5.points < 1) {
+                        CTF_5.points = 0;
+                    }
+                    ctf.answerstatus.five = 'true'
+                    h = h+flag_good+`
+                    Correct!<section>"%2e%2e%2f" is URL encoding of the characrters "../".  Windows will accept either the "..\\" or "../" character sequences.  The URL encoding is done to try get around validation that may be taking place by the web application or firewall.</section>
+                    <section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_5.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf5-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_5.points,5,6)
+                    ctf.capture(f);
+                    break;
+                case "shadow":
+                    h = h+flag_bad+`Incorrect! <section>While "..\\" is a valid character sequence accepted by Windows, the shadow file is a linux specific file.</section>`
+                    CTF_5.points = CTF_5.points-10;
+                    break;
+                case "noresource":
+                    h = h+flag_bad+`Incorrect! <section>In this example, the request for the vulnerable resource was removed from the URL and only the traversal attack was appended.</section>`
+                    CTF_5.points = CTF_5.points-10;
+                    break;
+                default:
+                    h = h+flag_bad+`Incorrect`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);
@@ -212,6 +221,7 @@ let CTF_5 = {
                     })
                 }
             })
+            //}
         });
     }
         

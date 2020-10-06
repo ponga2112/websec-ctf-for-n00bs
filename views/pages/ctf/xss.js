@@ -328,41 +328,48 @@ let CTF_1 = {
     `
     let b = ``
     let isModalRequested = true;
-    switch(wordbank_id){
-        case 0:
-            h = h+flag_bad+`Good choice, but.. <section>This is a classic XSS payload and a good choice. However, in XSS, context is everything and in this particular context, this payload will not quite work.</section>`
-            CTF_1.points = CTF_1.points-8;
+
+    if(ctf.answerstatus.one == 'true') {
+      h = h+`<section>This question has already been answered correctly.</section>`
+      b = `<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`
+  } else {
+      switch(wordbank_id){
+          case 0:
+              h = h+flag_bad+`Good choice, but.. <section>This is a classic XSS payload and a good choice. However, in XSS, context is everything and in this particular context, this payload will not quite work.</section>`
+              CTF_1.points = CTF_1.points-8;
+              break;
+          case 1:
+              h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS in this challenge.`
+              CTF_1.points = CTF_1.points-12;
+              break;
+          case 2:
+              h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS for this challenge.`
+              CTF_1.points = CTF_1.points-12;
+              break;
+          case 3:
+            h = h+flag_bad+`Nope, that's not quite right. This is actually a potential SQL Injection string. While there are some comparisons to XSS, this type of attack will be covered later.`
+            CTF_1.points = CTF_1.points-10;
             break;
-        case 1:
-            h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS in this challenge.`
-            CTF_1.points = CTF_1.points-12;
-            break;
-        case 2:
-            h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS for this challenge.`
-            CTF_1.points = CTF_1.points-12;
-            break;
-        case 3:
-          h = h+flag_bad+`Nope, that's not quite right. This is actually a potential SQL Injection string. While there are some comparisons to XSS, this type of attack will be covered later.`
-          CTF_1.points = CTF_1.points-10;
-          break;
-        case 4:
-            CTF_1.answered = true;
-            if(CTF_1.points < 1) {
-                CTF_1.points = 0;
-            }
-            h = h+flag_good+`Correct! <section>This XSS payload is prepended by a null byte character <i>%00</i>. Null bytes are useful for breaking parsers, or things that would otherwise 
-            santitize our string. In addition, the XSS payload itself is <b>HTML encoded</b> and relies on character case evasion. Writing the payload in this manner is useful in this case since this particular web application 
-            is (<i>inexplicably</i>) decoding the string before inserting it into the document and is not filtering "bad" strings very well. Unsafe handling of user-supplied strings, is a <b>very</b> common type of coding mistake.
-            </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_1.points)+`</section>`
-            // nav outta here
-            b = `<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`
-            // this is a flag
-            let f = new ctf.flag(CTF_1.points,1,2)
-            ctf.capture(f);
-            break;
-        default:
-          isModalRequested = false
-          CTF_1.points = CTF_1.points-1;
+          case 4:
+              CTF_1.answered = true;
+              if(CTF_1.points < 1) {
+                  CTF_1.points = 0;
+              }
+              ctf.answerstatus.one = 'true'
+              h = h+flag_good+`Correct! <section>This XSS payload is prepended by a null byte character <i>%00</i>. Null bytes are useful for breaking parsers, or things that would otherwise 
+              santitize our string. In addition, the XSS payload itself is <b>HTML encoded</b> and relies on character case evasion. Writing the payload in this manner is useful in this case since this particular web application 
+              is (<i>inexplicably</i>) decoding the string before inserting it into the document and is not filtering "bad" strings very well. Unsafe handling of user-supplied strings, is a <b>very</b> common type of coding mistake.
+              </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_1.points)+`</section>`
+              // nav outta here
+              b = `<button class="ctf-button-red" id="nav-ctf1-next"><b>Next Challenge</b></button>`
+              // this is a flag
+              let f = new ctf.flag(CTF_1.points,1,2)
+              ctf.capture(f);
+              break;
+          default:
+            isModalRequested = false
+            CTF_1.points = CTF_1.points-1;
+      }
     }
     if(isModalRequested) {
       h=h+`</div>`

@@ -32,26 +32,33 @@ let CTF_10 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "1":
-                CTF_10.answered = true;
-                if(CTF_10.points < 1) {
-                    CTF_10.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>Passing parameters from a web request <i>directly</i> to an operating system 
-                without first validating and sanitizing the input is very dangerous. RCE vulnerabilities like this one can allow for complete 
-                system takeover by the attacker.</section><section>
-                &nbsp;
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_10.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf10-next"><b>View Results</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_10.points,10,0)
-                ctf.capture(f);
-                break;
-            default:
-                CTF_10.points = CTF_10.points-20;
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.ten == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf10-next"><b>View Results</b></button>`
+        } else {
+            switch(a){
+                case "1":
+                    CTF_10.answered = true;
+                    if(CTF_10.points < 1) {
+                        CTF_10.points = 0;
+                    }
+                    ctf.answerstatus.ten = 'true'
+                    h = h+flag_good+`Correct! <section>Passing parameters from a web request <i>directly</i> to an operating system 
+                    without first validating and sanitizing the input is very dangerous. RCE vulnerabilities like this one can allow for complete 
+                    system takeover by the attacker.</section><section>
+                    &nbsp;
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_10.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf10-next"><b>View Results</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_10.points,10,0)
+                    ctf.capture(f);
+                    break;
+                default:
+                    CTF_10.points = CTF_10.points-20;
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

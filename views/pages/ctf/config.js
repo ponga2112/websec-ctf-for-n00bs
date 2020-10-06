@@ -54,46 +54,53 @@ let CTF_6 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "config":
-                document.getElementById('url').selectedIndex = 1;
-                document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                h = h+flag_bad+`Almost! <section>You recieved a 403 response, which means the resource exists, but you are not authorized to access it. It could potentially be something concerning but
-                403 responses in general are not a bad thing.</section>`
-                CTF_6.points = CTF_6.points-15;
-                break;
-            case "home":
-                document.getElementById('url').selectedIndex = 0;
-                document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                h = h+flag_bad+`Nope - There is nothing concerning about this page.`
-                CTF_6.points = CTF_6.points-25;
-                break;
-            case "users":
-                document.getElementById('url').selectedIndex = 2;
-                document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                h = h+flag_bad+`Nope - You recieved a 404 response, which means the page does not exist.`
-                CTF_6.points = CTF_6.points-25;
-                break;
-            case "server-status":
-                document.getElementById('url').selectedIndex = 3;
-                document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                CTF_6.answered = true;
-                if(CTF_6.points < 1) {
-                    CTF_6.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>This is a "Server Status Page" for a very popular Web Server, <i>Apache</i>. If it's not disabled, 
-                sesnsitive information about the web application could be revealed to an attacker such as, exact version of software used, IP addresses of 
-                clients currently connected to the web site, and any request details that other clients might send, such as search query strings, usernames and more. It's never
-                a good idea to leave the Server Status module enabled on a production site.
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_6.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf6-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_6.points,6,7)
-                ctf.capture(f);
-                break;
-            default:
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.six == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf6-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "config":
+                    document.getElementById('url').selectedIndex = 1;
+                    document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
+                    h = h+flag_bad+`Almost! <section>You recieved a 403 response, which means the resource exists, but you are not authorized to access it. It could potentially be something concerning but
+                    403 responses in general are not a bad thing.</section>`
+                    CTF_6.points = CTF_6.points-15;
+                    break;
+                case "home":
+                    document.getElementById('url').selectedIndex = 0;
+                    document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
+                    h = h+flag_bad+`Nope - There is nothing concerning about this page.`
+                    CTF_6.points = CTF_6.points-25;
+                    break;
+                case "users":
+                    document.getElementById('url').selectedIndex = 2;
+                    document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
+                    h = h+flag_bad+`Nope - You recieved a 404 response, which means the page does not exist.`
+                    CTF_6.points = CTF_6.points-25;
+                    break;
+                case "server-status":
+                    document.getElementById('url').selectedIndex = 3;
+                    document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
+                    CTF_6.answered = true;
+                    if(CTF_6.points < 1) {
+                        CTF_6.points = 0;
+                    }
+                    ctf.answerstatus.six = 'true'
+                    h = h+flag_good+`Correct! <section>This is a "Server Status Page" for a very popular Web Server, <i>Apache</i>. If it's not disabled, 
+                    sesnsitive information about the web application could be revealed to an attacker such as, exact version of software used, IP addresses of 
+                    clients currently connected to the web site, and any request details that other clients might send, such as search query strings, usernames and more. It's never
+                    a good idea to leave the Server Status module enabled on a production site.
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_6.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf6-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_6.points,6,7)
+                    ctf.capture(f);
+                    break;
+                default:
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

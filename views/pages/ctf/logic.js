@@ -54,26 +54,33 @@ let CTF_3 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "2":
-                CTF_3.answered = true;
-                if(CTF_3.points < 1) {
-                    CTF_3.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>It seems that the developers of this web app decided to place the '<i>recently changed address logic</i>' on the <b>/cart</b> 
-                page when really,  this logic should be placed on the <b>/checkout</b> page. 
-                </section><section>These types of logic bypasses are rather common in the real world.</section><section>
-                &nbsp;
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_3.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf3-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_3.points,3,4)
-                ctf.capture(f);
-                break;
-            default:
-                CTF_3.points = CTF_3.points-20;
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.three == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf3-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "2":
+                    CTF_3.answered = true;
+                    if(CTF_3.points < 1) {
+                        CTF_3.points = 0;
+                    }
+                    ctf.answerstatus.three = 'true'
+                    h = h+flag_good+`Correct! <section>It seems that the developers of this web app decided to place the '<i>recently changed address logic</i>' on the <b>/cart</b> 
+                    page when really,  this logic should be placed on the <b>/checkout</b> page. 
+                    </section><section>These types of logic bypasses are rather common in the real world.</section><section>
+                    &nbsp;
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_3.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf3-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_3.points,3,4)
+                    ctf.capture(f);
+                    break;
+                default:
+                    CTF_3.points = CTF_3.points-20;
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

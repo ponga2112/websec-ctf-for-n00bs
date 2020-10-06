@@ -85,6 +85,29 @@ class flag {
     }
 }
 
+class answerstatus {
+    constructor(){
+        this._STATUS = {
+            one: "false",
+            two:"false",
+            three:"false",
+            four:"false",
+            five:"false",
+            six:"false",
+            seven:"false",
+            eight:"false",
+            nine:"false",
+            ten:"false"
+        }
+    }
+    get STATUS(){
+        return this._STATUS;
+    }
+    set STATUS(V){
+        this._STATUS = v;
+    }
+}
+let answerStatus = new answerstatus();
 //let DeveloperInfo = new Promise(new Function);
 
 // Our View/Page Imports
@@ -385,6 +408,7 @@ const globals = {
     flag: flag,
     htmlEncode: Utils.htmlEncode,
     toCodeBlock: Utils.toCodeBlock,
+    answerstatus: answerStatus,
 }
 window.ctf = globals;
 

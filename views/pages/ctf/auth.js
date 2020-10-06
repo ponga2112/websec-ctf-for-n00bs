@@ -46,41 +46,48 @@ let CTF_2 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "to":
-                h = h+flag_bad+`Almost! <section>While it's true that if a customer is not authorized to transfer to an external account you probably 
-                should not show that option in the first place.. but this not where <i>this</i> particular vulnerability exists.</section>`
-                CTF_2.points = CTF_2.points-10;
-                break;
-            case "from":
-                h = h+flag_bad+`Nope, that's not quite right`
-                CTF_2.points = CTF_2.points-25;
-                break;
-            case "submit":
-                h = h+flag_bad+`Nope, that's not quite right`
-                CTF_2.points = CTF_2.points-25;
-                break;
-            case "auth":
-                CTF_2.answered = true;
-                if(CTF_2.points < 1) {
-                    CTF_2.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>This is what we would call a "client-side" control. Relying solely on client-side controls is a terrible idea 
-                because what we mean by "client-side" is that the control is 100% modifiable (<i>and therefore bypassable</i>) by anyone viewing the web page. 
-                </section><section class="ctf-code-left">
-                &#x3C;input type=&#x22;hidden&#x22; id=&#x22;isAuthorized&#x22; value=&#x22;false&#x22;&#x3E;
-                </section><section>Simply change the hidden value of <i>isAuthorized</i> to <b>true</b> and you just bypassed the control! </section><section>
-                It's fine to have something like the above, but you should really rely on a "<i>server-side</i>" control as well. So for our example, we would submit 
-                our request to tranfer money to an external account and then the server should <b>validate</b> that we have the authorization to do so. 
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_2.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf2-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_2.points,2,3)
-                ctf.capture(f);
-                break;
-            default:
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.two == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf2-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "to":
+                    h = h+flag_bad+`Almost! <section>While it's true that if a customer is not authorized to transfer to an external account you probably 
+                    should not show that option in the first place.. but this not where <i>this</i> particular vulnerability exists.</section>`
+                    CTF_2.points = CTF_2.points-10;
+                    break;
+                case "from":
+                    h = h+flag_bad+`Nope, that's not quite right`
+                    CTF_2.points = CTF_2.points-25;
+                    break;
+                case "submit":
+                    h = h+flag_bad+`Nope, that's not quite right`
+                    CTF_2.points = CTF_2.points-25;
+                    break;
+                case "auth":
+                    CTF_2.answered = true;
+                    if(CTF_2.points < 1) {
+                        CTF_2.points = 0;
+                    }
+                    ctf.answerstatus.two = 'true'
+                    h = h+flag_good+`Correct! <section>This is what we would call a "client-side" control. Relying solely on client-side controls is a terrible idea 
+                    because what we mean by "client-side" is that the control is 100% modifiable (<i>and therefore bypassable</i>) by anyone viewing the web page. 
+                    </section><section class="ctf-code-left">
+                    &#x3C;input type=&#x22;hidden&#x22; id=&#x22;isAuthorized&#x22; value=&#x22;false&#x22;&#x3E;
+                    </section><section>Simply change the hidden value of <i>isAuthorized</i> to <b>true</b> and you just bypassed the control! </section><section>
+                    It's fine to have something like the above, but you should really rely on a "<i>server-side</i>" control as well. So for our example, we would submit 
+                    our request to tranfer money to an external account and then the server should <b>validate</b> that we have the authorization to do so. 
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_2.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf2-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_2.points,2,3)
+                    ctf.capture(f);
+                    break;
+                default:
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

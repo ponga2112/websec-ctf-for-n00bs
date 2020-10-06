@@ -32,25 +32,32 @@ let CTF_9 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "3":
-                CTF_9.answered = true;
-                if(CTF_9.points < 1) {
-                    CTF_9.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>Web applications are often <b>mistakenly</b> developed this way, allowing unstrusted user data, the <i>resource 
-                name</i> in this case, to dictate what local file the web server returns to the user.</section><section>
-                &nbsp;
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_9.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf9-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_9.points,9,10)
-                ctf.capture(f);
-                break;
-            default:
-                CTF_9.points = CTF_9.points-20;
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.nine == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf9-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "3":
+                    CTF_9.answered = true;
+                    if(CTF_9.points < 1) {
+                        CTF_9.points = 0;
+                    }
+                    ctf.answerstatus.nine = 'true'
+                    h = h+flag_good+`Correct! <section>Web applications are often <b>mistakenly</b> developed this way, allowing unstrusted user data, the <i>resource 
+                    name</i> in this case, to dictate what local file the web server returns to the user.</section><section>
+                    &nbsp;
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_9.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf9-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_9.points,9,10)
+                    ctf.capture(f);
+                    break;
+                default:
+                    CTF_9.points = CTF_9.points-20;
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

@@ -39,36 +39,43 @@ let CTF_7 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "alldblchar":
-                h = h+flag_bad+`Incorrect! <section>Account number are numerical not alpha.  The data types need to match: integer for numbers, varchar for alpha characters.</section>`
-                CTF_7.points = CTF_7.points-10;
-                break;
-            case "alldblnum":
-                h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need double quotes surrounding them for the integer data type</section>`
-                CTF_7.points = CTF_7.points-10;
-                break;
-            case "noquote":
-                CTF_7.answered = true;
-                if(CTF_7.points < 1) {
-                    CTF_7.points = 0;
-                }
-                h = h+flag_good+`
-                Correct!<section>Since the website is asking for an account number, it would be stored in the database as an integer.  
-                This input string would be a good start for a SQL Injection attack because integers do not require single or double quotes to be placed around them.</section>
-                <section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_7.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf7-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_7.points,7,8)
-                ctf.capture(f);
-                break;
-            case "allsinglenum":
-                h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need single quotes surrounding them for the integer data type</section>`
-                CTF_7.points = CTF_7.points-10;
-                break;
-            default:
-                h = h+flag_bad+`Incorrect`
+
+        if(ctf.answerstatus.seven == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf7-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "alldblchar":
+                    h = h+flag_bad+`Incorrect! <section>Account number are numerical not alpha.  The data types need to match: integer for numbers, varchar for alpha characters.</section>`
+                    CTF_7.points = CTF_7.points-10;
+                    break;
+                case "alldblnum":
+                    h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need double quotes surrounding them for the integer data type</section>`
+                    CTF_7.points = CTF_7.points-10;
+                    break;
+                case "noquote":
+                    CTF_7.answered = true;
+                    if(CTF_7.points < 1) {
+                        CTF_7.points = 0;
+                    }
+                    ctf.answerstatus.seven = 'true'
+                    h = h+flag_good+`
+                    Correct!<section>Since the website is asking for an account number, it would be stored in the database as an integer.  
+                    This input string would be a good start for a SQL Injection attack because integers do not require single or double quotes to be placed around them.</section>
+                    <section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_7.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf7-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_7.points,7,8)
+                    ctf.capture(f);
+                    break;
+                case "allsinglenum":
+                    h = h+flag_bad+`Incorrect! <section>Account number are numerical not strings.  They do not need single quotes surrounding them for the integer data type</section>`
+                    CTF_7.points = CTF_7.points-10;
+                    break;
+                default:
+                    h = h+flag_bad+`Incorrect`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);

@@ -25,38 +25,45 @@ let CTF_8 = {
         <div class="ctf-block ctf-modal-middle">
         `
         let b = ``
-        switch(a){
-            case "html":
-                h = h+flag_bad+`Almost! <section>While HTML is involved in this attack, this answer is not quite right.</section>`
-                CTF_8.points = CTF_8.points-10;
-                break;
-            case "not":
-                h = h+flag_bad+`Nope, that's not quite right`
-                CTF_8.points = CTF_8.points-25;
-                break;
-            case "local":
-                h = h+flag_bad+`Nope, that's not quite right`
-                CTF_8.points = CTF_8.points-25;
-                break;
-            case "remote":
-                CTF_8.answered = true;
-                if(CTF_8.points < 1) {
-                    CTF_8.points = 0;
-                }
-                h = h+flag_good+`Correct! <section>This is an example of an XXE that attempts to pull a remote resource - in this case, from evil.net. 
-                It does using by including an XML "namespace" which is a way to tell the XML parser in essence, "Hey, here is how my data is structured." Of course in 
-                the real world, the developers of the application should not allow for arbitrary XML namspaces to be included, but it does happen. 
-                Further, if the attack is successful, an XSS payload would be triggered, (<i>remember XSS from earlier</i>)? This is an example 
-                of a "chained attack" where in this case, XXE allowed us to trigger an XSS vulnerability.  
-                </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_8.points)+`</section>`
-                // nav outta here
-                b = `<button class="ctf-button-red" id="nav-ctf8-next"><b>Next Challenge</b></button>`
-                // this is a flag
-                let f = new ctf.flag(CTF_8.points,8,9)
-                ctf.capture(f);
-                break;
-            default:
-                h = h+flag_bad+`Nope, that's not quite right`
+
+        if(ctf.answerstatus.eight == 'true') {
+            h = h+`<section>This question has already been answered correctly.</section>`
+            b = `<button class="ctf-button-red" id="nav-ctf8-next"><b>Next Challenge</b></button>`
+        } else {
+            switch(a){
+                case "html":
+                    h = h+flag_bad+`Almost! <section>While HTML is involved in this attack, this answer is not quite right.</section>`
+                    CTF_8.points = CTF_8.points-10;
+                    break;
+                case "not":
+                    h = h+flag_bad+`Nope, that's not quite right`
+                    CTF_8.points = CTF_8.points-25;
+                    break;
+                case "local":
+                    h = h+flag_bad+`Nope, that's not quite right`
+                    CTF_8.points = CTF_8.points-25;
+                    break;
+                case "remote":
+                    CTF_8.answered = true;
+                    if(CTF_8.points < 1) {
+                        CTF_8.points = 0;
+                    }
+                    ctf.answerstatus.eight = 'true'
+                    h = h+flag_good+`Correct! <section>This is an example of an XXE that attempts to pull a remote resource - in this case, from evil.net. 
+                    It does using by including an XML "namespace" which is a way to tell the XML parser in essence, "Hey, here is how my data is structured." Of course in 
+                    the real world, the developers of the application should not allow for arbitrary XML namspaces to be included, but it does happen. 
+                    Further, if the attack is successful, an XSS payload would be triggered, (<i>remember XSS from earlier</i>)? This is an example 
+                    of a "chained attack" where in this case, XXE allowed us to trigger an XSS vulnerability.  
+                    </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_8.points)+`</section>`
+                    // nav outta here
+                    b = `<button class="ctf-button-red" id="nav-ctf8-next"><b>Next Challenge</b></button>`
+                    // this is a flag
+                    let f = new ctf.flag(CTF_8.points,8,9)
+                    ctf.capture(f);
+                    break;
+                default:
+                    h = h+flag_bad+`Nope, that's not quite right`
+            }
         }
         h=h+`</div>`
         ctf.modal.set("Results",h,b);
