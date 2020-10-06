@@ -291,29 +291,20 @@ let CTF_3 = {
             case "store":
                 document.getElementById('item0_add').addEventListener('click', function(){
                     CTF_3.cart.item0_q = CTF_3.cart.item0_q + parseInt(document.getElementById('item0_q').value)
-<<<<<<< HEAD
                     CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item0_q
-=======
                     CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item0_q').value)
->>>>>>> d7c10548b25d4fa8b17115f814a3fae2e81ae28f
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item1_add').addEventListener('click', function(){
                     CTF_3.cart.item1_q = CTF_3.cart.item1_q + parseInt(document.getElementById('item1_q').value)
-<<<<<<< HEAD
                     CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item1_q
-=======
                     CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item1_q').value)
->>>>>>> d7c10548b25d4fa8b17115f814a3fae2e81ae28f
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('item2_add').addEventListener('click', function(){
                     CTF_3.cart.item2_q = CTF_3.cart.item2_q + parseInt(document.getElementById('item2_q').value)
-<<<<<<< HEAD
                     CTF_3.cart.items = CTF_3.cart.items + CTF_3.cart.item2_q
-=======
                     CTF_3.cart.items = CTF_3.cart.items + parseInt(document.getElementById('item2_q').value)
->>>>>>> d7c10548b25d4fa8b17115f814a3fae2e81ae28f
                     document.getElementById('cart-items-count').innerText = CTF_3.cart.items
                 })
                 document.getElementById('ctf3_nav_cart').addEventListener('click', function(){
