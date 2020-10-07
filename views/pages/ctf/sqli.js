@@ -81,9 +81,16 @@ let CTF_7 = {
         ctf.modal.set("Results",h,b);
     },
 
-    acctWindow : async () => {
+    acctWindow : function() {
         let v = document.getElementById('acctnum').value
         let ctf7_acct = 'default'
+        let submitBtn = document.createElement('button')
+        submitBtn.setAttribute('id','btnSubmit')
+        submitBtn.setAttribute('type','button')
+        submitBtn.innerHTML = "Submit"
+        submitBtn.addEventListener('click', function(){
+            CTF_7.acctWindow()
+        });
         
         let html = ``
         switch(v) {
@@ -119,13 +126,16 @@ let CTF_7 = {
                 ctf7_acct = 'default';
                 document.getElementById('lblURL').innerHTML = `http://vulnserver.org/signin.php`;
                 html = `Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
-                    In order to access your account information, please enter your account number and press the Submit button.
-                    Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
-                    <button id=btnSubmit type=button>Submit</button>
+                    In order to access your account information, please enter your account number and press the Submit button.<br>
+                    Remember, please do not share your account number with anyone.<br>  We will never ask you for your full account number.<br><br>`+acctList+`
+                    
                 `
         }
         CTF_7.ctf7_acct = ctf7_acct;
         document.getElementById('ctf-acctwindow').innerHTML = html;
+        if(ctf7_acct == 'default') {
+            document.getElementById('ctf-acctwindow').appendChild(submitBtn);
+        }
     },
 
     acctReset : async () => {
@@ -133,8 +143,8 @@ let CTF_7 = {
         let html = ``
         document.getElementById('lblURL').innerHTML = `http://vulnserver.org/signin.php`;
         html = `Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
-            In order to access your account information, please enter your account number and press the Submit button.
-            Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
+            In order to access your account information, please enter your account number and press the Submit button.<br>
+            Remember, please do not share your account number with anyone.<br>  We will never ask you for your full account number.<br><br>`+acctList+`
             <button id=btnSubmit type=button>Submit</button>
         `
         CTF_7.ctf7_acct = ctf7_acct;
@@ -221,10 +231,8 @@ let CTF_7 = {
     },
     after_render: async (cb) => {
         CTF_7.ctf7_acct = "default"
-        CTF_7.acctWindow()
-        document.getElementById('btnSubmit').addEventListener('click', function(){
-            CTF_7.acctWindow()
-        });
+        CTF_7.acctWindow();
+
         document.getElementById('btnReset').addEventListener('click', function(){
             CTF_7.acctReset().then(function() {
                 document.getElementById('btnSubmit').addEventListener('click', function(){
@@ -232,6 +240,7 @@ let CTF_7 = {
                 });
             })
         });
+
         document.getElementById('ctf7-flag').onsubmit = function(e){e.preventDefault(); return false;}
         document.getElementById('ctf7-flag').addEventListener('submit', function(){
             CTF_7.answer()
