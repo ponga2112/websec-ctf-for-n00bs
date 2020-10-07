@@ -409,7 +409,6 @@ const globals = {
     htmlEncode: Utils.htmlEncode,
     toCodeBlock: Utils.toCodeBlock,
     answerstatus: answerStatus,
-    toggleDevMode: toggleDevMode,
 }
 window.ctf = globals;
 
