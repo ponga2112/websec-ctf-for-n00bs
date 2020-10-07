@@ -1,7 +1,7 @@
 "use strict";
 
 // GLOBALS
-let DEVMODE = true;
+let DEVMODE = false;
 
 // "Loading..." page while we get things setup
 const Loading = {
@@ -409,6 +409,7 @@ const globals = {
     htmlEncode: Utils.htmlEncode,
     toCodeBlock: Utils.toCodeBlock,
     answerstatus: answerStatus,
+    toggleDevMode: toggleDevMode,
 }
 window.ctf = globals;
 
