@@ -72,10 +72,10 @@ let CTF_9 = {
                 html = `
                 <h1>Welcome to ACME ASCII Art!</h1>
                 </br>Click below to view our avialable artwork:</br></br>
-                <input type="submit" id="ctf9_nav_url2" name="ctf9_nav_url2" value="View"/>&nbsp;sw33t_g04t</br></br>
-                <input type="submit" id="ctf9_nav_url3" name="ctf9_nav_url3" value="View"/>&nbsp;aardv4rk</br></br>
-                <input type="submit" id="ctf9_nav_url4" name="ctf9_nav_url4" value="View"/>&nbsp;el3ph4nt</br></br>
-                <input type="submit" id="ctf9_nav_url5" name="ctf9_nav_url5" value="View"/>&nbsp;d0lph1n</br></br>
+                <input type="submit" id="ctf9_nav_url2" name="ctf9_nav_url2" class="faux-browser-button" value="View"/>&nbsp;sw33t_g04t</br></br>
+                <input type="submit" id="ctf9_nav_url3" name="ctf9_nav_url3" class="faux-browser-button" value="View"/>&nbsp;aardv4rk</br></br>
+                <input type="submit" id="ctf9_nav_url4" name="ctf9_nav_url4" class="faux-browser-button" value="View"/>&nbsp;el3ph4nt</br></br>
+                <input type="submit" id="ctf9_nav_url5" name="ctf9_nav_url5" class="faux-browser-button" value="View"/>&nbsp;d0lph1n</br></br>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
@@ -98,7 +98,7 @@ let CTF_9 = {
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\Z&nbsp;|&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;|<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L_|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LL_|<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LW/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LLW/<br>
-                    <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                    <input type="submit" id="ctf9_nav_url1" class="faux-browser-button" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
@@ -117,7 +117,7 @@ let CTF_9 = {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;.-'&nbsp;/&nbsp;&nbsp;/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.&nbsp;'._<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.'__/-'&nbsp;\`\`\`\`.-'.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'-._'-._<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`\`\`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`\`\`\`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\`"""\`<br>
-                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                <input type="submit" id="ctf9_nav_url1" class="faux-browser-button" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
@@ -135,7 +135,7 @@ let CTF_9 = {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;@).____\\|&nbsp;&nbsp;@&nbsp;|</br>
                 &nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;&nbsp;|</br>
                 &nbsp;&nbsp;\\|,&nbsp;'_:::\\&nbsp;&nbsp;.&nbsp;..&nbsp;&nbsp;'_:::\\&nbsp;..\\).</br></br>
-                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                <input type="submit" id="ctf9_nav_url1" class="faux-browser-button" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
@@ -154,7 +154,7 @@ let CTF_9 = {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..--^.&nbsp;&nbsp;'&nbsp;</br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;/</br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</br>
-                <input type="submit" id="ctf9_nav_url1" name="ctf9_nav_url1" value="Go back"/>
+                <input type="submit" id="ctf9_nav_url1" class="faux-browser-button" name="ctf9_nav_url1" value="Go back"/>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
                 break;
@@ -325,9 +325,11 @@ let CTF_9 = {
         <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
-        <section><h3>The above web application has a Local File Inclusion vulnerabilty due to the following code:</h3></br>
+        <section><h3>The above web application has a Local File Inclusion vulnerabilty due to the following code:</h3></section>
+        <section><span class="ctf-code-left">
         &#x3c;&#x3f;&#x70;&#x68;&#x70;&#x20;&#x69;&#x6e;&#x63;&#x6c;&#x75;&#x64;&#x65;&#x28;&#x24;&#x5f;&#x47;&#x45;&#x54;&#x5b;&#x27;&#x6e;&#x61;&#x6d;&#x65;&#x27;&#x5d;&#x2e;&#x22;&#x2e;&#x70;&#x68;&#x70;&#x22;&#x29;&#x3b;&#x20;&#x3f;&#x3e;
-        </br></br>
+        </span></section>
+        <section>&nbsp;</section><section>
         <h3><u>What is required to exploit this vulnerable code?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">

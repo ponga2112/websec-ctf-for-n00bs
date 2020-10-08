@@ -74,7 +74,7 @@ let CTF_10 = {
                 <h1>Ping for FREE</h1><br>  
                 Enter an IP address below:</br>
                 <input type="text" value="203.0.113.100" size="30" disabled />&nbsp;
-                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
+                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" class="faux-browser-button" value="Submit"/>
 
 
 
@@ -87,7 +87,7 @@ let CTF_10 = {
                 <h1>Ping for FREE</h1><br>  
                 Enter an IP address below:</br>
                 <input type="text" value="198.51.100.63" size="30" disabled />&nbsp;
-                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
+                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" class="faux-browser-button" value="Submit"/>
                 <br><br>
 
                 ping&nbsp;203.0.113.100<br>
@@ -111,7 +111,7 @@ let CTF_10 = {
                 <h1>Ping for FREE</h1><br>  
                 Enter an IP address below:</br>
                 <input type="text" value="192.0.2.199;echo whoami" size="30" disabled />&nbsp;
-                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
+                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" class="faux-browser-button" value="Submit"/>
                 <br><br>
 
                 ping&nbsp;198.51.100.63<br>
@@ -135,7 +135,7 @@ let CTF_10 = {
                 <h1>Ping for FREE</h1><br>  
                 Enter an IP address below:</br>
                 <input type="text" value="192.0.2.199;cat etc\\passwd" size="30" disabled />&nbsp;
-                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
+                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" class="faux-browser-button" value="Submit"/>
                 <br><br>
 
                 ping&nbsp;192.0.2.199<br>
@@ -169,7 +169,7 @@ let CTF_10 = {
                 <option value="4">192.0.2.199;echo whoami</option>
                 <option value="5">192.0.2.199;cat /etc/passwd</option>
                 </select>&nbsp;
-                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" value="Submit"/>
+                <input type="submit" id="ctf10_nav_ping" name="ctf10_nav_ping" class="faux-browser-button" value="Submit" disabled/>
                 </form><br><br>
 
                 Usage: ping [-aAbBdDfhLnOqrRUvV] [-c count] [-i interval] [-I interface]<br>

@@ -87,6 +87,7 @@ let CTF_7 = {
         let submitBtn = document.createElement('button')
         submitBtn.setAttribute('id','btnSubmit')
         submitBtn.setAttribute('type','button')
+        submitBtn.setAttribute('class',"faux-browser-button")
         submitBtn.innerHTML = "Submit"
         submitBtn.addEventListener('click', function(){
             CTF_7.acctWindow()
@@ -145,7 +146,7 @@ let CTF_7 = {
         html = `Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
             In order to access your account information, please enter your account number and press the Submit button.<br>
             Remember, please do not share your account number with anyone.<br>  We will never ask you for your full account number.<br><br>`+acctList+`
-            <button id=btnSubmit type=button>Submit</button>
+            <button id=btnSubmit class="faux-browser-button" type=button>Submit</button>
         `
         CTF_7.ctf7_acct = ctf7_acct;
         //document.getElementById('acctnum').value = ctf7_acct;
@@ -205,8 +206,8 @@ let CTF_7 = {
                 <div class="ctf-urlwindow ctf-url-scroll" id="ctf-acctwindow">Welcome to BankCorp ` +ctf.state.API.handle+ `,<br><br>We are your #1 source for all banking needs.<br><br>
                 In order to access your account information, please enter your account number and press the Submit button.
                 Remember, please do not share your account number with anyone.  We will never ask you for your full account number.<br><br>`+acctList+`
-                <button type="submit" id="btnSubmit" name="btnSubmit">Submit</button></div></div></div>
-                <button type="submit" id="btnReset" name="btnReset">Reset</button>
+                <button type="submit" id="btnSubmit" class="faux-browser-button" name="btnSubmit">Submit</button></div></div></div>
+                <button type="submit" id="btnReset" class="faux-browser-button" name="btnReset">Reset</button>
             </section>
             <br><br>
             Why did the correct injection string work when the others wouldn't?

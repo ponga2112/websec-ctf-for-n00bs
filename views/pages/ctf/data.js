@@ -97,7 +97,7 @@ let CTF_4 = {
                 User:&nbsp;`+ctf.state.API.handle+`<br />
                 Pass:&nbsp;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;
                 </dt>
-                <dt><input type="submit" id="ctf4_nav_login" name="ctf4_nav_login" value="Login"/></dt>
+                <dt><input type="submit" id="ctf4_nav_login" name="ctf4_nav_login" class="faux-browser-button" value="Login"/></dt>
                 </dl>
                 `
                 document.getElementById('lock-icon').classList.add('hidden')
@@ -115,7 +115,7 @@ let CTF_4 = {
                 Doctors:&nbsp;Dr. Sputnik, Dr. Turing<br/>
                 Medications:&nbsp;10mg Bulbasaur .... 2/daily<br/>
                 </dd><br/>
-                <dd>View your medical assets <input type="submit" id="ctf4_asset_nav" name="ctf4_asset_nav" value="here"/>!
+                <dd>View your medical assets <input type="submit" id="ctf4_asset_nav" name="ctf4_asset_nav" class="faux-browser-button" value="here"/>!
                 </dd></dl>
                 `
                 document.getElementById('lock-icon').classList.remove('hidden')
@@ -137,7 +137,7 @@ let CTF_4 = {
                 <path fill-rule="evenodd" d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098L9.05.435zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
               </svg>&nbsp;This site requires cookies.</dt>
                 <dt>Please click below to accept our Cookies Terms of Use.</dt>
-                <dt><input type="submit" id="ctf4_cookie_accept" name="ctf4_cookie_accept" value="Accept and Continue"/></dt>
+                <dt><input type="submit" id="ctf4_cookie_accept" name="ctf4_cookie_accept" class="faux-browser-button" value="Accept and Continue"/></dt>
                 </d1>
                 ` 
                 document.getElementById('lock-icon').classList.remove('hidden')
@@ -199,13 +199,18 @@ let CTF_4 = {
             case "account":
                 return null
             default:
-                document.getElementById('ctf4_cookie_accept').addEventListener('click', function(){
-                    document.getElementById('url').selectedIndex = 2;
-                    CTF_4.urlWindow()
-                    .then(function() {
-                        CTF_4.update_ctf_events();
+                try {
+                    document.getElementById('ctf4_cookie_accept').addEventListener('click', function(){
+                        document.getElementById('url').selectedIndex = 2;
+                        CTF_4.urlWindow()
+                        .then(function() {
+                            CTF_4.update_ctf_events();
+                        })
                     })
-                })
+                } catch {
+                    return null
+                }
+                
         }
     },
     render : async () => {
