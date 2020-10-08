@@ -222,7 +222,7 @@ let CTF_4 = {
         <h2>Sensitive Data Exposure</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        Sensitive Data Exposure is a term covering broad cases of important information--such as passwords, credit card numbers, health records, personal information and business secrets--not being adequately protected. Falling into the top third slot of the OWASP Top 10 indicates that this is among the most prevelant issues discovered in web applications around the world.
+        Sensitive Data Exposure is a term covering broad cases of important information--including but not limited to  passwords, credit card numbers, health records, and business secrets--not being adequately protected. Falling into the top third slot of the OWASP Top 10 indicates that this is among the most prevelant issues discovered in web applications around the world.
         </section>&nbsp;<section>
         While saying that a site has failed to appropriately protect sensitive information sounds simple enough, the vast array of controls and mechanisms involved in protecting data while <b>stored</b> (<i>such as sitting in a database</i>) or data <b>in-transit</b> are anything but simple. Examples of failed controls, and proactive methods to mitigate such failures, can be found here: 
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A3-Sensitive_Data_Exposure">OWASP -- Sensitive Data Exposure</a>. 
@@ -237,7 +237,7 @@ let CTF_4 = {
         <div class="ctf-urlwindow" id="ctf-urlwindow">Loading...</div></section>
 
         </div></div>
-        <section><h3>The above web application has a Sensitive Data Exposure vulnerabilty due to Unencrypted Communication - <u>Which page is vulnerable?</u></h3></section>
+        <section><h3>The above web application has a Sensitive Data Exposure vulnerability due to Unencrypted Communication - <u>Which page is vulnerable?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         

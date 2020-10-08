@@ -116,7 +116,7 @@ Amount: $<input type="text" name="amount">
         <h2>Authorization Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        An Authorization, or "AuthZ" Bypass is a vulnerability usually due to   
+        An Authorization, or "AuthZ" Bypass is a vulnerability usually caused by   
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control">Broken Access Controls</a>. 
         What we mean by "Authorization" is that a user is permitted (<i>authorized</i>) to do something. 
         Example: On an online banking application, 
@@ -125,12 +125,12 @@ Amount: $<input type="text" name="amount">
         </section>&nbsp;<section>
         If a customer is not authorized to transfer money to an external account, what is preventing the transfer from happening? 
         It's the online banking web application that enforces access to functionality. Let's say that there is a vulnerability in the online banking web application, 
-        such that a attacker could effectively "Bypass" the authorization check and tranfer money to an external account. That would be bad, right?
+        such that an attacker could effectively "Bypass" the authorization check and transfer money to an external account. That would be bad, right?
         This is an example of improper <i>Access Controls</i> being implemented that would otherwise prevent an Authorization Bypass vulnerability.
         </section><section>
         <section>&nbsp;</section>
         Below is an <i>over-simplified</i> example where an authorization bypass might exist. 
-        A simple HTML form is used to transfer funds between accounts and it's cooresponding HTML code. 
+        A simple HTML form is used to transfer funds between accounts and it's corresponding HTML code. 
         See if you can spot <i><b>where</b></i> the control preventing an unauthorized transfer might be bypassed and answer the question below:
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
@@ -151,7 +151,7 @@ Amount: $<input type="text" name="amount">
         </form>
         </div>`+code_formated+`
         </div>
-        <section><h3>The above form and cooresponding HTML has an authorization bypass vulnerabilty; <u>Where is it?</u></h3></section>
+        <section><h3>The above form and corresponding HTML has an authorization bypass vulnerabilty; <u>Where is it?</u></h3></section>
         <div class="ctf-html-outter">
         <div class="ctf-html-inner-left">
         

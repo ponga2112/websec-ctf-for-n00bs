@@ -44,8 +44,8 @@ let CTF_9 = {
                         CTF_9.points = 0;
                     }
                     ctf.answerstatus.nine = 'true'
-                    h = h+flag_good+`Correct! <section>Web applications are often <b>mistakenly</b> developed this way, allowing unstrusted user data, the <i>resource 
-                    name</i> in this case, to dictate what local file the web server returns to the user.</section><section>
+                    h = h+flag_good+`Correct! <section>Web applications are often <b>mistakenly</b> developed this way, allowing untrusted user data (the <i>resource 
+                    name</i> in this case) to dictate what local file the web server returns to the user.</section><section>
                     &nbsp;
                     </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_9.points)+`</section>`
                     // nav outta here
@@ -311,7 +311,7 @@ let CTF_9 = {
         <h2>Local File Inclusion</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        Local File Inclusion (LFI) is an attack type where vulnerable sites allow arbitrary files located on the web host's file system to be accessed through tampered web requests. Examples of local files may be sensitive data files like password files, registry data, etc. By design, the web application should only serve files designated by the developers. An LFI vulnerability makes it such that any files on the local file system may be accessed by the attacker.
+        Local File Inclusion (LFI) is an attack type where vulnerable sites allow arbitrary files located on the web host's file system to be accessed through tampered web requests. Examples of local files may be sensitive data like password files, registry data, etc. By design, the web application should only serve files designated by the developers. An LFI vulnerability makes it such that any files on the local file system may be accessed by the attacker.
         </section>&nbsp;
         <section>
         More Info:

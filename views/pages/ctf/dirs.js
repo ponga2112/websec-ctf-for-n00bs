@@ -173,7 +173,7 @@ let CTF_5 = {
                 <div class="ctf-code-left">$template = 'hostile.php';<br>if ( is_set( $_COOKIE['TEMPLATE'] ) )<br>&nbsp;&nbsp;$template = $_COOKIE['TEMPLATE'];<br>include ( "/home/users/app/templates/" . $template );<br></div><br><br>
                 An attacker can use the same traversal attack on the cookie parameter to attempt to access the "/etc/password" file:<br><br>
                 <div class="ctf-code-left">Cookie: UID=1234567;caresgiven=0;template=../../../../../../etc/password</div><br><br><br>
-                <b>The following website has a directory traversal vulnerabliity.  Can you find it?</b>
+                <b>The following website has a directory traversal vulnerability.  Can you find it?</b>
             </section>
             <section>
                 <section>&nbsp;</section>

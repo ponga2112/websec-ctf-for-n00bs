@@ -9,12 +9,12 @@ let Intro = {
             </section><section>
             A Capture the Flag, or <b>CTF</b>, is a game where you earn points by <i>finding flags</i>.
             In this particular CTF, flags will be found through answering questions and solving puzzles regarding common <b>web application vulnerabilities</b>.
-            </section><br><section>
+            </section>&nbsp;<section>
             <b><i>So, what is a web application vulnerability?</i></b>
             </section><section>
             In general, a "<b>vulnerability</b>" in software is a design flaw that, if <i>exploited</i>, can cause the software to perform 
             in such a way that the <b>security</b> of the application is compromised. 
-            </section><br><section>
+            </section>&nbsp;<section>
             <b><i>How about an example?</i></b>
             </section><section>
             Let's say that you are a <b>bank</b>. You want to provide your customers a way to login to their account through a computer or mobile device in order to check balances and make transactions. 
@@ -22,15 +22,15 @@ let Intro = {
             We say <i>web</i>, because that's how the application is accessed - online with a web browser. Now, what if this online banking web application had a 
             vulnerability that could potentially allow a malicious attacker, a <i>hacker</i>, to access any of your customer's accounts? 
             That would be bad, right? 
-            </section><br><section>
+            </section>&nbsp;<section>
             <b><i>So, how do you know if such a vulnerability exists in your software?</i></b>
             </section><section>
             There are actually many ways to check and each approach has its own advantages. One method is to take on the perspective of a would-be attacker and scour the application with a keen eye for defects that might be taken advantage of - 
             that is to say, just like a <b><i>hacker</i></b> would.
-            </section><br><section>
-            This is called <b>Dynamic Application Security Testing</b>.
-            </section><br><section>
-            And so in this <b>CTF</b>, you will learn about a few of the most common web application vulnerabilities by looking at them like a <b>hacker</b> would.
+            </section>&nbsp;<section>
+            This is called <b>Dynamic Application Security Testing</b>, or <b>DAST</b>.
+            </section>&nbsp;<section>
+            And so in this <b>CTF</b>, you will learn about a few of the most common web application vulnerabilities by taking on the perspective of a hacker and performing DAST!
             </section><section>&nbsp;</section>
             </div><div>
             <hr width="70%" class="ctf-hr" />

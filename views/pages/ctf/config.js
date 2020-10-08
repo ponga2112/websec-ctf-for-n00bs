@@ -88,8 +88,8 @@ let CTF_6 = {
                     }
                     ctf.answerstatus.six = 'true'
                     h = h+flag_good+`Correct! <section>This is a "Server Status Page" for a very popular Web Server, <i>Apache</i>. If it's not disabled, 
-                    sesnsitive information about the web application could be revealed to an attacker such as, exact version of software used, IP addresses of 
-                    clients currently connected to the web site, and any request details that other clients might send, such as search query strings, usernames and more. It's never
+                    sensitive information about the web application could be revealed to an attacker such as the exact version of software used, IP addresses of 
+                    clients currently connected to the web site, or any request details that other clients might send such as search query strings, usernames, and more. It's never
                     a good idea to leave the Server Status module enabled on a production site.
                     </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_6.points)+`</section>`
                     // nav outta here
@@ -239,7 +239,7 @@ let CTF_6 = {
         <h2>Application / Security Misconfiguration</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
         </section>
         <div><section>
-        An Application Misconfiguration is not nessesarily a vulnerability in and of itself. A web application may have no vulnerabilities in its 
+        An Application Misconfiguration is not necessarily a vulnerability in and of itself. A web application may have no vulnerabilities in its 
         software, but if it's <i>configured</i> improperly, it could cause the web application to behave in unexpected ways and lead to other vulnerabilities. A common 
         example of this is leaving http (port 80) access open. Most web sites these days enforce http<b>s</b>, which means it's secure and encrypted. If the non-encrypted 
         version of the web app is left available, attackers could leverage several techniques that would expose any visiters to the site to information theft and manipulation.

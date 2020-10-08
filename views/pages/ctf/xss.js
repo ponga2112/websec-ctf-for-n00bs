@@ -83,7 +83,7 @@ let CTF_1 = {
         <div id="about" class="ctf-html-inner-text-center">
           <p>A <b>Cross-Site Scripting (XSS)</b> vulnerability can come in several flavors -- <b>Reflected</b>, <b>Stored</b>, and <b>DOM-based</b>. All three are a type of injection where javascript is executed on a victim's browser through means of a website.</p>
           <br>
-          <p>The impact of this type of attack can range from superficial to outright carnage! Site defacement might take place if the attacker's intent is less malicious, but an unlucky victim might find their session information stolen -- quickly leading to account theft or unauthorizes actions. Some victims might never be aware they've been had, such as in the case of cryptocurrency miner malware added to the webpage.. running silently in the background while using up resources.</p><br>
+          <p>The impact of this type of attack can range from superficial to outright carnage! Site defacement might take place if the attacker's intent is less malicious, but an unlucky victim might find their session information stolen -- quickly leading to account theft or unauthorized actions. Some victims might never be aware they've been had, such as in the case of cryptocurrency miner malware added to the webpage.. running silently in the background while using up resources.</p><br>
           <p>More info about XSS here:</p>
           <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">OWASP TOP 10</a><br>
           <a href="https://portswigger.net/web-security/cross-site-scripting">PortSwigger</a><br>

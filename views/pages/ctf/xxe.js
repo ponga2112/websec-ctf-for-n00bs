@@ -50,10 +50,10 @@ let CTF_8 = {
                     }
                     ctf.answerstatus.eight = 'true'
                     h = h+flag_good+`Correct! <section>This is an example of an XXE that attempts to pull a remote resource - in this case, from evil.net. 
-                    It does using by including an XML "namespace" which is a way to tell the XML parser in essence, "Hey, here is how my data is structured." Of course in 
-                    the real world, the developers of the application should not allow for arbitrary XML namspaces to be included, but it does happen. 
-                    Further, if the attack is successful, an XSS payload would be triggered, (<i>remember XSS from earlier</i>)? This is an example 
-                    of a "chained attack" where in this case, XXE allowed us to trigger an XSS vulnerability.  
+                    It does so by including an XML "namespace", which is a way to tell the XML parser: "Hey! Here is how my data is structured." In 
+                    the real world, however, the developers should not allow for arbitrary XML namespaces to be included. 
+                    Further, if the attack is successful, an XSS payload could be triggered (<i>remember XSS from earlier?</i>). This is an example 
+                    of a "chained attack" where XXE allowed us to then trigger an XSS vulnerability.  
                     </section><section class="ctf-html-inner-text-center">Points Earned: `+String(CTF_8.points)+`</section>`
                     // nav outta here
                     b = `<button class="ctf-button-red" id="nav-ctf8-next"><b>Next Challenge</b></button>`
@@ -90,8 +90,8 @@ let CTF_8 = {
         An <b>XML External Entity Injection</b>, or "XXE" for short, is a type of injection attack that targets <i>XML Parsers</i> in the web application. Read about   
         <a target="_blank" href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A4-XML_External_Entities_(XXE)">XXE on OWASP</a>. 
         XML is short for eXtensible Markup Language, which is used by developers as way to give <i>structure</i> to data, typically text. Easily the most popular application 
-        of XML is what you looking at right now - HTML (HyperText Markup Language), which is just an application of XML. In the case of the web (HTML), this structure 
-        tells your web browsers what certain elements of the page are and how to diplay them.  
+        of XML is what you're looking at right now - HTML (HyperText Markup Language), which is just an application of XML. In the case of the web (HTML), this structure 
+        tells your web browser what certain elements of the page are and how to display them.  
         </section>&nbsp;<section>
         Web applications that live on the server also typically "read" XML sent by the client. This XML can sometimes be modified in a particular way that would "fool" 
         the web application into doing something that the developers did not intend. An example XXE might look like:
@@ -99,7 +99,7 @@ let CTF_8 = {
         `+code_formated2+`
         </section>&nbsp;<section>
         If vulnerable, the above XML would trick the application into including an "external" resource, in this case, the file: <b>/etc/passwd</b>, 
-        a senstive "password" file used on UNIX and Linux systems that would be read and included in the repsonse back to the attacker. 
+        a sensitive "password" file used on UNIX and Linux systems that would be read and included in the repsonse back to the attacker. 
         </section>
         <section>&nbsp;</section>
         </div>
