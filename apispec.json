@@ -1,0 +1,308 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "websec-ctf-for-n00bs API",
+    "version": "1.0.0",
+    "description": "API enpoint for Websec CTF for N00bs game; Storage and tracking for players for the CTF, records flags captured, tallies points, provides a leader statistics",
+  },
+  "paths": {
+    "/api/ping": {
+      "get": {
+        "operationId": "ping",
+        "description": "A simple GET on /api/ping checks if the API is up",
+        "responses": {
+          "200": {
+            "description": "Generates an empty string 200 JSON response indicating that the API is up and available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok"
+                },
+                "example": {
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error occured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "example": {
+                  "error": "API Service is not available"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/create": {
+      "post": {
+        "operationId": "create",
+        "description": "POST /api/create creates a user - It validates the chosen name is valid, generates a player handle, and stores the players handle and uuid for further CTF progress tracking",
+        "requestBody": {
+          "description": "The playername which to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create"
+              },
+              "example": {
+                "token": "2be7a4f2-0d79-11eb-a9f5-0b46b2a56d5e",
+                "name": "Bob"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/created"
+                },
+                "example": {
+                  "token": "2be7a4f2-0d79-11eb-a9f5-0b46b2a56d5e",
+                  "handle": "Bob#2073"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error occured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "example": {
+                  "error": "Player could not be created"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/capture": {
+      "post": {
+        "operationId": "capture",
+        "description": "POST /api/capture -  Captures a flag, updates progress and points for the player",
+        "requestBody": {
+          "description": "Contains the flag captures, and the points earned",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/capture"
+              },
+              "example": {
+                "token": "2be7a4f2-0d79-11eb-a9f5-0b46b2a56d5e",
+                "flag": 2,
+                "points": 85
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "And empty 200 response indicates that the flag captured and recorded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ok"
+                },
+                "example": {
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "An error occured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "example": {
+                  "error": "The flag could not be captured as requested"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/leaders": {
+      "post": {
+        "operationId": "leaders",
+        "description": "POST /api/capture -  Captures a flag, updates progress and points for the player",
+        "requestBody": {
+          "description": "Contains the flag captures, and the points earned",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/leaders"
+              },
+              "example": {
+                "token": "2be7a4f2-0d79-11eb-a9f5-0b46b2a56d5e"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Leaderboard successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/leaderboard"
+                },
+                "example": [
+                  {"handle":"Bob#2073", "flags":6, "points":450},
+                  {"handle":"Alice#5632", "flags":3, "points":230},
+                  {"handle":"Malory#8256", "flags":2, "points":200}
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "An error occured",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                },
+                "example": {
+                  "error": "API Service is not available"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "action": {
+        "type": "string",
+        "description": "For reference only - List of valid RESTful API actions",
+        "enum": [
+          "ping",
+          "create",
+          "capture",
+          "leaders"
+        ]
+      },
+      "token": {
+        "description": "The randomly generated UUID of the player, generated client-side when then app is first loaded",
+        "type": "string",
+        "format": "uuid",
+        "minLength": 37,
+        "maxLength": 37,
+        "pattern": "^[a-f0-9]{8}\\-[a-f0-9]{4}\\-[a-f0-9]{4}\\-[a-f0-9]{4}\\-[a-f0-9]{12}$"
+      },
+      "handle": {
+        "description": "The unique generated player handle based on the name provided, appended with '#nnnn'; Where n is [0-9]",
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 25,
+        "pattern": "^[a-zA-Z0-9_]{3,20}#[0-9]{4}$"
+      },
+      "create": {
+        "type": "object",
+        "description": "When first starting the CTF, this will setup a player in the system, generate and return a handle for the player based on their name provided",
+        "properties": {
+          "token": {
+            "$ref": "#/components/schemas/token"
+          },
+          "name": {
+            "description": "The name of the Player as as obtained from the UI dialog 'Whats your name?'",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 20,
+            "pattern": "^[a-zA-Z0-9_]{3,20}$"
+          },
+        }
+      },
+      "capture": {
+        "type": "object",
+        "description": "The request made in order tp capture a flag",
+        "properties": {
+          "token": {
+            "$ref": "#/components/schemas/token"
+          },
+          "flag": {
+            "description": "The integer representation of the flag captured",
+            "type": "integer"
+          },
+          "points": {
+            "description": "The points earned",
+            "type": "integer"
+          }
+        }
+      },
+      "leaders": {
+        "type": "object",
+        "description": "Requesting the leaderboard requires a valid player token",
+        "properties": {
+          "token": {
+            "$ref": "#/components/schemas/token"
+          }
+        }
+      },
+      "player": {
+        "type": "object",
+        "description": "A player object consists of the handle, the number of flags captures, and points earned",
+        "properties": {
+          "handle": {
+            "description": "The player handle",
+            "type": "string"
+          },
+          "flags": {
+            "description": "The count of flags the player has captured",
+            "type": "integer"
+          },
+          "points": {
+            "description": "The points earned by the player",
+            "type": "integer"
+          }
+        }
+      },
+      "leaderboard": {
+        "type": "array",
+        "description": "An array of players and their stats to be returned as the leaderboard",
+        "items": {
+          "$ref": "#/components/schemas/player"
+        }
+      },
+      "created": {
+        "description": "Upon successfully creating a player, return the player handle along with a 200 response",
+        "type": "object",
+        "properties": {
+          "handle": {
+            "$ref": "#/components/schemas/handle"
+          },
+          "token": {
+            "$ref": "#/components/schemas/token"
+          }
+        }
+      },
+      "error": {
+        "description": "An error message string that is accompanied with a 400 response",
+        "type": "string"
+      },
+      "ok": {
+        "description": "An empty string 200 JSON response, indicating the request was completed successfully",
+        "type": "string"
+      }
+    }
+  }
+}
