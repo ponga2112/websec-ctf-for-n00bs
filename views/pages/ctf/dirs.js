@@ -135,7 +135,7 @@ let CTF_5 = {
         </svg>
         <label for="url">&nbsp;&nbsp;</label>
         `+lock_icon+`
-        <select name="url" id="url">
+        <select name="url" id="url" class="ctf-urlbar-select">
         <option value="default">http://vulnserver.org/index.asp?style=plain</option>
         <option value="linux">http://vulnserver.org/index.asp?style=/var/html/www/admin/get.inc</option>
         <option value="encode">http://vulnserver.org/index.asp?style=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fWindows%2fsystem.ini</option>

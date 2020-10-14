@@ -160,7 +160,7 @@ let CTF_1 = {
             <textarea id="user_comment" rows="4" cols="32" id="bodyText" class="xss-textarea" maxlength="200"></textarea>
             <br>
             <div class="ctf-html-outter">
-              <button type="button" id="comment_submit">Submit</button>
+              <button type="button" id="comment_submit" class="faux-browser-button">Submit</button>
               <button type="button" id="comment_submit_modal" data-micromodal-trigger="modal" class="hidden"></button>
             </div>
           </form>
@@ -175,19 +175,19 @@ let CTF_1 = {
         <h2>Word Bank</h2>
         <br>
         <input type="text" value="`+CTF_1.wordbank_enc[0]+`" id="wb1" readonly="true">
-        <button id="wb1_button">Paste String</button><br><br>
+        <button class="faux-browser-button" id="wb1_button">Paste String</button><br><br>
 
         <input type="text" value="`+CTF_1.wordbank_enc[1]+`" id="wordbank_2" readonly="true">
-        <button id="wb2_button">Paste String</button><br><br>
+        <button class="faux-browser-button" id="wb2_button">Paste String</button><br><br>
 
         <input type="text" value="`+CTF_1.wordbank_enc[2]+`" id="wordbank_3" readonly="true">
-        <button id="wb3_button">Paste String</button><br><br>
+        <button class="faux-browser-button" id="wb3_button">Paste String</button><br><br>
 
         <input type="text" value="`+CTF_1.wordbank_enc[3]+`" id="wordbank_4" readonly="true">
-        <button id="wb4_button">Paste String</button><br><br>
+        <button class="faux-browser-button" id="wb4_button">Paste String</button><br><br>
 
-        <input type="text" value="`+CTF_1.wordbank_enc[4]+`" id="wordbank_5" readonly="true">
-        <button id="wb5_button">Paste String</button><section>&nbsp;</section><section>&nbsp;</section>
+        <input type="text" value="`+CTF_1.wordbank_enc[4]+`" id="wordbank_5" eadonly="true">
+        <button class="faux-browser-button" id="wb5_button">Paste String</button><section>&nbsp;</section><section>&nbsp;</section>
       </div>
       <!-- END WORD BANK -->
 

@@ -52,6 +52,11 @@
     text-align: center;
 }
 
+.ctf-urlbar-select {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .ctf-urlwindow {
     border: 1px;
     margin: 1px;
@@ -137,6 +142,18 @@ input[type=checkbox],input[type=radio] {
     display: flex;
     justify-content: center;
 }
+
+.ctf-html-outter-flex {
+    display: flex;
+    justify-content: center;
+}
+
+/* bug fixes for mobile browsers */
+@media (max-width: 500px) {
+    .ctf-html-outter-flex { display: block; }
+    .ctf-urlbar-select { width: 295px; }
+}
+
 .ctf-html-inner {
     background-color: #333;
     margin: 0.5rem;
@@ -429,3 +446,4 @@ a:hover {
 .xss-textarea{
     resize: none;
 }
+

@@ -239,7 +239,7 @@ let CTF_10 = {
 </svg>
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
-<select name="url" id="url">
+<select name="url" class="ctf-urlbar-select" id="url">
   <option value="1">https://ping.me/</option>
   <option value="2">https://ping.me/?ip=203.0.113.100</option>
   <option value="3">https://ping.me/?ip=198.51.100.63</option>
