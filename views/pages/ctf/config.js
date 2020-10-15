@@ -70,13 +70,13 @@ let CTF_6 = {
                 case "home":
                     document.getElementById('url').selectedIndex = 0;
                     document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                    h = h+flag_bad+`Nope - There is nothing concerning about this page.`
+                    h = h+flag_bad+`Nope, not quite. <section>There is nothing concerning about this page.</section>`
                     CTF_6.points = CTF_6.points-25;
                     break;
                 case "users":
                     document.getElementById('url').selectedIndex = 2;
                     document.getElementById('ctf-urlwindow').innerHTML = CTF_6.urlWindow();
-                    h = h+flag_bad+`Nope - You recieved a 404 response, which means the page does not exist.`
+                    h = h+flag_bad+`Nope, not quite. <section>You recieved a 404 response, which means the page does not exist.</section>`
                     CTF_6.points = CTF_6.points-25;
                     break;
                 case "server-status":
