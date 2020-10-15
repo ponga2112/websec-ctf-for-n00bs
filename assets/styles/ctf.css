@@ -152,6 +152,15 @@ input[type=checkbox],input[type=radio] {
 @media (max-width: 500px) {
     .ctf-html-outter-flex { display: block; }
     .ctf-urlbar-select { width: 295px; }
+    .ctf-html-outter {
+        display: flex;
+        
+        -webkit-overflow-scrolling: auto;
+        -webkit-transform: translate3d(0, 0, 0);
+        /* -webkit-flex: 0 0 auto; */
+        flex: 0 0 auto;
+        
+    }
 }
 
 .ctf-html-inner {
@@ -287,6 +296,8 @@ input[type=checkbox],input[type=radio] {
     background: #b41820;
     border-radius: 10px;
     color: #fff;
+    /* mobile safari bugfix, Issue #20, [27:All:Dev:iOS:Safari] Button controls on page are pale and not dark red. */
+    -webkit-appearance: none;
 }
 
 .ctf-button-red:active {
