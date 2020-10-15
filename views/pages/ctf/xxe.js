@@ -84,7 +84,7 @@ let CTF_8 = {
         let code_formated2 = ctf.toCodeBlock(code_raw2)
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>XML External Entity Injection (XXE)</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>XML External Entity Injection (XXE)</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         An <b>XML External Entity Injection</b>, or "XXE" for short, is a type of injection attack that targets <i>XML Parsers</i> in the web application. Read about   

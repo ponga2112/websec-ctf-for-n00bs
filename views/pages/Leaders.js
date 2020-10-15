@@ -32,7 +32,7 @@ let Leaders = {
         }
         let view =  /*html*/`
         <section class="section-lite leaders-optional">
-        `+congrats_html+`<img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        `+congrats_html+`<img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section class="leaders-optional">
         <h3><u>Standings</u></h3>

@@ -49,7 +49,7 @@ let CTF_1 = {
     document.getElementById('user_comment').value = str;
   },
 
-  icon_32: `<img src="/assets/images/xss/icon_user_64x64.png" width="32" />`,
+  // icon_32: `<img src="/assets/images/xss/icon_user_64x64.png" width="32" />`,
   username: [`Becky`,`Chad`,`Esther`,`Chance`],
   comment: [``,`Did you go surfing <a>@Becky?</a> We should totally go surfing.`,`Oh, I love my favourite grand-daughter! Remember to use sunscreen! `,`This isn't a risqué photo at all, excellent! :P`],
 
@@ -73,7 +73,7 @@ let CTF_1 = {
       <section class="section">
         <div id="xss_header">
           <h1>Cross-Site Scripting</h1>
-          <img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+          <img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
           <hr width="50%" />
         </div>
       </section>

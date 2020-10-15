@@ -409,6 +409,7 @@ const globals = {
     htmlEncode: Utils.htmlEncode,
     toCodeBlock: Utils.toCodeBlock,
     answerstatus: answerStatus,
+    flagImg: Utils.Flag
 }
 window.ctf = globals;
 

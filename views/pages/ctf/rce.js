@@ -309,7 +309,7 @@ let CTF_10 = {
     render : async () => {
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Remote Code Execution</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Remote Code Execution</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         Remote Code Execution (RCE), also generally called Code Injection or Remote Command Injection, is an attack type which consists of injecting data that is then interpreted/executed by the application as code. These types of attacks are usually made possible due to a lack of proper input validation and output encoding, both of which are components of safe data handling.

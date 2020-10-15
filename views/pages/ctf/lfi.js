@@ -308,7 +308,7 @@ let CTF_9 = {
     render : async () => {
          let view =  /*html*/`
         <section class="section-lite">
-        <h2>Local File Inclusion</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Local File Inclusion</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         Local File Inclusion (LFI) is an attack type where vulnerable sites allow arbitrary files located on the web host's file system to be accessed through tampered web requests. Examples of local files may be sensitive data like password files, registry data, etc. By design, the web application should only serve files designated by the developers. An LFI vulnerability makes it such that any files on the local file system may be accessed by the attacker.

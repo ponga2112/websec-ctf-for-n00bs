@@ -236,7 +236,7 @@ let CTF_6 = {
         // TODO: Need to fix the UI mobile view. Text in mobile view is paginated weirdly
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Application / Security Misconfiguration</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Application / Security Misconfiguration</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         An Application Misconfiguration is not necessarily a vulnerability in and of itself. A web application may have no vulnerabilities in its 

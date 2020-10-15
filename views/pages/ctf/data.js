@@ -219,7 +219,7 @@ let CTF_4 = {
         //let code_formated = ctf.toCodeBlock(code_raw)
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Sensitive Data Exposure</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Sensitive Data Exposure</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         Sensitive Data Exposure is a term covering broad cases of important information--including but not limited to  passwords, credit card numbers, health records, and business secrets--not being adequately protected. Falling into the top third slot of the OWASP Top 10 indicates that this is among the most prevelant issues discovered in web applications around the world.

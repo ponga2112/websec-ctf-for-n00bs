@@ -3,7 +3,7 @@ let Intro = {
         //console.log("render() called in Into");
         let view =  /*html*/`
             <section class="section-lite">
-            <h2>Capture the Flag</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+            <h2>Capture the Flag</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
             </section><br><div><section>
             <b><i>What is this?</i></b>
             </section><section>

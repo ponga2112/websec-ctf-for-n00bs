@@ -113,7 +113,7 @@ Amount: $<input type="text" name="amount">
         let code_formated = ctf.toCodeBlock(code_raw)
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Authorization Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Authorization Bypass</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         An Authorization, or "AuthZ" Bypass is a vulnerability usually caused by   

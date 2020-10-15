@@ -148,7 +148,7 @@ let CTF_5 = {
     render : async () => {
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Directory Traversal</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Directory Traversal</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
             <section>&nbsp;</section>
             <section>

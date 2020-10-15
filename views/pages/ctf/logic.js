@@ -341,7 +341,7 @@ let CTF_3 = {
         //let code_formated = ctf.toCodeBlock(code_raw)
         let view =  /*html*/`
         <section class="section-lite">
-        <h2>Logic Bypass</h2><img src="/assets/images/flag_trasnsparent_378x487.png" width="100">
+        <h2>Logic Bypass</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
         </section>
         <div><section>
         When designers or developers create an application, 
