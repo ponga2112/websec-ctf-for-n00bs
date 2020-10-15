@@ -202,9 +202,9 @@ let Start = {
         </section>
         <div>
             <div><section>
-            Over the next 15 minutes or so, you will be guided through a series of <i>challenges</i>. These challenges are broken down by <b><i>attack type</i></b>. 
-            In web application security, there several common attack types (<i>listed below</i>) that will be presented. You can read up on these ahead of time, 
-            or simply start playing by clicking the button below.
+            Over the next 15 minutes or so, you will be guided through a series of <b><i>challenges</i></b>. These challenges are broken down by <b><i>attack type</i></b>.
+            The most common attack types in web application security are listed below. You can read up on these ahead of time, 
+            or start by simply clicking the <b>Start Playing!</b> button below. You can always review these attack types by selecting the <b>[help]</b> link in the status box at the <i>bottom-right corner</i> of your display.
             </section>
             </div><div class="center-content">
             <ul class="ctf-ul">

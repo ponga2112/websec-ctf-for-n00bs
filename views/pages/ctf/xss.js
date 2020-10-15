@@ -127,7 +127,7 @@ let CTF_1 = {
             <h1 class="cft-inline-block">`+CTF_1.person+`</h1> <b>`+CTF_1.username[1]+`</b>:
                 <p>`+CTF_1.comment[1]+`</p>
             </div>
-            <br>
+            <br> 
             <div class="ctf-code-left">
                 <h1 class="cft-inline-block">`+CTF_1.person+`</h1> <b>`+CTF_1.username[2]+`</b>:
                 <p>`+CTF_1.comment[2]+`</p>
@@ -339,15 +339,15 @@ let CTF_1 = {
               CTF_1.points = CTF_1.points-8;
               break;
           case 1:
-              h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS in this challenge.`
+              h = h+flag_bad+`Nope! <section>There is no XSS (<i>javascript</i>) in this particular string. While you may be able to inject arbitrary HTML, we are looking for XSS in this challenge.</section>`
               CTF_1.points = CTF_1.points-12;
               break;
           case 2:
-              h = h+flag_bad+`Nope, there is no XSS (<i>javascript</i>) in this particular string. Although, you may be able to inject arbitrary HTML, we are looking for XSS for this challenge.`
+              h = h+flag_bad+`Nope! <section>There is no XSS (<i>javascript</i>) in this particular string. While you may be able to inject arbitrary HTML, we are looking for XSS for this challenge.</section>`
               CTF_1.points = CTF_1.points-12;
               break;
           case 3:
-            h = h+flag_bad+`Nope, that's not quite right. This is actually a potential SQL Injection string. While there are some comparisons to XSS, this type of attack will be covered later.`
+            h = h+flag_bad+`Nope, that's not quite right. <section>This is actually a potential SQL Injection string. While there are some comparisons to XSS, this type of attack will be covered later.</section>`
             CTF_1.points = CTF_1.points-10;
             break;
           case 4:
