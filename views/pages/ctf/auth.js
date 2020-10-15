@@ -133,7 +133,7 @@ Amount: $<input type="text" name="amount">
         A simple HTML form is used to transfer funds between accounts and it's corresponding HTML code. 
         See if you can spot <i><b>where</b></i> the control preventing an unauthorized transfer might be bypassed and answer the question below:
         <section>&nbsp;</section></div>
-        <div class="ctf-html-outter">
+        <div class="ctf-html-outter-flex">
         <div class="ctf-html-inner-left">
         <div class="ctf-html-inner-text-center">Transfer Funds</div>
         <form id="ctf2-form">

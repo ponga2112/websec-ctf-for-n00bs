@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "title": "websec-ctf-for-n00bs API",
-    "version": "1.0.0",
-    "description": "API enpoint for Websec CTF for N00bs game; Storage and tracking for players for the CTF, records flags captured, tallies points, provides a leader statistics",
+    "version": "1.0.1",
+    "description": "API enpoint for Websec CTF for N00bs game; Storage and tracking for players for the CTF, records flags captured, tallies points, provides a leader statistics"
   },
   "paths": {
     "/api/ping": {
@@ -141,9 +141,9 @@
     "/api/leaders": {
       "post": {
         "operationId": "leaders",
-        "description": "POST /api/capture -  Captures a flag, updates progress and points for the player",
+        "description": "POST /api/leaders -  Provides the list of current players, their handle, flags_capped, and score",
         "requestBody": {
-          "description": "Contains the flag captures, and the points earned",
+          "description": "Send token since only valid players should be able to retrieve the leaderboard",
           "required": true,
           "content": {
             "application/json": {
@@ -158,7 +158,7 @@
         },
         "responses": {
           "200": {
-            "description": "Leaderboard successfully fetched",
+            "description": "Leaderboard successfully fetched: A JSON array of current players",
             "content": {
               "application/json": {
                 "schema": {
@@ -229,7 +229,7 @@
             "minLength": 3,
             "maxLength": 20,
             "pattern": "^[a-zA-Z0-9_]{3,20}$"
-          },
+          }
         }
       },
       "capture": {

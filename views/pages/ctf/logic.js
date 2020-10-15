@@ -267,10 +267,10 @@ let CTF_3 = {
 <label for="url">&nbsp;&nbsp;</label>
 `+lock_icon+`
 <select name="url" id="url">
-  <option value="address">https://widgets-direct.com/address-update</option>
-  <option value="store">https://widgets-direct.com/store</option>
-  <option value="cart">https://widgets-direct.com/cart</option>
-  <option value="checkout">https://widgets-direct.com/checkout</option>
+  <option value="address">https://widgets.co/address-update</option>
+  <option value="store">https://widgets.co/store</option>
+  <option value="cart">https://widgets.co/cart</option>
+  <option value="checkout">https://widgets.co/checkout</option>
 </select>
 
     `,
@@ -357,7 +357,7 @@ let CTF_3 = {
         </section><section>
         <section>&nbsp;</section></div>
         <div class="ctf-html-outter">
-        <div class="ctf-html-inner-left ctf-url-scroll ">
+        <div class="ctf-html-inner-left ctf-url-scroll">
         <section><div class="ctf-urlbar">`+CTF_3.urlbar+`</div></section>
         <section>
         <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></section>
