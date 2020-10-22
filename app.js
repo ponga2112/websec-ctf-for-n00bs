@@ -165,7 +165,7 @@ STATE.CTF.flags = [];
 //
 const init = async () => {
     STATE.APPSTATE.state = "init"
-    STATE.API.isConnected = API.isConnected();
+    STATE.API.isConnected = API.isConnected;
     if(DEVMODE) {
         console.log('%c DEVMODE: init() called', 'background: #222; color: #bada55');
     }
@@ -409,7 +409,8 @@ const globals = {
     htmlEncode: Utils.htmlEncode,
     toCodeBlock: Utils.toCodeBlock,
     answerstatus: answerStatus,
-    flagImg: Utils.Flag
+    flagImg: Utils.Flag,
+    api: API
 }
 window.ctf = globals;
 
