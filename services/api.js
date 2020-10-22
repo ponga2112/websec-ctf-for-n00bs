@@ -1,48 +1,90 @@
 // API Code
-//
-// TODO: write this
-//
+
 const API_URL = "https://chandlersecurityday.org/api";
-const REQ = {action:'', guid:'', body:''}
-const RESP = {result:'', body:''}
+
+const send = async (action,message) => {
+    // send(): send the api request
+    // send(): returns a tuple (bool,message) where bool indicated if request was successful or not and message contains the response body json, or error message
+    let response = {};
+    let result = {
+        status: false,
+        body: {}
+    };
+    try {
+        if (action == "ping") {
+            response = await fetch(API_URL+'/'+action, {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'no-cache',
+                redirect: 'error',
+                referrerPolicy: 'origin'
+            }).then(function(response){
+                if(response.status == 200) {
+                    result.status = true;
+                } else {
+                    result.status = false;
+                }
+                response.json().then(function(body){
+                    result.body = body;
+                })
+            });
+        } else {
+            response = await fetch(API_URL+'/'+action, {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                headers: {'Content-Type':'application/json'},
+                redirect: 'error',
+                referrerPolicy: 'origin',
+                body: JSON.stringify(message)
+            }).then(function(response){
+                if(response.status == 200) {
+                    result.status = true;
+                } else {
+                    result.status = false;
+                }
+                response.json().then(function(body){
+                    result.body = body;
+                })
+            });
+        }
+    } catch(e) {
+        result.body = {e};
+    }
+    // send() returns a promise for the API call results object
+    return result;
+}
 
 const API = {
-    url : () => {
-        return API_URL;
+    isConnected: false, 
+    // Example usage for API:
+    //
+    // ctf.api.ping().then(function(response){
+    //    if(response.status) {
+    //        API.isConnected = true;
+    //    }
+    // });
+    // 
+    // ctf.api.create(name).then(function(response){
+    //    if(response.status) {
+    //        STATE.API.isConnected = true;
+    //        STATE.API.handle = response.body.handle;
+    //        STATE.API.guid = response.body.token;
+    //    }
+    // });
+    //
+    ping : async () => {
+        return send("ping",{});
     },
-    // Call send() like:
-    // send(REQ)
-    //   .then(data => {
-    //     console.log(data); // JSON data parsed by `response.json()` call
-    //   });
-    send : async(payload) => {
-        // Default options are marked with *
-        const response = await fetch(API_URL, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-        });
-        return response.json(); // parses JSON response into native JavaScript objects
+    create : async (name) => {
+        return send("create",{token:ctf.state.API.guid, name:name});
     },
-    test : () => {
-        return false;
+    capture : async (flag,points) => {
+        return send("capture",{token:ctf.state.API.guid, flag:flag, points:points});
     },
-    validate : () => {
-        // TODO: write this!
-
-        return false;
-    },
-    isConnected : () => {
-        // TODO: write this!
-        return false;
+    leaders : async () => {
+        return send("leaders",{token:ctf.state.API.guid});
     }
 }
+
 export default API;

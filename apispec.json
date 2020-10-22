@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "title": "websec-ctf-for-n00bs API",
-    "version": "1.0.1",
-    "description": "API enpoint for Websec CTF for N00bs game; Storage and tracking for players for the CTF, records flags captured, tallies points, provides a leader statistics"
+    "version": "1.0.2",
+    "description": "API enpoint for Websec CTF for N00bs game; Storage and tracking for players for the CTF, records flags captured, tallies points, provides player statistics"
   },
   "paths": {
     "/api/ping": {
@@ -205,8 +205,8 @@
         "description": "The randomly generated UUID of the player, generated client-side when then app is first loaded",
         "type": "string",
         "format": "uuid",
-        "minLength": 37,
-        "maxLength": 37,
+        "minLength": 36,
+        "maxLength": 36,
         "pattern": "^[a-f0-9]{8}\\-[a-f0-9]{4}\\-[a-f0-9]{4}\\-[a-f0-9]{4}\\-[a-f0-9]{12}$"
       },
       "handle": {
