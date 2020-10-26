@@ -1,16 +1,27 @@
 let Leaders = {
+    player : () => {
+        return {
+            name: ctf.state.API.handle,
+            flags: ctf.state.CTF.flag_count,
+            points: ctf.state.CTF.points
+        };
+    },
     render : async () => {
         let playerList = [];
         if(ctf.state.API.isConnected) {
-            //TODO: Once API is stood up, code this!
-            playerList.push(null);
+            let r = await ctf.api.leaders()
+            if(r.status) {
+                for (const [k, v] of Object.entries(r.body)) {
+                    playerList.push(v)
+                }
+            } else {
+                ctf.state.API.isConnected = false
+                let player = Leaders.player()
+                playerList.push(player)
+            }
         } else {
             // Offline
-            let player = {
-                name: ctf.state.API.handle,
-                flags: ctf.state.CTF.flag_count,
-                points: ctf.state.CTF.points
-            }
+            let player = Leaders.player()
             playerList.push(player)
         }
         playerList.sort(function(a,b){return b.points-a.points})

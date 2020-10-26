@@ -86,11 +86,11 @@ export const Cookie = {
         }
         try {
             let c_obj = JSON.parse(atob(cookie_str))
-            if(state.API.isConnected) {
-                // TODO: write this to check with the API if our cookie is Valid
-                console.log("API not yet fully implemented")
-                return false;
-            }
+            // if(state.API.isConnected) {
+            //     // TODO: write this to check with the API if our cookie is Valid
+            //     console.log("API not yet fully implemented")
+            //     return false;
+            // }
             // guid: "87b48764-79ce-4059-ada0-2959bc74a5cc"
             let re_guid = new RegExp('[a-f0-9]{8}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{4}\-[a-f0-9]{12}')
             let re_handle = new RegExp('[a-zA-Z0-9]{3,20}#[0-9]{4}')
@@ -148,13 +148,22 @@ export function toCodeBlock(str) {
     return d;
 }
 
-export function createHandle(name) {
+export async function createHandle(name) {
     let h = sanitizePlayername(name)
     let a = ""
     if(h.length > 2) {
         a = h+"#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
     } else {
         a = "anonymous#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
+    }
+    if(ctf.state.API.isConnected) {
+        // new code to implement API
+        let r = await ctf.api.create(h)
+        if (r.status) {
+            a = r.body.handle
+        } else {
+            ctf.state.API.isConnected = false;
+        }
     }
     return a;
 }
@@ -243,12 +252,6 @@ let naughty = [
     "arrse",
     "arse",
     "ass",
-    "trump",
-    "maga",
-    "trmp",
-    "makeamericagreat",
-    "keepamericagreat",
-    "makeamericagreatagain",
     "assfucker",
     "asses",
     "assfucker",
@@ -651,6 +654,12 @@ let naughty = [
     "teets",
     "teez",
     "testical",
+    "trump",
+    "maga",
+    "trmp",
+    "makeamericagreat",
+    "keepamericagreat",
+    "makeamericagreatagain",
     "testicle",
     "tit",
     "titfuck",

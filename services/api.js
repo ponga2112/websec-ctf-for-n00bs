@@ -27,7 +27,7 @@ const send = async (action,message) => {
                 response.json().then(function(body){
                     result.body = body;
                 })
-            });
+            }).catch(function(e){result.body = {e}});
         } else {
             response = await fetch(API_URL+'/'+action, {
                 method: 'POST',
@@ -45,7 +45,7 @@ const send = async (action,message) => {
                 }
                 response.json().then(function(body){
                     result.body = body;
-                })
+                }).catch(function(e){result.body = {e}});
             });
         }
     } catch(e) {
@@ -56,7 +56,6 @@ const send = async (action,message) => {
 }
 
 const API = {
-    isConnected: false, 
     // Example usage for API:
     //
     // ctf.api.ping().then(function(response){
@@ -84,6 +83,9 @@ const API = {
     },
     leaders : async () => {
         return send("leaders",{token:ctf.state.API.guid});
+    },
+    isConnected : async () => {
+        return API.ping().then(function(r){return r.status})
     }
 }
 

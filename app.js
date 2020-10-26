@@ -165,69 +165,72 @@ STATE.CTF.flags = [];
 //
 const init = async () => {
     STATE.APPSTATE.state = "init"
-    STATE.API.isConnected = API.isConnected;
+    STATE.API.isConnected = await API.isConnected();
+    if(STATE.API.isConnected) {
+        if(!DEVMODE) {
+            document.getElementById('api_status').innerHTML = "(connected)";
+        }
+    } else {
+        if(!DEVMODE) {
+            document.getElementById('api_status').innerHTML = "(offline)";
+        }
+    }
     if(DEVMODE) {
         console.log('%c DEVMODE: init() called', 'background: #222; color: #bada55');
     }
-    // 0. is API connected
-    // If so, then let the server validate or issue session objects
-    if(STATE.API.isConnected) {
-        console.log("Error: API not implemented");
+    // Setup client side session
+    let returning = false;
+    let c = Utils.Cookie.get()
+    let cs = btoa(JSON.stringify(c))
+    if(c != null) {
+        if(Utils.Cookie.isValid(cs,STATE)) {
+            returning = true;
+        }
+    }
+    if (!returning) {
+        c = Utils.Cookie.generate(STATE);
+        Utils.Cookie.set(c);
+        STATE.COOKIE.isValid = Utils.Cookie.isValid(btoa(JSON.stringify(Utils.Cookie.get())), STATE);
+        STATE.COOKIE.object = c;
+        STATE.API.handle = c.handle;
+        STATE.API.guid = c.guid;
+        // APPSTATE = {progress:"NEW", page:"loading", state:"init"}
+        STATE.APPSTATE.progress = "NEW";
+        STATE.APPSTATE.page = "intro";
     } else {
-        // No API, so let's validate if its a returning using on the client-side
-        let returning = false;
-        let c = Utils.Cookie.get()
-        let cs = btoa(JSON.stringify(c))
-        if(c != null) {
-            if(Utils.Cookie.isValid(cs,STATE)) {
-                returning = true;
-            }
-        }
-        if (!returning) {
-            c = Utils.Cookie.generate(STATE);
-            Utils.Cookie.set(c);
-            STATE.COOKIE.isValid = Utils.Cookie.isValid(btoa(JSON.stringify(Utils.Cookie.get())), STATE);
-            STATE.COOKIE.object = c;
-            STATE.API.handle = c.handle;
-            STATE.API.guid = c.guid;
-            // APPSTATE = {progress:"NEW", page:"loading", state:"init"}
-            STATE.APPSTATE.progress = "NEW";
+        // If this is a returning offline user..
+        STATE.API.handle = c.handle;
+        STATE.API.guid = c.guid;
+        STATE.COOKIE.isValid = true;
+        STATE.COOKIE.object = c;
+        STATE.APPSTATE.progress = c.progress;
+        STATE.CTF.current = c.current_flag;
+        STATE.CTF.flag_count = c.flags_capped;
+        STATE.CTF.flags = c.flags;
+        STATE.CTF.points = c.points;
+        if(c.progress == "NEW") {
             STATE.APPSTATE.page = "intro";
-        } else {
-            // If this is a returning offline user..
-            STATE.API.handle = c.handle;
-            STATE.API.guid = c.guid;
-            STATE.COOKIE.isValid = true;
-            STATE.COOKIE.object = c;
-            STATE.APPSTATE.progress = c.progress;
-            STATE.CTF.current = c.current_flag;
-            STATE.CTF.flag_count = c.flags_capped;
-            STATE.CTF.flags = c.flags;
-            STATE.CTF.points = c.points;
-            if(c.progress == "NEW") {
-                STATE.APPSTATE.page = "intro";
-            }
-            if(c.progress == "STARTING") {
-                STATE.APPSTATE.page = "start";
-            }
-            if(c.progress == "PLAYING") {
-                STATE.APPSTATE.page = "ctf/"+String(STATE.CTF.current);
-            }
-            if(c.progress == "COMPLETED") {
-                STATE.APPSTATE.page = "leaderboard";
-            }
-            // there SHOULD be no need to call router()
-            //await router();
         }
-        // Devmode override - allow for direct navigation to the page, reguardless of cookie state
-        if(DEVMODE) {
-            let r = Utils.Parse.parseRequestURL()
-            if(r.resource.length > 1) {
-                if(r.resource == "ctf") {
-                    STATE.APPSTATE.page = r.resource+'/'+r.subresource
-                } else {
-                    STATE.APPSTATE.page = r.resource
-                }
+        if(c.progress == "STARTING") {
+            STATE.APPSTATE.page = "start";
+        }
+        if(c.progress == "PLAYING") {
+            STATE.APPSTATE.page = "ctf/"+String(STATE.CTF.current);
+        }
+        if(c.progress == "COMPLETED") {
+            STATE.APPSTATE.page = "leaderboard";
+        }
+        // there SHOULD be no need to call router()
+        //await router();
+    }
+    // Devmode override - allow for direct navigation to the page, reguardless of cookie state
+    if(DEVMODE) {
+        let r = Utils.Parse.parseRequestURL()
+        if(r.resource.length > 1) {
+            if(r.resource == "ctf") {
+                STATE.APPSTATE.page = r.resource+'/'+r.subresource
+            } else {
+                STATE.APPSTATE.page = r.resource
             }
         }
     }
@@ -243,11 +246,6 @@ const init = async () => {
         await DevModules.Details.after_render("answers",a_html)
         .then(console.log('%c DEVMODE: modules loaded.', 'background: #222; color: #bada55'))
     } else {
-        if(STATE.API.isConnected) {
-            document.getElementById('api_status').innerHTML = "(connected)";
-        } else {
-            document.getElementById('api_status').innerHTML = "(offline)";
-        }
         document.getElementById('current_user').innerHTML = STATE.API.handle;
         await Bottombar.after_render();
     }
@@ -262,7 +260,7 @@ const init = async () => {
 }
 
 const register = async (handle) => {
-    let h = Utils.createHandle(handle)
+    let h = await Utils.createHandle(handle)
     STATE.API.handle = h;
     STATE.COOKIE.object.handle = h;
     Utils.Cookie.set(STATE.COOKIE.object)
@@ -379,13 +377,21 @@ const update = async (item,obj) => {
     } else {
         document.getElementById('current_user').innerHTML = STATE.API.handle;
         document.getElementById('status_points').innerHTML = String(STATE.CTF.points);
+        if(STATE.API.isConnected) {
+            document.getElementById('api_status').innerHTML = "(connected)";
+        } else {
+            document.getElementById('api_status').innerHTML = "(offline)";
+        }
     }
 }
 
 const capture = async (flag) => {
-    //STATE.APPSTATE.page = "ctf/"+String(flag.next);
     if(STATE.CTF.flags.includes(flag.cur)) {
         return false;
+    }
+    let r = await API.capture(flag.cur,flag.points)
+    if(!r.status) {
+        STATE.API.isConnected = false;
     }
     STATE.CTF.current = flag.next;
     STATE.CTF.flags.push(flag.cur)
