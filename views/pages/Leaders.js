@@ -1,7 +1,7 @@
 let Leaders = {
     player : () => {
         return {
-            name: ctf.state.API.handle,
+            handle: ctf.state.API.handle,
             flags: ctf.state.CTF.flag_count,
             points: ctf.state.CTF.points
         };
@@ -25,9 +25,10 @@ let Leaders = {
             playerList.push(player)
         }
         playerList.sort(function(a,b){return b.points-a.points})
+        playerList = playerList.slice(0,19)
         let leaders_html = `<table class="ctf-leaders"><tr><td class="ctf-leaders">Player</td><td class="ctf-leaders">Flags</td><td class="ctf-leaders">Points</td></tr>`
         for(const i of playerList) {
-            leaders_html = leaders_html + `<tr><td class="ctf-leaders">` + i.name + `</td><td class="ctf-leaders">` + String(i.flags) + `</td><td class="ctf-leaders">` + String(i.points) + `</td></tr>`
+            leaders_html = leaders_html + `<tr><td class="ctf-leaders">` + i.handle+ `</td><td class="ctf-leaders">` + String(i.flags) + `</td><td class="ctf-leaders">` + String(i.points) + `</td></tr>`
         }
         leaders_html = leaders_html + `</table>`
         let congrats_html = ""
