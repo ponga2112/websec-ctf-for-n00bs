@@ -34,7 +34,7 @@ def isValidToken(token):
 def isValidHandle(handle):
     for word in naughty:
         if(handle.lower() in word):
-            return False; 
+            return False
     return True
 
 def isValidCapture(cur_flags,cur_points,asserted_flag,asserted_points):
@@ -46,6 +46,8 @@ def isValidCapture(cur_flags,cur_points,asserted_flag,asserted_points):
 
 # db setup
 mydb = '/tmp/ctf.db'
+#mydb = 'C:\\Temp\\ctf.db'
+
 def initDB():
     conn = sql.connect(mydb)
     cur = conn.cursor()
@@ -68,7 +70,7 @@ def ping():
         cur = conn.cursor()
         conn.close()
     except:
-        return jsonify({'error':'API is not available'})
+        return jsonify({'error':'API is not available'},400)
     return jsonify({})
 
 @app.route('/api/create', methods=['POST'])
@@ -144,4 +146,4 @@ naughty = []
 
 if __name__ =='__main__':
     initDB()
-    app.run(debug = True)
+    app.run(debug=True,port=8002)
