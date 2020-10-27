@@ -260,15 +260,20 @@ const init = async () => {
 }
 
 const register = async (handle) => {
-    let h = await Utils.createHandle(handle)
-    STATE.API.handle = h;
-    STATE.COOKIE.object.handle = h;
-    Utils.Cookie.set(STATE.COOKIE.object)
-    Utils.Modal.hideAll();
-    if(DEVMODE) {
-        document.getElementById('developer').innerHTML  = await DevModules.Details.render(STATE);
+    let new_player = await Utils.createHandle(handle)
+    if(new_player) {
+        STATE.API.handle = new_player;
+        STATE.COOKIE.object.handle = new_player;
+        STATE.COOKIE.object.guid = ctf.state.API.guid;
+        Utils.Cookie.set(STATE.COOKIE.object)
+        Utils.Modal.hideAll();
+        if(DEVMODE) {
+            DevModules.Details.render(STATE).then(function(s){
+                document.getElementById('developer').innerHTML  = s;
+            })
+        }
+        update({action:"nav",to:"start"},null)
     }
-    update({action:"nav",to:"start"},null)
 }
 
 

@@ -1,6 +1,7 @@
 // API Code
 
-const API_URL = "https://chandlersecurityday.org/api";
+//const API_URL = "https://chandlersecurityday.org/api";
+const API_URL = "http://localhost:5000/api";
 
 const send = async (action,message) => {
     // send(): send the api request
@@ -18,16 +19,7 @@ const send = async (action,message) => {
                 cache: 'no-cache',
                 redirect: 'error',
                 referrerPolicy: 'origin'
-            }).then(function(response){
-                if(response.status == 200) {
-                    result.status = true;
-                } else {
-                    result.status = false;
-                }
-                response.json().then(function(body){
-                    result.body = body;
-                })
-            }).catch(function(e){result.body = {e}});
+            });
         } else {
             response = await fetch(API_URL+'/'+action, {
                 method: 'POST',
@@ -37,17 +29,10 @@ const send = async (action,message) => {
                 redirect: 'error',
                 referrerPolicy: 'origin',
                 body: JSON.stringify(message)
-            }).then(function(response){
-                if(response.status == 200) {
-                    result.status = true;
-                } else {
-                    result.status = false;
-                }
-                response.json().then(function(body){
-                    result.body = body;
-                }).catch(function(e){result.body = {e}});
             });
         }
+        result.status = response.status
+        result.body = await response.json()
     } catch(e) {
         result.body = {e};
     }

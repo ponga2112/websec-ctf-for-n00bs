@@ -150,22 +150,29 @@ export function toCodeBlock(str) {
 
 export async function createHandle(name) {
     let h = sanitizePlayername(name)
-    let a = ""
+    let a = {
+        name: "",
+        guid: ctf.state.API.guid
+    }
     if(h.length > 2) {
-        a = h+"#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
+        a.name = h+"#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
     } else {
-        a = "anonymous#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
+        a.name = "anonymous#"+String(Math.floor(Math.random() * (+9999 - +1000) + +1000));
     }
     if(ctf.state.API.isConnected) {
         // new code to implement API
-        let r = await ctf.api.create(h)
-        if (r.status) {
-            a = r.body.handle
+        let api_r = await ctf.api.create(h)
+        if(api_r.status) {
+            a.name = api_r.body.handle
+            ctf.state.API.guid = api_r.body.token
+            return api_r.body.handle
         } else {
             ctf.state.API.isConnected = false;
+            return a.name;
         }
+    } else {
+        return a.name;
     }
-    return a;
 }
 
 export function validatePlayername(name) {
