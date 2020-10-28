@@ -51,6 +51,8 @@ let Leaders = {
         </section><section>`+leaders_html+`</section>
         <section>&nbsp;</section>
         <section class="leaders-optional"><button class="ctf-button-dark" id="again-button"><b>Play Again</b></button></section>
+        <section>&nbsp;</section>
+        <section>&nbsp;</section>
         `
         return view
     },
