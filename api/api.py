@@ -1,4 +1,4 @@
-import json, sys, uuid, random, re, time, math
+import json, sys, uuid, random, re, time, math, os
 from flask import Flask, request, jsonify
 import sqlite3 as sql
 from flask_cors import CORS, cross_origin
@@ -32,8 +32,11 @@ def isValidToken(token):
     return False
 
 def isValidHandle(handle):
+    print(naughty)
+    if(handle.lower() in naughty):
+        return False
     for word in naughty:
-        if(handle.lower() in word):
+        if word in handle.lower():
             return False
     return True
 
@@ -45,8 +48,15 @@ def isValidCapture(cur_flags,cur_points,asserted_flag,asserted_points):
     return False
 
 # db setup
-mydb = '/tmp/ctf.db'
-#mydb = 'C:\\Temp\\ctf.db'
+myos = sys.platform.lower()
+if "linux" in myos:
+    mydb = '/tmp/ctf.db'
+elif "darwin" in myos:
+    mydb = '/tmp/ctf.db'
+elif "win" in myos:
+    mydb = 'C:\\Temp\\ctf.db'
+else:
+    mydb = '/tmp/ctf.db'
 
 def initDB():
     conn = sql.connect(mydb)
@@ -142,7 +152,15 @@ def get_leaders():
     return jsonify(results)
 
 # todo: implement naughty word checking for user submitted handles
-naughty = []
+if os.path.isfile("naughty.txt"):
+    try:
+        f = open("naughty.txt", "r")
+        naughty = f.readlines()
+        for i,s in enumerate(naughty):
+            naughty[i] = s.strip()
+
+    except:
+        print(" * file 'naughty.txt' does not exist")
 
 if __name__ =='__main__':
     initDB()
