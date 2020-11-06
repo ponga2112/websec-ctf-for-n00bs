@@ -6,7 +6,7 @@
 
 import http.server, socketserver, threading
 # TODO: this flask app is pointing to test, once API server is completed, change this line:
-from api import test as apiServer
+from api import api as apiServer
 
 API_PORT = 8002
 HTTP_PORT = 8001

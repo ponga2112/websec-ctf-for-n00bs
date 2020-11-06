@@ -1,52 +1,31 @@
-To be completed...
+# websec-ctf-for-n00bs API Server
 
+The API server is used as a centralized scoring server for the Capture the Flag application.  It allows multiple external clients to play the game and keep track of their progress with other players.
 
+## Usage
 
-ping:
+A python 3 installation is required to run the API server.  A list of required external modules can be found in the requirements.txt file.  To automatically install the required modules in your python instance, make sure pip is installed and run the following command:
 
-    GET 127.0.0.1:5000/api/ping
+    pip install -r requirements.txt
 
-    body:
+For local testing or single player local use, the CTF application and the API server can both be started by running the run.py start up script.
 
-        empty
+In order to use the API in a production environment, you will need to run a web server.  A good choice for hosting python is uWSGI - https://github.com/unbit/uwsgi. uWSGI will allow you to serve the API and allow external connections.
 
-    response:
+Documentation for uWSGI can be found at https://uwsgi-docs.readthedocs.io/en/latest/
 
-        {"status": "OK"}
+A QuickStart for using uWSGI is located here https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html
 
+* Install uWSGI: pip install uwsgi
+* Run the API: uwsgi --http :8002 --wsgi-file api.py --callable app
+* In order to run multiple processes and threads, those options need to be added on the command line:  --processes 4 --threads 2
+* an ini file can be create and then loaded when starting the uWSGI server: uwsgi --ini uwsgi.ini
+* ini file example:
 
-create:
-
-    POST 127.0.0.1:5000/api/create
-
-    body:
-
-        {"name" : "rex"}
-
-    response:
-
-        "{'name' : 'rex', 'handle' : 'rex#1496', 'token' : '56a8c0c4-7b30-4177-bc89-6665127ccef1'}"
-
-capture:
-
-    POST 127.0.0.1:5000/api/capture
-
-    body:
-
-        {"token" : "d6821063-cdd4-4c30-8c5f-05019615d82e", "flags" : "10", "points" : "1000"}
-
-    response:
-
-        {"status": "OK"}
-
-leaders:
-
-    POST 127.0.0.1:5000/api/leaders
-
-    body:
-
-        {"token" : "9715e270-5358-43ed-9fee-5f4d9e89502f"}
-
-    response:
-
-        "{'name' : 'don', 'handle' : 'don#4321', 'flags' : '10' 'points' : '1000'},{'name' : 'bob', 'handle' : 'bob#1234', 'flags' : '10' 'points' : '1000'},{'name' : 'smith', 'handle' : 'smith#1494', 'flags' : '0' 'points' : '0'},{'name' : 'tommy', 'handle' : 'tommy#1413', 'flags' : '10' 'points' : '1000'},{'name' : 'rex', 'handle' : 'rex#1496', 'flags' : '0' 'points' : '0'}"
+    [uwsgi]
+    http = :8002
+    wsgi-file = api.py
+    callable = app
+    processes = 4
+    threads = 2
+    master = true

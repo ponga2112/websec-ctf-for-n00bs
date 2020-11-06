@@ -32,7 +32,6 @@ def isValidToken(token):
     return False
 
 def isValidHandle(handle):
-    print(naughty)
     if(handle.lower() in naughty):
         return False
     for word in naughty:
