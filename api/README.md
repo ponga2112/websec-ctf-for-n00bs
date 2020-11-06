@@ -6,7 +6,7 @@ The API server is used as a centralized scoring server for the Capture the Flag 
 
 A python 3 installation is required to run the API server.  A list of required external modules can be found in the requirements.txt file.  To automatically install the required modules in your python instance, make sure pip is installed and run the following command:
 
-    ```pip install -r requirements.txt```
+    pip install -r requirements.txt
 
 For local testing or single player local use, the CTF application and the API server can both be started by running the run.py start up script.
 
