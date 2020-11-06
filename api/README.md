@@ -17,13 +17,21 @@ Documentation for uWSGI can be found at https://uwsgi-docs.readthedocs.io/en/lat
 A QuickStart for using uWSGI is located here https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html
 
 * Install uWSGI:
+
     pip install uwsgi
+
 * Run the API:
+
     uwsgi --http :8002 --wsgi-file api.py --callable app
+
 * In order to run multiple processes and threads, those options need to be added on the command line:
+
     uwsgi --http :8002 --wsgi-file api.py --callable app --processes 4 --threads 2
+
 * an ini file can be create and then loaded when starting the uWSGI server:
+
     uwsgi --ini uwsgi.ini
+    
 * ini file example:
 
     [uwsgi]
