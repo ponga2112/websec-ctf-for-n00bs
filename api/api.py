@@ -153,15 +153,21 @@ def get_leaders():
     return jsonify(results)
 
 # todo: implement naughty word checking for user submitted handles
+fileName = "naughty.txt"
 if os.path.isfile("naughty.txt"):
-    try:
-        f = open("naughty.txt", "r")
-        naughty = f.readlines()
-        for i,s in enumerate(naughty):
-            naughty[i] = s.strip()
+    fileName = "naughty.txt"
+if os.path.isfile("api/naughty.txt"):
+    fileName = "api/naughty.txt"
+if os.path.isfile("api\\ctf.db"):
+    fileName = "api\\ctf.db"
 
-    except:
-        print(" * file 'naughty.txt' does not exist")
+try:
+    f = open(fileName, "r")
+    naughty = f.readlines()
+    for i,s in enumerate(naughty):
+        naughty[i] = s.strip()
+except:
+    print(" * file 'naughty.txt' does not exist")
 
 if __name__ =='__main__':
     initDB()
