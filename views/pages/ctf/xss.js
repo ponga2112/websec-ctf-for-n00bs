@@ -104,7 +104,7 @@ let CTF_1 = {
         </div>
         <br>
 
-        <div class="ctf-socialmedia-post" border-style="solid" id="full_post">
+        <div class="ctf-socialmedia-post" id="full_post">
           <!-- START BECKY POST ctf-socialmedia-post-->
           <div id="becky_post">
           <h1 class="cft-inline-block">`+CTF_1.person+`</h1> <strong>Becky</strong> added a new photo
