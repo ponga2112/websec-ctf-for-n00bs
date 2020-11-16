@@ -42,7 +42,7 @@ def isValidHandle(handle):
 def isValidCapture(cur_flags,cur_points,asserted_flag,asserted_points):
     if((cur_flags < MAX_FLAGS+1) or (cur_points < (MAX_POINTS*MAX_FLAGS)+1)):
         if((asserted_flag > 0) and (asserted_flag < MAX_FLAGS+1)):
-            if((asserted_points > 0) and (asserted_points < MAX_POINTS+1)):
+            if((asserted_points > -1) and (asserted_points < MAX_POINTS+1)):
                 return True
     return False
 
@@ -120,6 +120,8 @@ def capture_flags():
     if player_row is None:
         return (jsonify({"error": "The flag could not be captured as requested"}),400)
     # check that the capture appears valid
+    if(points < 0):
+        points = 0
     if(not isValidCapture(player_row[3],player_row[4],flag,points)):
         return (jsonify({"error": "The flag could not be captured as requested"}),400)
     parameters = (player_row[3]+1, points+player_row[4], token)
