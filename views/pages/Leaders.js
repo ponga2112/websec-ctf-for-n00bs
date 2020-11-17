@@ -11,8 +11,18 @@ let Leaders = {
         if(ctf.state.API.isConnected) {
             let r = await ctf.api.leaders()
             if(r.status) {
-                for (const [k, v] of Object.entries(r.body)) {
-                    playerList.push(v)
+                // bug fix for when player is not yet initialized
+                if(ctf.state.APPSTATE.progress == "NEW") {
+                    let player = {
+                        handle: "Only active players may view the Leaderboard.",
+                        flags: 0,
+                        points: 0
+                    }
+                    playerList.push(player)
+                } else {
+                    for (const [k, v] of Object.entries(r.body)) {
+                        playerList.push(v)
+                    }
                 }
             } else {
                 ctf.state.API.isConnected = false
