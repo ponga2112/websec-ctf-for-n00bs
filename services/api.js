@@ -1,7 +1,7 @@
 // API Code
 
-//const API_URL = "https://chandlersecurityday.org/api";
-const API_URL = "http://localhost:8002/api";
+const API_URL = "https://chandlersecurityday.org/api";
+//const API_URL = "http://localhost:8002/api";
 
 const send = async (action,message) => {
     // send(): send the api request

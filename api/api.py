@@ -94,7 +94,7 @@ def create_user():
     except:
         return (jsonify({"error": "Player could not be created"}),400)
     player = Player(handle,token)
-        new_handle = player.handle
+    new_handle = player.handle
     x = 0
     h_found = True
     while (x < 6):
