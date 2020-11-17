@@ -94,7 +94,27 @@ def create_user():
     except:
         return (jsonify({"error": "Player could not be created"}),400)
     player = Player(handle,token)
-    parameters = (player.epoch, player.handle, player.token, player.flags, player.points)
+        new_handle = player.handle
+    x = 0
+    h_found = True
+    while (x < 6):
+        cur.execute("SELECT handle FROM users WHERE handle = ?", [new_handle])
+        row = cur.fetchone()
+        if row is None:
+            h_found = False
+            break
+        new_handle = re.sub(r"[^a-zA-Z0-9_]", "", handle)[:20]
+        if(len(new_handle) < 3):
+            new_handle = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(4))
+        if(not isValidHandle(new_handle)):
+            new_handle = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(4))
+        new_handle = new_handle+"#" +str(random.randint(1000,9999))
+        param = (new_handle)
+        print(param)
+        x = x + 1
+    if (h_found is True):
+        return (jsonify({"error": "Player could not be created"}),400)
+    parameters = (player.epoch, new_handle, player.token, player.flags, player.points)
     cur.execute('INSERT INTO users (epoch, handle, token, flags, points) VALUES (?, ?, ?, ?, ?)', parameters)
     conn.commit()
     results = {"token": player.token,"handle": player.handle}
