@@ -14,6 +14,14 @@ function detectIE() {
         var rv = ua.indexOf('rv:');
         return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
     }
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+       // Edge => return version number
+       i = parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+       if (i < 19) {
+           return i
+       }
+    }
 
     // other browser
     return false;
@@ -21,5 +29,7 @@ function detectIE() {
 
 if (detectIE()) {
     let d = document.getElementById('main')
-    d.innerHTML = '<h2>Oh boy, this is embarrassing. You seem to be using a rather ancient version of Internet Explorer. Please reload this page in a modern web browser, such as Chrome or Edge.</h2>'
+    setTimeout(function() {
+        d.innerHTML = '<h2>Oh boy, this is embarrassing. You seem to be using a rather ancient version of Internet Explorer. Please reload this page in a modern web browser, such as Chrome or Edge > 18</h2>'
+    }, 2 * 1000);
 }
