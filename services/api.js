@@ -70,7 +70,7 @@ const API = {
         return send("leaders",{token:ctf.state.API.guid});
     },
     isConnected : async () => {
-        return API.ping().then(function(r){return r.status})
+        return API.ping().then(function(r){if (r.status == 200){return true} else {return false}})
     }
 }
 
