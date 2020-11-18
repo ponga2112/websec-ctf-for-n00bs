@@ -85,9 +85,9 @@ let CTF_1 = {
           <br>
           <p>The impact of this type of attack can range from superficial to outright carnage! Site defacement might take place if the attacker's intent is less malicious, but an unlucky victim might find their session information stolen -- quickly leading to account theft or unauthorized actions. Some victims might never be aware they've been had, such as in the case of cryptocurrency miner malware added to the webpage.. running silently in the background while using up resources.</p><br>
           <p>More info about XSS here:</p>
-          <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">OWASP TOP 10</a><br>
-          <a href="https://portswigger.net/web-security/cross-site-scripting">PortSwigger</a><br>
-          <a href="https://www.google.com/about/appsecurity/learning/xss/">Google Application Security</a>
+          <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)" target="_blank">OWASP TOP 10</a><br>
+          <a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank">PortSwigger</a><br>
+          <a href="https://www.google.com/about/appsecurity/learning/xss/" target="_blank">Google Application Security</a>
 
         </div>
       </section>

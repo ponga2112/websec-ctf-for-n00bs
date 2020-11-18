@@ -33,6 +33,14 @@
     scrollbar-width: none;  /* Firefox */
 }
 
+/* make desktop margins more friendly */
+@media (min-width: 600px) {
+    .main { 
+        padding-left:50px;
+        padding-right:50px;
+    }
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .main::-webkit-scrollbar {
     display: none;
@@ -154,12 +162,10 @@ input[type=checkbox],input[type=radio] {
     .ctf-urlbar-select { width: 295px; }
     .ctf-html-outter {
         display: flex;
-        
         -webkit-overflow-scrolling: auto;
         -webkit-transform: translate3d(0, 0, 0);
         /* -webkit-flex: 0 0 auto; */
         flex: 0 0 auto;
-        
     }
 }
 
