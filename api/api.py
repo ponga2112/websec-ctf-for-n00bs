@@ -164,7 +164,7 @@ def get_leaders():
         return (jsonify({"error": "Leaderboard not available"}),400)
     if player_row is None:
         return (jsonify({"error": "Leaderboard not available"}),400)
-    cur.execute("SELECT handle,flags,points FROM users ORDER BY points DESC LIMIT 100")
+    cur.execute("SELECT handle,flags,points FROM (SELECT * from users ORDER BY epoch DESC LIMIT 25) ORDER BY points DESC LIMIT 25")
     rows = cur.fetchall()
     results = []
     for i in rows:
