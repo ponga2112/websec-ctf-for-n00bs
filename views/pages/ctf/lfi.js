@@ -71,7 +71,7 @@ let CTF_9 = {
                 ctf9_url = '1';
                 html = `
                 <h1>Welcome to ACME ASCII Art!</h1>
-                </br>Click below to view our avialable artwork:</br></br>
+                </br>Click below to view our available artwork:</br></br>
                 <input type="submit" id="ctf9_nav_url2" name="ctf9_nav_url2" class="faux-browser-button" value="View"/>&nbsp;sw33t_g04t</br></br>
                 <input type="submit" id="ctf9_nav_url3" name="ctf9_nav_url3" class="faux-browser-button" value="View"/>&nbsp;aardv4rk</br></br>
                 <input type="submit" id="ctf9_nav_url4" name="ctf9_nav_url4" class="faux-browser-button" value="View"/>&nbsp;el3ph4nt</br></br>

@@ -180,7 +180,7 @@ let CTF_7 = {
         
         let view =  /*html*/`
             <section class="section">
-            <h2>Capture the Flag</h2>
+            <h2>Capture the Flag</h2><img src="data:image/png;base64,`+ctf.flagImg+`" width="100">
             <hr width="50%" />
             <h3>SQL Injection Challenge</h3>
             </section>

@@ -136,11 +136,11 @@ let CTF_5 = {
         <label for="url">&nbsp;&nbsp;</label>
         `+lock_icon+`
         <select name="url" id="url" class="ctf-urlbar-select">
-        <option value="default">http://vulnserver.org/index.asp?style=plain</option>
-        <option value="linux">http://vulnserver.org/index.asp?style=/var/html/www/admin/get.inc</option>
-        <option value="encode">http://vulnserver.org/index.asp?style=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fWindows%2fsystem.ini</option>
-        <option value="shadow">http://vulnserver.org/index.asp?style=..\\..\\..\\..\\shadow</option>
-        <option value="noresource">http://vulnserver.org/../../../../Windows/system.ini</option>
+        <option value="default">https://style.co/?s=plain</option>
+        <option value="linux">https://style.co/?s=/etc/php5/php.inc</option>
+        <option value="encode">https://style.co/?s=%2e%2e%2f%2e%2e%2fWindows%2fsystem.ini</option>
+        <option value="shadow">https://style.co/?s=..\\..\\Temp</option>
+        <option value="noresource">https://style.co/../Windows/system.ini</option>
         </select>
 
     `,
@@ -161,10 +161,12 @@ let CTF_5 = {
                 <div class="ctf-code-left">http://somewhere.com/home.php?file=userContent</div><br><br>
                 Insecure coding practices could lead to the following block of code:<br><br>
                 <div class="ctf-code-left">include($_GET['file']);</div><br><br>
-                An attacker could exploit this code by using dots and slashes to move up the directory tree then decend the tree into another folder path.  
-                In the case of a Linux web server, an attacker could attempt to access the "/etc/password" file using the following syntax:<br><br>
+                An attacker could exploit this vulnerable code by using dots and slashes to access files on the server which the web developers did not intend.   
+                In the case of a Linux web server, an attacker could attempt to access the "/etc/password" file. This is a sensitive file containing details about the server. 
+                Although the developers certainly did not intend to allow this file to be accessed by users, their vulnerable code exposes all files on the system. <br>An example might look like:<br>
                 <div class="ctf-code-left">http://somewhere.com/home.php?file=../../../../../../etc/password</div><br><br>
-                Every "../" would move up a directory.  Not knowing how far down a directory tree the root web directory lies, extra "../" are added to make sure the attack is taken up to the root operating system directory before decending again.
+                <!-- removed per user feedback -->
+                <!--Every "../" would move up a directory.  Not knowing how far down a directory tree the root web directory lies, extra "../" are added to make sure the attack is taken up to the root operating system directory before decending again.
                 After moving to the root operating system directory, the attack will then decend into the "/etc" folder and try to access the "password" file and return its contents in the web browser.<br><br>
                 In the same way that resources in GET and POST request parameters are vulnerable, cookie values can also be attacked. If a cookie is trying to dynamically generate pages, that parameter value could also be exploited.
                 In this example, a cookie is dynamically generating a template based on a value, "hostile", saved in the cookie:<br><br>
@@ -172,18 +174,20 @@ let CTF_5 = {
                 A poorly coded application might contain the following vulnerable code block:<br><br>
                 <div class="ctf-code-left">$template = 'hostile.php';<br>if ( is_set( $_COOKIE['TEMPLATE'] ) )<br>&nbsp;&nbsp;$template = $_COOKIE['TEMPLATE'];<br>include ( "/home/users/app/templates/" . $template );<br></div><br><br>
                 An attacker can use the same traversal attack on the cookie parameter to attempt to access the "/etc/password" file:<br><br>
-                <div class="ctf-code-left">Cookie: UID=1234567;caresgiven=0;template=../../../../../../etc/password</div><br><br><br>
-                <b>The following website has a directory traversal vulnerability.  Can you find it?</b>
-            </section>
-            <section>
-                <section>&nbsp;</section>
-                <div class="ctf-html-outter">
-                <div class="ctf-html-inner-left ctf-url-scroll ">
-                <section><div class="ctf-urlbar">`+CTF_5.urlbar+`</div></section>
-                <section>
-                <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div></div></div>
-            </section>
-            <br><br>
+                <div class="ctf-code-left">Cookie: UID=1234567;caresgiven=0;template=../../../../../../etc/password</div><br><br><br>-->
+                <b>The following website has a directory traversal vulnerability. Can you find it?</b>
+            </section>&nbsp;<section>
+            <div class="ctf-html-outter">
+                <div class="ctf-html-inner-left ctf-url-scroll">
+                    <section>
+                        <div class="ctf-urlbar">`+CTF_5.urlbar+`</div>
+                    </section>
+                    <section>
+                        <div class="ctf-urlwindow ctf-url-scroll" id="ctf-urlwindow">Loading...</div>
+                    </section>
+                </div>
+            </div>
+            
             Why did the correct URL work when the others wouldn't?
             
             <div class="ctf-html-outter">
